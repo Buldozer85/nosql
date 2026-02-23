@@ -1,0 +1,74 @@
+services:
+  mongo-primary:
+    image: mongo:8.2
+    container_name: mongo-primary
+    networks:
+      - database-network
+    restart: always
+    command: ["mongod",
+              "--replSet", "rs0",
+              "--bind_ip_all",
+              "--keyFile", "/etc/mongo/keyfile",
+              "--auth"
+    ]
+    ports:
+      - "27017:27017"
+    volumes:
+      - './auth/keyfile:/etc/mongo/keyfile:ro'
+      - 'mongo-primary_data:/data/db'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=adminpass
+  mongo-secondary:
+    image: mongo:8.2
+    container_name: mongo-secondary
+    networks:
+      - database-network
+    command: [ "mongod",
+               "--replSet", "rs0",
+               "--bind_ip_all",
+               "--keyFile", "/etc/mongo/keyfile",
+               "--auth"
+    ]
+    restart: always
+    volumes:
+      - './auth/keyfile:/etc/mongo/keyfile:ro'
+      - 'mongo-secondary_data:/data/db'
+  mongo-tertiary:
+    image: mongo:8.2
+    container_name: mongo-tertiary
+    networks:
+      - database-network
+    command: [ "mongod",
+               "--replSet", "rs0",
+               "--bind_ip_all",
+               "--keyFile", "/etc/mongo/keyfile",
+               "--auth"
+    ]
+    restart: always
+    volumes:
+      - './auth/keyfile:/etc/mongo/keyfile:ro'
+      - 'mongo-tertiary_data:/data/db'
+  create-replica-set:
+    image: mongo:8.2
+    container_name: create-replica-set
+    depends_on:
+      - mongo-primary
+      - mongo-secondary
+      - mongo-tertiary
+    volumes:
+      - './init-replicaset.js:/init-replicaset.js:ro'
+    networks:
+      - database-network
+    entrypoint: >
+      bash -c "
+      sleep 10 &&
+      mongosh --host mongo-primary:27017 -u admin -p adminpass --authenticationDatabase admin /init-replicaset.js
+      "
+
+networks:
+   database-network:
+volumes:
+  mongo-primary_data:
+  mongo-secondary_data:
+  mongo-tertiary_data:
