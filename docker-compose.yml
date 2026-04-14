@@ -1,74 +1,171 @@
 services:
-  mongo-primary:
+  # --- ROUTER  ---
+  mongos:
     image: mongo:8.2
-    container_name: mongo-primary
-    networks:
-      - database-network
-    restart: always
-    command: ["mongod",
-              "--replSet", "rs0",
-              "--bind_ip_all",
-              "--keyFile", "/etc/mongo/keyfile",
-              "--auth"
-    ]
+    container_name: mongos-router
+    command: ["mongos", "--configdb", "cfg/mongo-config:27017", "--bind_ip_all", "--keyFile", "/etc/mongo/keyfile"]
     ports:
       - "27017:27017"
     volumes:
       - './auth/keyfile:/etc/mongo/keyfile:ro'
+    depends_on:
+      - mongo-config
+    networks:
+      - database-network
+    restart: always
+    entrypoint: >
+      bash -c "
+        echo 'Starting mongos and waiting for config server to be ready...' &&
+        exec mongos --configdb cfg/mongo-config:27017 --bind_ip_all --keyFile /etc/mongo/keyfile
+      "
+
+  # --- CONFIG SERVER ---
+  mongo-config:
+    image: mongo:8.2
+    container_name: mongo-config
+    command: >
+      bash -c "
+        openssl rand -base64 756 > /etc/mongo/keyfile && chmod 400 /etc/mongo/keyfile && chown 999:999 /etc/mongo/keyfile;
+        mongod --configsvr --replSet cfg --bind_ip_all --keyFile /etc/mongo/keyfile --auth & 
+        until mongosh --port 27017 --eval 'rs.initiate({_id: \"cfg\", configsvr: true, members: [{_id: 0, host: \"mongo-config:27017\"}]})' 2>/dev/null; do
+          sleep 2
+        done;
+        wait
+      "
+    volumes:
+      - './auth:/etc/mongo'
+      - 'mongo-config_data:/data/db'
+    networks:
+      - database-network
+    restart: always
+
+  # --- SHARD 1  ---
+  mongo-primary:
+    image: mongo:8.2
+    container_name: mongo-primary
+    command: ["mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongo/keyfile", "--auth"]
+    volumes:
+      - './auth/keyfile:/etc/mongo/keyfile:ro'
       - 'mongo-primary_data:/data/db'
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=adminpass
+    networks:
+      - database-network
+    restart: always
+
   mongo-secondary:
     image: mongo:8.2
     container_name: mongo-secondary
-    networks:
-      - database-network
-    command: [ "mongod",
-               "--replSet", "rs0",
-               "--bind_ip_all",
-               "--keyFile", "/etc/mongo/keyfile",
-               "--auth"
-    ]
-    restart: always
+    command: ["mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongo/keyfile", "--auth"]
     volumes:
       - './auth/keyfile:/etc/mongo/keyfile:ro'
       - 'mongo-secondary_data:/data/db'
+    networks:
+      - database-network
+    restart: always
+
   mongo-tertiary:
     image: mongo:8.2
     container_name: mongo-tertiary
-    networks:
-      - database-network
-    command: [ "mongod",
-               "--replSet", "rs0",
-               "--bind_ip_all",
-               "--keyFile", "/etc/mongo/keyfile",
-               "--auth"
-    ]
-    restart: always
+    command: ["mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongo/keyfile", "--auth"]
     volumes:
       - './auth/keyfile:/etc/mongo/keyfile:ro'
       - 'mongo-tertiary_data:/data/db'
-  create-replica-set:
+    networks:
+      - database-network
+    restart: always
+
+  # --- SHARD 2  ---
+  mongo-shard2:
     image: mongo:8.2
-    container_name: create-replica-set
-    depends_on:
-      - mongo-primary
-      - mongo-secondary
-      - mongo-tertiary
+    container_name: mongo-shard2
+    command: ["mongod", "--shardsvr", "--replSet", "rs1", "--bind_ip_all", "--keyFile", "/etc/mongo/keyfile", "--auth"]
     volumes:
-      - './init-replicaset.js:/init-replicaset.js:ro'
+      - './auth/keyfile:/etc/mongo/keyfile:ro'
+      - 'mongo-shard2_data:/data/db'
+    networks:
+      - database-network
+    restart: always
+
+  # --- SHARD 3  ---
+  mongo-shard3:
+    image: mongo:8.2
+    container_name: mongo-shard3
+    command: ["mongod", "--shardsvr", "--replSet", "rs2", "--bind_ip_all", "--keyFile", "/etc/mongo/keyfile", "--auth"]
+    volumes:
+      - './auth/keyfile:/etc/mongo/keyfile:ro'
+      - 'mongo-shard3_data:/data/db'
+    networks:
+      - database-network
+    restart: always
+
+  # --- COMPASS WEB ---
+  compass-web:
+    image: haohanyang/compass-web
+    container_name: compass-web
+    ports:
+      - "8081:8080"
+    environment:
+      - COMPASS_WEB_MONGO_URI=mongodb://admin:adminpass@mongos:27017/?authSource=admin
+    depends_on:
+      - mongos
+    networks:
+      - database-network
+    restart: always
+
+  # --- AUTOMATICKÝ SETUP SKRIPT ---
+  cluster-setup:
+    image: mongo:8.2
+    container_name: cluster-setup
+    depends_on:
+      - mongo-config
+      - mongo-primary
+      - mongo-shard2
+      - mongo-shard3
     networks:
       - database-network
     entrypoint: >
       bash -c "
-      sleep 10 &&
-      mongosh --host mongo-primary:27017 -u admin -p adminpass --authenticationDatabase admin /init-replicaset.js
+        echo '1. Inicializace Config serveru...' &&
+        until mongosh 'mongodb://mongo-config:27017' --eval 'rs.initiate({_id: \"cfg\", configsvr: true, members: [{_id: 0, host: \"mongo-config:27017\"}]})' 2>/dev/null; do
+          echo 'Čekám na config server...'; sleep 2;
+        done &&
+      
+        echo '2. Inicializace Shardů...' &&
+        mongosh 'mongodb://mongo-primary:27017' --eval 'rs.initiate({_id: \"rs0\", members: [{_id: 0, host: \"mongo-primary:27017\"}, {_id: 1, host: \"mongo-secondary:27017\"}, {_id: 2, host: \"mongo-tertiary:27017\"}]})' &&
+        mongosh 'mongodb://mongo-shard2:27017' --eval 'rs.initiate({_id: \"rs1\", members: [{_id: 0, host: \"mongo-shard2:27017\"}]})' &&
+        mongosh 'mongodb://mongo-shard3:27017' --eval 'rs.initiate({_id: \"rs2\", members: [{_id: 0, host: \"mongo-shard3:27017\"}]})' &&
+      
+        echo 'Čekám na zvolení Primary uzlů (20s)...' &&
+        sleep 20 &&
+      
+        echo '3. Vytvoření admina na Mongos...' &&
+        until mongosh 'mongodb://mongos:27017' --eval 'db.runCommand({ping:1})' &>/dev/null; do
+          echo 'Čekám na Mongos router...'; sleep 2;
+        done &&
+      
+        mongosh 'mongodb://mongos:27017' --eval '
+          db = db.getSiblingDB(\"admin\");
+          if (!db.getUser(\"admin\")) {
+            db.createUser({user: \"admin\", pwd: \"adminpass\", roles: [{role: \"root\", db: \"admin\"}]});
+          }
+        ' &&
+      
+        echo '4. Přidání shardů do clusteru...' &&
+        mongosh 'mongodb://admin:adminpass@mongos:27017/?authSource=admin' --eval '
+          sh.addShard(\"rs0/mongo-primary:27017,mongo-secondary:27017,mongo-tertiary:27017\");
+          sh.addShard(\"rs1/mongo-shard2:27017\");
+          sh.addShard(\"rs2/mongo-shard3:27017\");
+        ' &&
+        echo 'Hotovo!'
       "
+      
 
 networks:
-   database-network:
+  database-network:
+
 volumes:
+  mongo-config_data:
   mongo-primary_data:
   mongo-secondary_data:
   mongo-tertiary_data:
+  mongo-shard2_data:
+  mongo-shard3_data:
