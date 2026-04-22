@@ -167,56 +167,64 @@ services:
         condition: service_started
     networks:
       - database-network
+    volumes:
+      - ./:/setup_data:ro
+      - ../Data:/json_data:ro
     environment:
       MONGO_ADMIN_PASSWORD: ${MONGO_ADMIN_PASSWORD}
       MONGO_APP_PASSWORD: ${MONGO_APP_PASSWORD}
       MONGO_REPORTER_PASSWORD: ${MONGO_REPORTER_PASSWORD}
     entrypoint: >
       bash -c "
-        echo '1. Waiting for config to be PRIMARY...' &&
+        echo '1. Cekam na Config server...' &&
         until mongosh --quiet --host mongo-config --port 27019 --eval 'db.hello().isWritablePrimary' | grep -q 'true'; do
           sleep 2;
         done &&
-        echo 'Config is PRIMARY.' &&
       
-        echo '2. Waiting for rs0 to be PRIMARY...' &&
+        echo '2. Cekam na rs0 (Primary)...' &&
         until mongosh --quiet --host mongo-primary --port 27018 --eval 'db.hello().isWritablePrimary' | grep -q 'true'; do
           sleep 2;
         done &&
-        echo 'rs0 is PRIMARY.' &&
       
-        echo '3. Čekám až bude rs1 PRIMARY...' &&
+        echo '3. Cekam na rs1 (Shard 2)...' &&
         until mongosh --quiet --host mongo-shard2 --port 27018 --eval 'db.hello().isWritablePrimary' | grep -q 'true'; do
           sleep 2;
         done &&
-        echo 'rs1 je PRIMARY.' &&
       
-        echo '4. Waiting for rs2 to be PRIMARY...' &&
+        echo '4. Cekam na rs2 (Shard 3)...' &&
         until mongosh --quiet --host mongo-shard3 --port 27018 --eval 'db.hello().isWritablePrimary' | grep -q 'true'; do
           sleep 2;
         done &&
-        echo 'rs2 is PRIMARY.' &&
       
-        echo '5. Waiting for mongos...' &&
+        echo '5. Cekam na mongos (Router)...' &&
         until mongosh --quiet --host mongos --port 27017 --eval 'db.adminCommand({ping:1}).ok' | grep -q '1'; do
           sleep 2;
         done &&
-        echo 'mongos ready.' &&
       
-        echo '6. Adding shards...' &&
+        echo '6. Pridavam Shardy do clusteru...' &&
         mongosh --quiet --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin --eval '
           sh.addShard(\"rs0/mongo-primary:27018,mongo-secondary:27018,mongo-tertiary:27018\");
           sh.addShard(\"rs1/mongo-shard2:27018\");
           sh.addShard(\"rs2/mongo-shard3:27018\");
         ' &&
       
-        echo '7. Creating aplication users...' &&
+        echo '7. Spoustim init.js (Validace a Sharding)...' &&
+        mongosh --quiet --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin /setup_data/init.js &&
+      
+        echo '8. Importuji JSON data (Mongoimport z oddelene slozky)...' &&
+        mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c games --file /json_data/games.json --type json &&
+        mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c teams --file /json_data/teams.json --type json &&
+        mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c rosters --file /json_data/rosters.json --type json &&
+        mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c player_stats --file /json_data/player_stats.json --type json &&
+        mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c plays --file /json_data/plays.json --type json &&
+      
+        echo '9. Vytvarim aplikacni uzivatele...' &&
         mongosh --quiet --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin --eval '
           use appdb;
           db.createUser({ user: \"appuser\", pwd: \"'\"'\"'$MONGO_APP_PASSWORD'\"'\"'\", roles: [{ role: \"readWrite\", db: \"appdb\" }] });
           db.createUser({ user: \"reporter\", pwd: \"'\"'\"'$MONGO_REPORTER_PASSWORD'\"'\"'\", roles: [{ role: \"read\", db: \"appdb\" }] });
         ' &&
-        echo 'Done! Cluster secured and ready to use.'
+        echo '===== HOTOVO! CLUSTER JE PRIPRAVEN A NAPLNEN DATY ====='
       "
 
 networks:

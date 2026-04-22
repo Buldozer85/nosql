@@ -1,285 +1,285 @@
-{"game_id":"2025_01_DAL_PHI","season":2025,"week":1,"game_type":"REG","home_team":"PHI","away_team":"DAL","home_score":24,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_01_KC_LAC","season":2025,"week":1,"game_type":"REG","home_team":"LAC","away_team":"KC","home_score":27,"away_score":21,"roof":"dome"}
-{"game_id":"2025_01_TB_ATL","season":2025,"week":1,"game_type":"REG","home_team":"ATL","away_team":"TB","home_score":20,"away_score":23,"roof":"closed"}
-{"game_id":"2025_01_CIN_CLE","season":2025,"week":1,"game_type":"REG","home_team":"CLE","away_team":"CIN","home_score":16,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_01_MIA_IND","season":2025,"week":1,"game_type":"REG","home_team":"IND","away_team":"MIA","home_score":33,"away_score":8,"roof":"closed"}
-{"game_id":"2025_01_CAR_JAX","season":2025,"week":1,"game_type":"REG","home_team":"JAX","away_team":"CAR","home_score":26,"away_score":10,"roof":"outdoors"}
-{"game_id":"2025_01_LV_NE","season":2025,"week":1,"game_type":"REG","home_team":"NE","away_team":"LV","home_score":13,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_01_ARI_NO","season":2025,"week":1,"game_type":"REG","home_team":"NO","away_team":"ARI","home_score":13,"away_score":20,"roof":"dome"}
-{"game_id":"2025_01_PIT_NYJ","season":2025,"week":1,"game_type":"REG","home_team":"NYJ","away_team":"PIT","home_score":32,"away_score":34,"roof":"outdoors"}
-{"game_id":"2025_01_NYG_WAS","season":2025,"week":1,"game_type":"REG","home_team":"WAS","away_team":"NYG","home_score":21,"away_score":6,"roof":"outdoors"}
-{"game_id":"2025_01_TEN_DEN","season":2025,"week":1,"game_type":"REG","home_team":"DEN","away_team":"TEN","home_score":20,"away_score":12,"roof":"outdoors"}
-{"game_id":"2025_01_SF_SEA","season":2025,"week":1,"game_type":"REG","home_team":"SEA","away_team":"SF","home_score":13,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_01_DET_GB","season":2025,"week":1,"game_type":"REG","home_team":"GB","away_team":"DET","home_score":27,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_01_HOU_LA","season":2025,"week":1,"game_type":"REG","home_team":"LA","away_team":"HOU","home_score":14,"away_score":9,"roof":"dome"}
-{"game_id":"2025_01_BAL_BUF","season":2025,"week":1,"game_type":"REG","home_team":"BUF","away_team":"BAL","home_score":41,"away_score":40,"roof":"outdoors"}
-{"game_id":"2025_01_MIN_CHI","season":2025,"week":1,"game_type":"REG","home_team":"CHI","away_team":"MIN","home_score":24,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_02_WAS_GB","season":2025,"week":2,"game_type":"REG","home_team":"GB","away_team":"WAS","home_score":27,"away_score":18,"roof":"outdoors"}
-{"game_id":"2025_02_CLE_BAL","season":2025,"week":2,"game_type":"REG","home_team":"BAL","away_team":"CLE","home_score":41,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_02_JAX_CIN","season":2025,"week":2,"game_type":"REG","home_team":"CIN","away_team":"JAX","home_score":31,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_02_NYG_DAL","season":2025,"week":2,"game_type":"REG","home_team":"DAL","away_team":"NYG","home_score":40,"away_score":37,"roof":"closed"}
-{"game_id":"2025_02_CHI_DET","season":2025,"week":2,"game_type":"REG","home_team":"DET","away_team":"CHI","home_score":52,"away_score":21,"roof":"dome"}
-{"game_id":"2025_02_NE_MIA","season":2025,"week":2,"game_type":"REG","home_team":"MIA","away_team":"NE","home_score":27,"away_score":33,"roof":"outdoors"}
-{"game_id":"2025_02_SF_NO","season":2025,"week":2,"game_type":"REG","home_team":"NO","away_team":"SF","home_score":21,"away_score":26,"roof":"dome"}
-{"game_id":"2025_02_BUF_NYJ","season":2025,"week":2,"game_type":"REG","home_team":"NYJ","away_team":"BUF","home_score":10,"away_score":30,"roof":"outdoors"}
-{"game_id":"2025_02_SEA_PIT","season":2025,"week":2,"game_type":"REG","home_team":"PIT","away_team":"SEA","home_score":17,"away_score":31,"roof":"outdoors"}
-{"game_id":"2025_02_LA_TEN","season":2025,"week":2,"game_type":"REG","home_team":"TEN","away_team":"LA","home_score":19,"away_score":33,"roof":"outdoors"}
-{"game_id":"2025_02_CAR_ARI","season":2025,"week":2,"game_type":"REG","home_team":"ARI","away_team":"CAR","home_score":27,"away_score":22,"roof":"closed"}
-{"game_id":"2025_02_DEN_IND","season":2025,"week":2,"game_type":"REG","home_team":"IND","away_team":"DEN","home_score":29,"away_score":28,"roof":"closed"}
-{"game_id":"2025_02_PHI_KC","season":2025,"week":2,"game_type":"REG","home_team":"KC","away_team":"PHI","home_score":17,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_02_ATL_MIN","season":2025,"week":2,"game_type":"REG","home_team":"MIN","away_team":"ATL","home_score":6,"away_score":22,"roof":"dome"}
-{"game_id":"2025_02_TB_HOU","season":2025,"week":2,"game_type":"REG","home_team":"HOU","away_team":"TB","home_score":19,"away_score":20,"roof":"closed"}
-{"game_id":"2025_02_LAC_LV","season":2025,"week":2,"game_type":"REG","home_team":"LV","away_team":"LAC","home_score":9,"away_score":20,"roof":"dome"}
-{"game_id":"2025_03_MIA_BUF","season":2025,"week":3,"game_type":"REG","home_team":"BUF","away_team":"MIA","home_score":31,"away_score":21,"roof":"outdoors"}
-{"game_id":"2025_03_ATL_CAR","season":2025,"week":3,"game_type":"REG","home_team":"CAR","away_team":"ATL","home_score":30,"away_score":0,"roof":"outdoors"}
-{"game_id":"2025_03_GB_CLE","season":2025,"week":3,"game_type":"REG","home_team":"CLE","away_team":"GB","home_score":13,"away_score":10,"roof":"outdoors"}
-{"game_id":"2025_03_HOU_JAX","season":2025,"week":3,"game_type":"REG","home_team":"JAX","away_team":"HOU","home_score":17,"away_score":10,"roof":"outdoors"}
-{"game_id":"2025_03_CIN_MIN","season":2025,"week":3,"game_type":"REG","home_team":"MIN","away_team":"CIN","home_score":48,"away_score":10,"roof":"dome"}
-{"game_id":"2025_03_PIT_NE","season":2025,"week":3,"game_type":"REG","home_team":"NE","away_team":"PIT","home_score":14,"away_score":21,"roof":"outdoors"}
-{"game_id":"2025_03_LA_PHI","season":2025,"week":3,"game_type":"REG","home_team":"PHI","away_team":"LA","home_score":33,"away_score":26,"roof":"outdoors"}
-{"game_id":"2025_03_NYJ_TB","season":2025,"week":3,"game_type":"REG","home_team":"TB","away_team":"NYJ","home_score":29,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_03_IND_TEN","season":2025,"week":3,"game_type":"REG","home_team":"TEN","away_team":"IND","home_score":20,"away_score":41,"roof":"outdoors"}
-{"game_id":"2025_03_LV_WAS","season":2025,"week":3,"game_type":"REG","home_team":"WAS","away_team":"LV","home_score":41,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_03_DEN_LAC","season":2025,"week":3,"game_type":"REG","home_team":"LAC","away_team":"DEN","home_score":23,"away_score":20,"roof":"dome"}
-{"game_id":"2025_03_NO_SEA","season":2025,"week":3,"game_type":"REG","home_team":"SEA","away_team":"NO","home_score":44,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_03_DAL_CHI","season":2025,"week":3,"game_type":"REG","home_team":"CHI","away_team":"DAL","home_score":31,"away_score":14,"roof":"outdoors"}
-{"game_id":"2025_03_ARI_SF","season":2025,"week":3,"game_type":"REG","home_team":"SF","away_team":"ARI","home_score":16,"away_score":15,"roof":"outdoors"}
-{"game_id":"2025_03_KC_NYG","season":2025,"week":3,"game_type":"REG","home_team":"NYG","away_team":"KC","home_score":9,"away_score":22,"roof":"outdoors"}
-{"game_id":"2025_03_DET_BAL","season":2025,"week":3,"game_type":"REG","home_team":"BAL","away_team":"DET","home_score":30,"away_score":38,"roof":"outdoors"}
-{"game_id":"2025_04_SEA_ARI","season":2025,"week":4,"game_type":"REG","home_team":"ARI","away_team":"SEA","home_score":20,"away_score":23,"roof":"closed"}
-{"game_id":"2025_04_MIN_PIT","season":2025,"week":4,"game_type":"REG","home_team":"PIT","away_team":"MIN","home_score":24,"away_score":21,"roof":"outdoors"}
-{"game_id":"2025_04_WAS_ATL","season":2025,"week":4,"game_type":"REG","home_team":"ATL","away_team":"WAS","home_score":34,"away_score":27,"roof":"closed"}
-{"game_id":"2025_04_NO_BUF","season":2025,"week":4,"game_type":"REG","home_team":"BUF","away_team":"NO","home_score":31,"away_score":19,"roof":"outdoors"}
-{"game_id":"2025_04_CLE_DET","season":2025,"week":4,"game_type":"REG","home_team":"DET","away_team":"CLE","home_score":34,"away_score":10,"roof":"dome"}
-{"game_id":"2025_04_TEN_HOU","season":2025,"week":4,"game_type":"REG","home_team":"HOU","away_team":"TEN","home_score":26,"away_score":0,"roof":"closed"}
-{"game_id":"2025_04_CAR_NE","season":2025,"week":4,"game_type":"REG","home_team":"NE","away_team":"CAR","home_score":42,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_04_LAC_NYG","season":2025,"week":4,"game_type":"REG","home_team":"NYG","away_team":"LAC","home_score":21,"away_score":18,"roof":"outdoors"}
-{"game_id":"2025_04_PHI_TB","season":2025,"week":4,"game_type":"REG","home_team":"TB","away_team":"PHI","home_score":25,"away_score":31,"roof":"outdoors"}
-{"game_id":"2025_04_IND_LA","season":2025,"week":4,"game_type":"REG","home_team":"LA","away_team":"IND","home_score":27,"away_score":20,"roof":"dome"}
-{"game_id":"2025_04_JAX_SF","season":2025,"week":4,"game_type":"REG","home_team":"SF","away_team":"JAX","home_score":21,"away_score":26,"roof":"outdoors"}
-{"game_id":"2025_04_BAL_KC","season":2025,"week":4,"game_type":"REG","home_team":"KC","away_team":"BAL","home_score":37,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_04_CHI_LV","season":2025,"week":4,"game_type":"REG","home_team":"LV","away_team":"CHI","home_score":24,"away_score":25,"roof":"dome"}
-{"game_id":"2025_04_GB_DAL","season":2025,"week":4,"game_type":"REG","home_team":"DAL","away_team":"GB","home_score":40,"away_score":40,"roof":"closed"}
-{"game_id":"2025_04_NYJ_MIA","season":2025,"week":4,"game_type":"REG","home_team":"MIA","away_team":"NYJ","home_score":27,"away_score":21,"roof":"outdoors"}
-{"game_id":"2025_04_CIN_DEN","season":2025,"week":4,"game_type":"REG","home_team":"DEN","away_team":"CIN","home_score":28,"away_score":3,"roof":"outdoors"}
-{"game_id":"2025_05_SF_LA","season":2025,"week":5,"game_type":"REG","home_team":"LA","away_team":"SF","home_score":23,"away_score":26,"roof":"dome"}
-{"game_id":"2025_05_MIN_CLE","season":2025,"week":5,"game_type":"REG","home_team":"CLE","away_team":"MIN","home_score":17,"away_score":21,"roof":"outdoors"}
-{"game_id":"2025_05_HOU_BAL","season":2025,"week":5,"game_type":"REG","home_team":"BAL","away_team":"HOU","home_score":10,"away_score":44,"roof":"outdoors"}
-{"game_id":"2025_05_MIA_CAR","season":2025,"week":5,"game_type":"REG","home_team":"CAR","away_team":"MIA","home_score":27,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_05_LV_IND","season":2025,"week":5,"game_type":"REG","home_team":"IND","away_team":"LV","home_score":40,"away_score":6,"roof":"closed"}
-{"game_id":"2025_05_NYG_NO","season":2025,"week":5,"game_type":"REG","home_team":"NO","away_team":"NYG","home_score":26,"away_score":14,"roof":"dome"}
-{"game_id":"2025_05_DAL_NYJ","season":2025,"week":5,"game_type":"REG","home_team":"NYJ","away_team":"DAL","home_score":22,"away_score":37,"roof":"outdoors"}
-{"game_id":"2025_05_DEN_PHI","season":2025,"week":5,"game_type":"REG","home_team":"PHI","away_team":"DEN","home_score":17,"away_score":21,"roof":"outdoors"}
-{"game_id":"2025_05_TEN_ARI","season":2025,"week":5,"game_type":"REG","home_team":"ARI","away_team":"TEN","home_score":21,"away_score":22,"roof":"closed"}
-{"game_id":"2025_05_TB_SEA","season":2025,"week":5,"game_type":"REG","home_team":"SEA","away_team":"TB","home_score":35,"away_score":38,"roof":"outdoors"}
-{"game_id":"2025_05_DET_CIN","season":2025,"week":5,"game_type":"REG","home_team":"CIN","away_team":"DET","home_score":24,"away_score":37,"roof":"outdoors"}
-{"game_id":"2025_05_WAS_LAC","season":2025,"week":5,"game_type":"REG","home_team":"LAC","away_team":"WAS","home_score":10,"away_score":27,"roof":"dome"}
-{"game_id":"2025_05_NE_BUF","season":2025,"week":5,"game_type":"REG","home_team":"BUF","away_team":"NE","home_score":20,"away_score":23,"roof":"outdoors"}
-{"game_id":"2025_05_KC_JAX","season":2025,"week":5,"game_type":"REG","home_team":"JAX","away_team":"KC","home_score":31,"away_score":28,"roof":"outdoors"}
-{"game_id":"2025_06_PHI_NYG","season":2025,"week":6,"game_type":"REG","home_team":"NYG","away_team":"PHI","home_score":34,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_06_DEN_NYJ","season":2025,"week":6,"game_type":"REG","home_team":"NYJ","away_team":"DEN","home_score":11,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_06_LA_BAL","season":2025,"week":6,"game_type":"REG","home_team":"BAL","away_team":"LA","home_score":3,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_06_DAL_CAR","season":2025,"week":6,"game_type":"REG","home_team":"CAR","away_team":"DAL","home_score":30,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_06_ARI_IND","season":2025,"week":6,"game_type":"REG","home_team":"IND","away_team":"ARI","home_score":31,"away_score":27,"roof":"closed"}
-{"game_id":"2025_06_SEA_JAX","season":2025,"week":6,"game_type":"REG","home_team":"JAX","away_team":"SEA","home_score":12,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_06_LAC_MIA","season":2025,"week":6,"game_type":"REG","home_team":"MIA","away_team":"LAC","home_score":27,"away_score":29,"roof":"outdoors"}
-{"game_id":"2025_06_NE_NO","season":2025,"week":6,"game_type":"REG","home_team":"NO","away_team":"NE","home_score":19,"away_score":25,"roof":"dome"}
-{"game_id":"2025_06_CLE_PIT","season":2025,"week":6,"game_type":"REG","home_team":"PIT","away_team":"CLE","home_score":23,"away_score":9,"roof":"outdoors"}
-{"game_id":"2025_06_TEN_LV","season":2025,"week":6,"game_type":"REG","home_team":"LV","away_team":"TEN","home_score":20,"away_score":10,"roof":"dome"}
-{"game_id":"2025_06_CIN_GB","season":2025,"week":6,"game_type":"REG","home_team":"GB","away_team":"CIN","home_score":27,"away_score":18,"roof":"outdoors"}
-{"game_id":"2025_06_SF_TB","season":2025,"week":6,"game_type":"REG","home_team":"TB","away_team":"SF","home_score":30,"away_score":19,"roof":"outdoors"}
-{"game_id":"2025_06_DET_KC","season":2025,"week":6,"game_type":"REG","home_team":"KC","away_team":"DET","home_score":30,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_06_BUF_ATL","season":2025,"week":6,"game_type":"REG","home_team":"ATL","away_team":"BUF","home_score":24,"away_score":14,"roof":"closed"}
-{"game_id":"2025_06_CHI_WAS","season":2025,"week":6,"game_type":"REG","home_team":"WAS","away_team":"CHI","home_score":24,"away_score":25,"roof":"outdoors"}
-{"game_id":"2025_07_PIT_CIN","season":2025,"week":7,"game_type":"REG","home_team":"CIN","away_team":"PIT","home_score":33,"away_score":31,"roof":"outdoors"}
-{"game_id":"2025_07_LA_JAX","season":2025,"week":7,"game_type":"REG","home_team":"JAX","away_team":"LA","home_score":7,"away_score":35,"roof":"outdoors"}
-{"game_id":"2025_07_NO_CHI","season":2025,"week":7,"game_type":"REG","home_team":"CHI","away_team":"NO","home_score":26,"away_score":14,"roof":"outdoors"}
-{"game_id":"2025_07_MIA_CLE","season":2025,"week":7,"game_type":"REG","home_team":"CLE","away_team":"MIA","home_score":31,"away_score":6,"roof":"outdoors"}
-{"game_id":"2025_07_LV_KC","season":2025,"week":7,"game_type":"REG","home_team":"KC","away_team":"LV","home_score":31,"away_score":0,"roof":"outdoors"}
-{"game_id":"2025_07_PHI_MIN","season":2025,"week":7,"game_type":"REG","home_team":"MIN","away_team":"PHI","home_score":22,"away_score":28,"roof":"dome"}
-{"game_id":"2025_07_CAR_NYJ","season":2025,"week":7,"game_type":"REG","home_team":"NYJ","away_team":"CAR","home_score":6,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_07_NE_TEN","season":2025,"week":7,"game_type":"REG","home_team":"TEN","away_team":"NE","home_score":13,"away_score":31,"roof":"outdoors"}
-{"game_id":"2025_07_NYG_DEN","season":2025,"week":7,"game_type":"REG","home_team":"DEN","away_team":"NYG","home_score":33,"away_score":32,"roof":"outdoors"}
-{"game_id":"2025_07_IND_LAC","season":2025,"week":7,"game_type":"REG","home_team":"LAC","away_team":"IND","home_score":24,"away_score":38,"roof":"dome"}
-{"game_id":"2025_07_GB_ARI","season":2025,"week":7,"game_type":"REG","home_team":"ARI","away_team":"GB","home_score":23,"away_score":27,"roof":"closed"}
-{"game_id":"2025_07_WAS_DAL","season":2025,"week":7,"game_type":"REG","home_team":"DAL","away_team":"WAS","home_score":44,"away_score":22,"roof":"closed"}
-{"game_id":"2025_07_ATL_SF","season":2025,"week":7,"game_type":"REG","home_team":"SF","away_team":"ATL","home_score":20,"away_score":10,"roof":"outdoors"}
-{"game_id":"2025_07_TB_DET","season":2025,"week":7,"game_type":"REG","home_team":"DET","away_team":"TB","home_score":24,"away_score":9,"roof":"dome"}
-{"game_id":"2025_07_HOU_SEA","season":2025,"week":7,"game_type":"REG","home_team":"SEA","away_team":"HOU","home_score":27,"away_score":19,"roof":"outdoors"}
-{"game_id":"2025_08_MIN_LAC","season":2025,"week":8,"game_type":"REG","home_team":"LAC","away_team":"MIN","home_score":37,"away_score":10,"roof":"dome"}
-{"game_id":"2025_08_MIA_ATL","season":2025,"week":8,"game_type":"REG","home_team":"ATL","away_team":"MIA","home_score":10,"away_score":34,"roof":"closed"}
-{"game_id":"2025_08_CHI_BAL","season":2025,"week":8,"game_type":"REG","home_team":"BAL","away_team":"CHI","home_score":30,"away_score":16,"roof":"outdoors"}
-{"game_id":"2025_08_BUF_CAR","season":2025,"week":8,"game_type":"REG","home_team":"CAR","away_team":"BUF","home_score":9,"away_score":40,"roof":"outdoors"}
-{"game_id":"2025_08_NYJ_CIN","season":2025,"week":8,"game_type":"REG","home_team":"CIN","away_team":"NYJ","home_score":38,"away_score":39,"roof":"outdoors"}
-{"game_id":"2025_08_SF_HOU","season":2025,"week":8,"game_type":"REG","home_team":"HOU","away_team":"SF","home_score":26,"away_score":15,"roof":"closed"}
-{"game_id":"2025_08_CLE_NE","season":2025,"week":8,"game_type":"REG","home_team":"NE","away_team":"CLE","home_score":32,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_08_NYG_PHI","season":2025,"week":8,"game_type":"REG","home_team":"PHI","away_team":"NYG","home_score":38,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_08_TB_NO","season":2025,"week":8,"game_type":"REG","home_team":"NO","away_team":"TB","home_score":3,"away_score":23,"roof":"dome"}
-{"game_id":"2025_08_DAL_DEN","season":2025,"week":8,"game_type":"REG","home_team":"DEN","away_team":"DAL","home_score":44,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_08_TEN_IND","season":2025,"week":8,"game_type":"REG","home_team":"IND","away_team":"TEN","home_score":38,"away_score":14,"roof":"closed"}
-{"game_id":"2025_08_GB_PIT","season":2025,"week":8,"game_type":"REG","home_team":"PIT","away_team":"GB","home_score":25,"away_score":35,"roof":"outdoors"}
-{"game_id":"2025_08_WAS_KC","season":2025,"week":8,"game_type":"REG","home_team":"KC","away_team":"WAS","home_score":28,"away_score":7,"roof":"outdoors"}
-{"game_id":"2025_09_BAL_MIA","season":2025,"week":9,"game_type":"REG","home_team":"MIA","away_team":"BAL","home_score":6,"away_score":28,"roof":"outdoors"}
-{"game_id":"2025_09_CHI_CIN","season":2025,"week":9,"game_type":"REG","home_team":"CIN","away_team":"CHI","home_score":42,"away_score":47,"roof":"outdoors"}
-{"game_id":"2025_09_MIN_DET","season":2025,"week":9,"game_type":"REG","home_team":"DET","away_team":"MIN","home_score":24,"away_score":27,"roof":"dome"}
-{"game_id":"2025_09_CAR_GB","season":2025,"week":9,"game_type":"REG","home_team":"GB","away_team":"CAR","home_score":13,"away_score":16,"roof":"outdoors"}
-{"game_id":"2025_09_DEN_HOU","season":2025,"week":9,"game_type":"REG","home_team":"HOU","away_team":"DEN","home_score":15,"away_score":18,"roof":"closed"}
-{"game_id":"2025_09_ATL_NE","season":2025,"week":9,"game_type":"REG","home_team":"NE","away_team":"ATL","home_score":24,"away_score":23,"roof":"outdoors"}
-{"game_id":"2025_09_SF_NYG","season":2025,"week":9,"game_type":"REG","home_team":"NYG","away_team":"SF","home_score":24,"away_score":34,"roof":"outdoors"}
-{"game_id":"2025_09_IND_PIT","season":2025,"week":9,"game_type":"REG","home_team":"PIT","away_team":"IND","home_score":27,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_09_LAC_TEN","season":2025,"week":9,"game_type":"REG","home_team":"TEN","away_team":"LAC","home_score":20,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_09_NO_LA","season":2025,"week":9,"game_type":"REG","home_team":"LA","away_team":"NO","home_score":34,"away_score":10,"roof":"dome"}
-{"game_id":"2025_09_JAX_LV","season":2025,"week":9,"game_type":"REG","home_team":"LV","away_team":"JAX","home_score":29,"away_score":30,"roof":"dome"}
-{"game_id":"2025_09_KC_BUF","season":2025,"week":9,"game_type":"REG","home_team":"BUF","away_team":"KC","home_score":28,"away_score":21,"roof":"outdoors"}
-{"game_id":"2025_09_SEA_WAS","season":2025,"week":9,"game_type":"REG","home_team":"WAS","away_team":"SEA","home_score":14,"away_score":38,"roof":"outdoors"}
-{"game_id":"2025_09_ARI_DAL","season":2025,"week":9,"game_type":"REG","home_team":"DAL","away_team":"ARI","home_score":17,"away_score":27,"roof":"closed"}
-{"game_id":"2025_10_LV_DEN","season":2025,"week":10,"game_type":"REG","home_team":"DEN","away_team":"LV","home_score":10,"away_score":7,"roof":"outdoors"}
-{"game_id":"2025_10_ATL_IND","season":2025,"week":10,"game_type":"REG","home_team":"IND","away_team":"ATL","home_score":31,"away_score":25,"roof":"closed"}
-{"game_id":"2025_10_NO_CAR","season":2025,"week":10,"game_type":"REG","home_team":"CAR","away_team":"NO","home_score":7,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_10_NYG_CHI","season":2025,"week":10,"game_type":"REG","home_team":"CHI","away_team":"NYG","home_score":24,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_10_JAX_HOU","season":2025,"week":10,"game_type":"REG","home_team":"HOU","away_team":"JAX","home_score":36,"away_score":29,"roof":"closed"}
-{"game_id":"2025_10_BUF_MIA","season":2025,"week":10,"game_type":"REG","home_team":"MIA","away_team":"BUF","home_score":30,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_10_BAL_MIN","season":2025,"week":10,"game_type":"REG","home_team":"MIN","away_team":"BAL","home_score":19,"away_score":27,"roof":"dome"}
-{"game_id":"2025_10_CLE_NYJ","season":2025,"week":10,"game_type":"REG","home_team":"NYJ","away_team":"CLE","home_score":27,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_10_NE_TB","season":2025,"week":10,"game_type":"REG","home_team":"TB","away_team":"NE","home_score":23,"away_score":28,"roof":"outdoors"}
-{"game_id":"2025_10_ARI_SEA","season":2025,"week":10,"game_type":"REG","home_team":"SEA","away_team":"ARI","home_score":44,"away_score":22,"roof":"outdoors"}
-{"game_id":"2025_10_LA_SF","season":2025,"week":10,"game_type":"REG","home_team":"SF","away_team":"LA","home_score":26,"away_score":42,"roof":"outdoors"}
-{"game_id":"2025_10_DET_WAS","season":2025,"week":10,"game_type":"REG","home_team":"WAS","away_team":"DET","home_score":22,"away_score":44,"roof":"outdoors"}
-{"game_id":"2025_10_PIT_LAC","season":2025,"week":10,"game_type":"REG","home_team":"LAC","away_team":"PIT","home_score":25,"away_score":10,"roof":"dome"}
-{"game_id":"2025_10_PHI_GB","season":2025,"week":10,"game_type":"REG","home_team":"GB","away_team":"PHI","home_score":7,"away_score":10,"roof":"outdoors"}
-{"game_id":"2025_11_NYJ_NE","season":2025,"week":11,"game_type":"REG","home_team":"NE","away_team":"NYJ","home_score":27,"away_score":14,"roof":"outdoors"}
-{"game_id":"2025_11_WAS_MIA","season":2025,"week":11,"game_type":"REG","home_team":"MIA","away_team":"WAS","home_score":16,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_11_CAR_ATL","season":2025,"week":11,"game_type":"REG","home_team":"ATL","away_team":"CAR","home_score":27,"away_score":30,"roof":"closed"}
-{"game_id":"2025_11_TB_BUF","season":2025,"week":11,"game_type":"REG","home_team":"BUF","away_team":"TB","home_score":44,"away_score":32,"roof":"outdoors"}
-{"game_id":"2025_11_LAC_JAX","season":2025,"week":11,"game_type":"REG","home_team":"JAX","away_team":"LAC","home_score":35,"away_score":6,"roof":"outdoors"}
-{"game_id":"2025_11_CHI_MIN","season":2025,"week":11,"game_type":"REG","home_team":"MIN","away_team":"CHI","home_score":17,"away_score":19,"roof":"dome"}
-{"game_id":"2025_11_GB_NYG","season":2025,"week":11,"game_type":"REG","home_team":"NYG","away_team":"GB","home_score":20,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_11_CIN_PIT","season":2025,"week":11,"game_type":"REG","home_team":"PIT","away_team":"CIN","home_score":34,"away_score":12,"roof":"outdoors"}
-{"game_id":"2025_11_HOU_TEN","season":2025,"week":11,"game_type":"REG","home_team":"TEN","away_team":"HOU","home_score":13,"away_score":16,"roof":"outdoors"}
-{"game_id":"2025_11_SF_ARI","season":2025,"week":11,"game_type":"REG","home_team":"ARI","away_team":"SF","home_score":22,"away_score":41,"roof":"closed"}
-{"game_id":"2025_11_SEA_LA","season":2025,"week":11,"game_type":"REG","home_team":"LA","away_team":"SEA","home_score":21,"away_score":19,"roof":"dome"}
-{"game_id":"2025_11_BAL_CLE","season":2025,"week":11,"game_type":"REG","home_team":"CLE","away_team":"BAL","home_score":16,"away_score":23,"roof":"outdoors"}
-{"game_id":"2025_11_KC_DEN","season":2025,"week":11,"game_type":"REG","home_team":"DEN","away_team":"KC","home_score":22,"away_score":19,"roof":"outdoors"}
-{"game_id":"2025_11_DET_PHI","season":2025,"week":11,"game_type":"REG","home_team":"PHI","away_team":"DET","home_score":16,"away_score":9,"roof":"outdoors"}
-{"game_id":"2025_11_DAL_LV","season":2025,"week":11,"game_type":"REG","home_team":"LV","away_team":"DAL","home_score":16,"away_score":33,"roof":"dome"}
-{"game_id":"2025_12_BUF_HOU","season":2025,"week":12,"game_type":"REG","home_team":"HOU","away_team":"BUF","home_score":23,"away_score":19,"roof":"closed"}
-{"game_id":"2025_12_NYJ_BAL","season":2025,"week":12,"game_type":"REG","home_team":"BAL","away_team":"NYJ","home_score":23,"away_score":10,"roof":"outdoors"}
-{"game_id":"2025_12_PIT_CHI","season":2025,"week":12,"game_type":"REG","home_team":"CHI","away_team":"PIT","home_score":31,"away_score":28,"roof":"outdoors"}
-{"game_id":"2025_12_NE_CIN","season":2025,"week":12,"game_type":"REG","home_team":"CIN","away_team":"NE","home_score":20,"away_score":26,"roof":"outdoors"}
-{"game_id":"2025_12_NYG_DET","season":2025,"week":12,"game_type":"REG","home_team":"DET","away_team":"NYG","home_score":34,"away_score":27,"roof":"dome"}
-{"game_id":"2025_12_MIN_GB","season":2025,"week":12,"game_type":"REG","home_team":"GB","away_team":"MIN","home_score":23,"away_score":6,"roof":"outdoors"}
-{"game_id":"2025_12_IND_KC","season":2025,"week":12,"game_type":"REG","home_team":"KC","away_team":"IND","home_score":23,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_12_SEA_TEN","season":2025,"week":12,"game_type":"REG","home_team":"TEN","away_team":"SEA","home_score":24,"away_score":30,"roof":"outdoors"}
-{"game_id":"2025_12_JAX_ARI","season":2025,"week":12,"game_type":"REG","home_team":"ARI","away_team":"JAX","home_score":24,"away_score":27,"roof":"closed"}
-{"game_id":"2025_12_CLE_LV","season":2025,"week":12,"game_type":"REG","home_team":"LV","away_team":"CLE","home_score":10,"away_score":24,"roof":"dome"}
-{"game_id":"2025_12_PHI_DAL","season":2025,"week":12,"game_type":"REG","home_team":"DAL","away_team":"PHI","home_score":24,"away_score":21,"roof":"closed"}
-{"game_id":"2025_12_ATL_NO","season":2025,"week":12,"game_type":"REG","home_team":"NO","away_team":"ATL","home_score":10,"away_score":24,"roof":"dome"}
-{"game_id":"2025_12_TB_LA","season":2025,"week":12,"game_type":"REG","home_team":"LA","away_team":"TB","home_score":34,"away_score":7,"roof":"dome"}
-{"game_id":"2025_12_CAR_SF","season":2025,"week":12,"game_type":"REG","home_team":"SF","away_team":"CAR","home_score":20,"away_score":9,"roof":"outdoors"}
-{"game_id":"2025_13_GB_DET","season":2025,"week":13,"game_type":"REG","home_team":"DET","away_team":"GB","home_score":24,"away_score":31,"roof":"dome"}
-{"game_id":"2025_13_KC_DAL","season":2025,"week":13,"game_type":"REG","home_team":"DAL","away_team":"KC","home_score":31,"away_score":28,"roof":"closed"}
-{"game_id":"2025_13_CIN_BAL","season":2025,"week":13,"game_type":"REG","home_team":"BAL","away_team":"CIN","home_score":14,"away_score":32,"roof":"outdoors"}
-{"game_id":"2025_13_CHI_PHI","season":2025,"week":13,"game_type":"REG","home_team":"PHI","away_team":"CHI","home_score":15,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_13_LA_CAR","season":2025,"week":13,"game_type":"REG","home_team":"CAR","away_team":"LA","home_score":31,"away_score":28,"roof":"outdoors"}
-{"game_id":"2025_13_SF_CLE","season":2025,"week":13,"game_type":"REG","home_team":"CLE","away_team":"SF","home_score":8,"away_score":26,"roof":"outdoors"}
-{"game_id":"2025_13_HOU_IND","season":2025,"week":13,"game_type":"REG","home_team":"IND","away_team":"HOU","home_score":16,"away_score":20,"roof":"closed"}
-{"game_id":"2025_13_NO_MIA","season":2025,"week":13,"game_type":"REG","home_team":"MIA","away_team":"NO","home_score":21,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_13_ATL_NYJ","season":2025,"week":13,"game_type":"REG","home_team":"NYJ","away_team":"ATL","home_score":27,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_13_ARI_TB","season":2025,"week":13,"game_type":"REG","home_team":"TB","away_team":"ARI","home_score":20,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_13_JAX_TEN","season":2025,"week":13,"game_type":"REG","home_team":"TEN","away_team":"JAX","home_score":3,"away_score":25,"roof":"outdoors"}
-{"game_id":"2025_13_MIN_SEA","season":2025,"week":13,"game_type":"REG","home_team":"SEA","away_team":"MIN","home_score":26,"away_score":0,"roof":"outdoors"}
-{"game_id":"2025_13_LV_LAC","season":2025,"week":13,"game_type":"REG","home_team":"LAC","away_team":"LV","home_score":31,"away_score":14,"roof":"dome"}
-{"game_id":"2025_13_BUF_PIT","season":2025,"week":13,"game_type":"REG","home_team":"PIT","away_team":"BUF","home_score":7,"away_score":26,"roof":"outdoors"}
-{"game_id":"2025_13_DEN_WAS","season":2025,"week":13,"game_type":"REG","home_team":"WAS","away_team":"DEN","home_score":26,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_13_NYG_NE","season":2025,"week":13,"game_type":"REG","home_team":"NE","away_team":"NYG","home_score":33,"away_score":15,"roof":"outdoors"}
-{"game_id":"2025_14_DAL_DET","season":2025,"week":14,"game_type":"REG","home_team":"DET","away_team":"DAL","home_score":44,"away_score":30,"roof":"dome"}
-{"game_id":"2025_14_SEA_ATL","season":2025,"week":14,"game_type":"REG","home_team":"ATL","away_team":"SEA","home_score":9,"away_score":37,"roof":"closed"}
-{"game_id":"2025_14_PIT_BAL","season":2025,"week":14,"game_type":"REG","home_team":"BAL","away_team":"PIT","home_score":22,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_14_TEN_CLE","season":2025,"week":14,"game_type":"REG","home_team":"CLE","away_team":"TEN","home_score":29,"away_score":31,"roof":"outdoors"}
-{"game_id":"2025_14_CHI_GB","season":2025,"week":14,"game_type":"REG","home_team":"GB","away_team":"CHI","home_score":28,"away_score":21,"roof":"outdoors"}
-{"game_id":"2025_14_IND_JAX","season":2025,"week":14,"game_type":"REG","home_team":"JAX","away_team":"IND","home_score":36,"away_score":19,"roof":"outdoors"}
-{"game_id":"2025_14_WAS_MIN","season":2025,"week":14,"game_type":"REG","home_team":"MIN","away_team":"WAS","home_score":31,"away_score":0,"roof":"dome"}
-{"game_id":"2025_14_MIA_NYJ","season":2025,"week":14,"game_type":"REG","home_team":"NYJ","away_team":"MIA","home_score":10,"away_score":34,"roof":"outdoors"}
-{"game_id":"2025_14_NO_TB","season":2025,"week":14,"game_type":"REG","home_team":"TB","away_team":"NO","home_score":20,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_14_DEN_LV","season":2025,"week":14,"game_type":"REG","home_team":"LV","away_team":"DEN","home_score":17,"away_score":24,"roof":"dome"}
-{"game_id":"2025_14_LA_ARI","season":2025,"week":14,"game_type":"REG","home_team":"ARI","away_team":"LA","home_score":17,"away_score":45,"roof":"closed"}
-{"game_id":"2025_14_CIN_BUF","season":2025,"week":14,"game_type":"REG","home_team":"BUF","away_team":"CIN","home_score":39,"away_score":34,"roof":"outdoors"}
-{"game_id":"2025_14_HOU_KC","season":2025,"week":14,"game_type":"REG","home_team":"KC","away_team":"HOU","home_score":10,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_14_PHI_LAC","season":2025,"week":14,"game_type":"REG","home_team":"LAC","away_team":"PHI","home_score":22,"away_score":19,"roof":"dome"}
-{"game_id":"2025_15_ATL_TB","season":2025,"week":15,"game_type":"REG","home_team":"TB","away_team":"ATL","home_score":28,"away_score":29,"roof":"outdoors"}
-{"game_id":"2025_15_CLE_CHI","season":2025,"week":15,"game_type":"REG","home_team":"CHI","away_team":"CLE","home_score":31,"away_score":3,"roof":"outdoors"}
-{"game_id":"2025_15_BAL_CIN","season":2025,"week":15,"game_type":"REG","home_team":"CIN","away_team":"BAL","home_score":0,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_15_ARI_HOU","season":2025,"week":15,"game_type":"REG","home_team":"HOU","away_team":"ARI","home_score":40,"away_score":20,"roof":"closed"}
-{"game_id":"2025_15_NYJ_JAX","season":2025,"week":15,"game_type":"REG","home_team":"JAX","away_team":"NYJ","home_score":48,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_15_LAC_KC","season":2025,"week":15,"game_type":"REG","home_team":"KC","away_team":"LAC","home_score":13,"away_score":16,"roof":"outdoors"}
-{"game_id":"2025_15_BUF_NE","season":2025,"week":15,"game_type":"REG","home_team":"NE","away_team":"BUF","home_score":31,"away_score":35,"roof":"outdoors"}
-{"game_id":"2025_15_WAS_NYG","season":2025,"week":15,"game_type":"REG","home_team":"NYG","away_team":"WAS","home_score":21,"away_score":29,"roof":"outdoors"}
-{"game_id":"2025_15_LV_PHI","season":2025,"week":15,"game_type":"REG","home_team":"PHI","away_team":"LV","home_score":31,"away_score":0,"roof":"outdoors"}
-{"game_id":"2025_15_GB_DEN","season":2025,"week":15,"game_type":"REG","home_team":"DEN","away_team":"GB","home_score":34,"away_score":26,"roof":"outdoors"}
-{"game_id":"2025_15_DET_LA","season":2025,"week":15,"game_type":"REG","home_team":"LA","away_team":"DET","home_score":41,"away_score":34,"roof":"dome"}
-{"game_id":"2025_15_CAR_NO","season":2025,"week":15,"game_type":"REG","home_team":"NO","away_team":"CAR","home_score":20,"away_score":17,"roof":"dome"}
-{"game_id":"2025_15_IND_SEA","season":2025,"week":15,"game_type":"REG","home_team":"SEA","away_team":"IND","home_score":18,"away_score":16,"roof":"outdoors"}
-{"game_id":"2025_15_TEN_SF","season":2025,"week":15,"game_type":"REG","home_team":"SF","away_team":"TEN","home_score":37,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_15_MIN_DAL","season":2025,"week":15,"game_type":"REG","home_team":"DAL","away_team":"MIN","home_score":26,"away_score":34,"roof":"closed"}
-{"game_id":"2025_15_MIA_PIT","season":2025,"week":15,"game_type":"REG","home_team":"PIT","away_team":"MIA","home_score":28,"away_score":15,"roof":"outdoors"}
-{"game_id":"2025_16_LA_SEA","season":2025,"week":16,"game_type":"REG","home_team":"SEA","away_team":"LA","home_score":38,"away_score":37,"roof":"outdoors"}
-{"game_id":"2025_16_GB_CHI","season":2025,"week":16,"game_type":"REG","home_team":"CHI","away_team":"GB","home_score":22,"away_score":16,"roof":"outdoors"}
-{"game_id":"2025_16_PHI_WAS","season":2025,"week":16,"game_type":"REG","home_team":"WAS","away_team":"PHI","home_score":18,"away_score":29,"roof":"outdoors"}
-{"game_id":"2025_16_NE_BAL","season":2025,"week":16,"game_type":"REG","home_team":"BAL","away_team":"NE","home_score":24,"away_score":28,"roof":"outdoors"}
-{"game_id":"2025_16_TB_CAR","season":2025,"week":16,"game_type":"REG","home_team":"CAR","away_team":"TB","home_score":23,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_16_BUF_CLE","season":2025,"week":16,"game_type":"REG","home_team":"CLE","away_team":"BUF","home_score":20,"away_score":23,"roof":"outdoors"}
-{"game_id":"2025_16_LAC_DAL","season":2025,"week":16,"game_type":"REG","home_team":"DAL","away_team":"LAC","home_score":17,"away_score":34,"roof":"closed"}
-{"game_id":"2025_16_NYJ_NO","season":2025,"week":16,"game_type":"REG","home_team":"NO","away_team":"NYJ","home_score":29,"away_score":6,"roof":"dome"}
-{"game_id":"2025_16_MIN_NYG","season":2025,"week":16,"game_type":"REG","home_team":"NYG","away_team":"MIN","home_score":13,"away_score":16,"roof":"outdoors"}
-{"game_id":"2025_16_KC_TEN","season":2025,"week":16,"game_type":"REG","home_team":"TEN","away_team":"KC","home_score":26,"away_score":9,"roof":"outdoors"}
-{"game_id":"2025_16_ATL_ARI","season":2025,"week":16,"game_type":"REG","home_team":"ARI","away_team":"ATL","home_score":19,"away_score":26,"roof":"closed"}
-{"game_id":"2025_16_JAX_DEN","season":2025,"week":16,"game_type":"REG","home_team":"DEN","away_team":"JAX","home_score":20,"away_score":34,"roof":"outdoors"}
-{"game_id":"2025_16_PIT_DET","season":2025,"week":16,"game_type":"REG","home_team":"DET","away_team":"PIT","home_score":24,"away_score":29,"roof":"dome"}
-{"game_id":"2025_16_LV_HOU","season":2025,"week":16,"game_type":"REG","home_team":"HOU","away_team":"LV","home_score":23,"away_score":21,"roof":"closed"}
-{"game_id":"2025_16_CIN_MIA","season":2025,"week":16,"game_type":"REG","home_team":"MIA","away_team":"CIN","home_score":21,"away_score":45,"roof":"outdoors"}
-{"game_id":"2025_16_SF_IND","season":2025,"week":16,"game_type":"REG","home_team":"IND","away_team":"SF","home_score":27,"away_score":48,"roof":"closed"}
-{"game_id":"2025_17_DAL_WAS","season":2025,"week":17,"game_type":"REG","home_team":"WAS","away_team":"DAL","home_score":23,"away_score":30,"roof":"outdoors"}
-{"game_id":"2025_17_DET_MIN","season":2025,"week":17,"game_type":"REG","home_team":"MIN","away_team":"DET","home_score":23,"away_score":10,"roof":"dome"}
-{"game_id":"2025_17_DEN_KC","season":2025,"week":17,"game_type":"REG","home_team":"KC","away_team":"DEN","home_score":13,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_17_SEA_CAR","season":2025,"week":17,"game_type":"REG","home_team":"CAR","away_team":"SEA","home_score":10,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_17_ARI_CIN","season":2025,"week":17,"game_type":"REG","home_team":"CIN","away_team":"ARI","home_score":37,"away_score":14,"roof":"outdoors"}
-{"game_id":"2025_17_PIT_CLE","season":2025,"week":17,"game_type":"REG","home_team":"CLE","away_team":"PIT","home_score":13,"away_score":6,"roof":"outdoors"}
-{"game_id":"2025_17_BAL_GB","season":2025,"week":17,"game_type":"REG","home_team":"GB","away_team":"BAL","home_score":24,"away_score":41,"roof":"outdoors"}
-{"game_id":"2025_17_JAX_IND","season":2025,"week":17,"game_type":"REG","home_team":"IND","away_team":"JAX","home_score":17,"away_score":23,"roof":"closed"}
-{"game_id":"2025_17_HOU_LAC","season":2025,"week":17,"game_type":"REG","home_team":"LAC","away_team":"HOU","home_score":16,"away_score":20,"roof":"dome"}
-{"game_id":"2025_17_NYG_LV","season":2025,"week":17,"game_type":"REG","home_team":"LV","away_team":"NYG","home_score":10,"away_score":34,"roof":"dome"}
-{"game_id":"2025_17_TB_MIA","season":2025,"week":17,"game_type":"REG","home_team":"MIA","away_team":"TB","home_score":20,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_17_NE_NYJ","season":2025,"week":17,"game_type":"REG","home_team":"NYJ","away_team":"NE","home_score":10,"away_score":42,"roof":"outdoors"}
-{"game_id":"2025_17_NO_TEN","season":2025,"week":17,"game_type":"REG","home_team":"TEN","away_team":"NO","home_score":26,"away_score":34,"roof":"outdoors"}
-{"game_id":"2025_17_PHI_BUF","season":2025,"week":17,"game_type":"REG","home_team":"BUF","away_team":"PHI","home_score":12,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_17_CHI_SF","season":2025,"week":17,"game_type":"REG","home_team":"SF","away_team":"CHI","home_score":42,"away_score":38,"roof":"outdoors"}
-{"game_id":"2025_17_LA_ATL","season":2025,"week":17,"game_type":"REG","home_team":"ATL","away_team":"LA","home_score":27,"away_score":24,"roof":"closed"}
-{"game_id":"2025_18_NO_ATL","season":2025,"week":18,"game_type":"REG","home_team":"ATL","away_team":"NO","home_score":19,"away_score":17,"roof":"closed"}
-{"game_id":"2025_18_NYJ_BUF","season":2025,"week":18,"game_type":"REG","home_team":"BUF","away_team":"NYJ","home_score":35,"away_score":8,"roof":"outdoors"}
-{"game_id":"2025_18_DET_CHI","season":2025,"week":18,"game_type":"REG","home_team":"CHI","away_team":"DET","home_score":16,"away_score":19,"roof":"outdoors"}
-{"game_id":"2025_18_CLE_CIN","season":2025,"week":18,"game_type":"REG","home_team":"CIN","away_team":"CLE","home_score":18,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_18_LAC_DEN","season":2025,"week":18,"game_type":"REG","home_team":"DEN","away_team":"LAC","home_score":19,"away_score":3,"roof":"outdoors"}
-{"game_id":"2025_18_IND_HOU","season":2025,"week":18,"game_type":"REG","home_team":"HOU","away_team":"IND","home_score":38,"away_score":30,"roof":"closed"}
-{"game_id":"2025_18_TEN_JAX","season":2025,"week":18,"game_type":"REG","home_team":"JAX","away_team":"TEN","home_score":41,"away_score":7,"roof":"outdoors"}
-{"game_id":"2025_18_ARI_LA","season":2025,"week":18,"game_type":"REG","home_team":"LA","away_team":"ARI","home_score":37,"away_score":20,"roof":"dome"}
-{"game_id":"2025_18_KC_LV","season":2025,"week":18,"game_type":"REG","home_team":"LV","away_team":"KC","home_score":14,"away_score":12,"roof":"dome"}
-{"game_id":"2025_18_GB_MIN","season":2025,"week":18,"game_type":"REG","home_team":"MIN","away_team":"GB","home_score":16,"away_score":3,"roof":"dome"}
-{"game_id":"2025_18_MIA_NE","season":2025,"week":18,"game_type":"REG","home_team":"NE","away_team":"MIA","home_score":38,"away_score":10,"roof":"outdoors"}
-{"game_id":"2025_18_DAL_NYG","season":2025,"week":18,"game_type":"REG","home_team":"NYG","away_team":"DAL","home_score":34,"away_score":17,"roof":"outdoors"}
-{"game_id":"2025_18_WAS_PHI","season":2025,"week":18,"game_type":"REG","home_team":"PHI","away_team":"WAS","home_score":17,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_18_BAL_PIT","season":2025,"week":18,"game_type":"REG","home_team":"PIT","away_team":"BAL","home_score":26,"away_score":24,"roof":"outdoors"}
-{"game_id":"2025_18_SEA_SF","season":2025,"week":18,"game_type":"REG","home_team":"SF","away_team":"SEA","home_score":3,"away_score":13,"roof":"outdoors"}
-{"game_id":"2025_18_CAR_TB","season":2025,"week":18,"game_type":"REG","home_team":"TB","away_team":"CAR","home_score":16,"away_score":14,"roof":"outdoors"}
-{"game_id":"2025_19_GB_CHI","season":2025,"week":19,"game_type":"WC","home_team":"CHI","away_team":"GB","home_score":31,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_19_BUF_JAX","season":2025,"week":19,"game_type":"WC","home_team":"JAX","away_team":"BUF","home_score":24,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_19_SF_PHI","season":2025,"week":19,"game_type":"WC","home_team":"PHI","away_team":"SF","home_score":19,"away_score":23,"roof":"outdoors"}
-{"game_id":"2025_19_LAC_NE","season":2025,"week":19,"game_type":"WC","home_team":"NE","away_team":"LAC","home_score":16,"away_score":3,"roof":"outdoors"}
-{"game_id":"2025_19_HOU_PIT","season":2025,"week":19,"game_type":"WC","home_team":"PIT","away_team":"HOU","home_score":6,"away_score":30,"roof":"outdoors"}
-{"game_id":"2025_19_LA_CAR","season":2025,"week":19,"game_type":"WC","home_team":"CAR","away_team":"LA","home_score":31,"away_score":34,"roof":"outdoors"}
-{"game_id":"2025_20_BUF_DEN","season":2025,"week":20,"game_type":"DIV","home_team":"DEN","away_team":"BUF","home_score":33,"away_score":30,"roof":"outdoors"}
-{"game_id":"2025_20_SF_SEA","season":2025,"week":20,"game_type":"DIV","home_team":"SEA","away_team":"SF","home_score":41,"away_score":6,"roof":"outdoors"}
-{"game_id":"2025_20_LA_CHI","season":2025,"week":20,"game_type":"DIV","home_team":"CHI","away_team":"LA","home_score":17,"away_score":20,"roof":"outdoors"}
-{"game_id":"2025_20_HOU_NE","season":2025,"week":20,"game_type":"DIV","home_team":"NE","away_team":"HOU","home_score":28,"away_score":16,"roof":"outdoors"}
-{"game_id":"2025_21_NE_DEN","season":2025,"week":21,"game_type":"CON","home_team":"DEN","away_team":"NE","home_score":7,"away_score":10,"roof":"outdoors"}
-{"game_id":"2025_21_LA_SEA","season":2025,"week":21,"game_type":"CON","home_team":"SEA","away_team":"LA","home_score":31,"away_score":27,"roof":"outdoors"}
-{"game_id":"2025_22_SEA_NE","season":2025,"week":22,"game_type":"SB","home_team":"NE","away_team":"SEA","home_score":13,"away_score":29,"roof":"outdoors"}
+{"game_id":"2025_01_DAL_PHI","season":2025,"week":1,"game_type":"REG","home_team":"PHI","away_team":"DAL","home_score":24,"away_score":20,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_01_KC_LAC","season":2025,"week":1,"game_type":"REG","home_team":"LAC","away_team":"KC","home_score":27,"away_score":21,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_01_TB_ATL","season":2025,"week":1,"game_type":"REG","home_team":"ATL","away_team":"TB","home_score":20,"away_score":23,"roof":"closed","stadium":"Mercedes-Benz Stadium"}
+{"game_id":"2025_01_CIN_CLE","season":2025,"week":1,"game_type":"REG","home_team":"CLE","away_team":"CIN","home_score":16,"away_score":17,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_01_MIA_IND","season":2025,"week":1,"game_type":"REG","home_team":"IND","away_team":"MIA","home_score":33,"away_score":8,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_01_CAR_JAX","season":2025,"week":1,"game_type":"REG","home_team":"JAX","away_team":"CAR","home_score":26,"away_score":10,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_01_LV_NE","season":2025,"week":1,"game_type":"REG","home_team":"NE","away_team":"LV","home_score":13,"away_score":20,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_01_ARI_NO","season":2025,"week":1,"game_type":"REG","home_team":"NO","away_team":"ARI","home_score":13,"away_score":20,"roof":"dome","stadium":"Mercedes-Benz Superdome"}
+{"game_id":"2025_01_PIT_NYJ","season":2025,"week":1,"game_type":"REG","home_team":"NYJ","away_team":"PIT","home_score":32,"away_score":34,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_01_NYG_WAS","season":2025,"week":1,"game_type":"REG","home_team":"WAS","away_team":"NYG","home_score":21,"away_score":6,"roof":"outdoors","stadium":"FedExField"}
+{"game_id":"2025_01_TEN_DEN","season":2025,"week":1,"game_type":"REG","home_team":"DEN","away_team":"TEN","home_score":20,"away_score":12,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_01_SF_SEA","season":2025,"week":1,"game_type":"REG","home_team":"SEA","away_team":"SF","home_score":13,"away_score":17,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_01_DET_GB","season":2025,"week":1,"game_type":"REG","home_team":"GB","away_team":"DET","home_score":27,"away_score":13,"roof":"outdoors","stadium":"Lambeau Field"}
+{"game_id":"2025_01_HOU_LA","season":2025,"week":1,"game_type":"REG","home_team":"LA","away_team":"HOU","home_score":14,"away_score":9,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_01_BAL_BUF","season":2025,"week":1,"game_type":"REG","home_team":"BUF","away_team":"BAL","home_score":41,"away_score":40,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_01_MIN_CHI","season":2025,"week":1,"game_type":"REG","home_team":"CHI","away_team":"MIN","home_score":24,"away_score":27,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_02_WAS_GB","season":2025,"week":2,"game_type":"REG","home_team":"GB","away_team":"WAS","home_score":27,"away_score":18,"roof":"outdoors","stadium":"Lambeau Field"}
+{"game_id":"2025_02_CLE_BAL","season":2025,"week":2,"game_type":"REG","home_team":"BAL","away_team":"CLE","home_score":41,"away_score":17,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_02_JAX_CIN","season":2025,"week":2,"game_type":"REG","home_team":"CIN","away_team":"JAX","home_score":31,"away_score":27,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_02_NYG_DAL","season":2025,"week":2,"game_type":"REG","home_team":"DAL","away_team":"NYG","home_score":40,"away_score":37,"roof":"closed","stadium":"AT&T Stadium"}
+{"game_id":"2025_02_CHI_DET","season":2025,"week":2,"game_type":"REG","home_team":"DET","away_team":"CHI","home_score":52,"away_score":21,"roof":"dome","stadium":"Ford Field"}
+{"game_id":"2025_02_NE_MIA","season":2025,"week":2,"game_type":"REG","home_team":"MIA","away_team":"NE","home_score":27,"away_score":33,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_02_SF_NO","season":2025,"week":2,"game_type":"REG","home_team":"NO","away_team":"SF","home_score":21,"away_score":26,"roof":"dome","stadium":"Mercedes-Benz Superdome"}
+{"game_id":"2025_02_BUF_NYJ","season":2025,"week":2,"game_type":"REG","home_team":"NYJ","away_team":"BUF","home_score":10,"away_score":30,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_02_SEA_PIT","season":2025,"week":2,"game_type":"REG","home_team":"PIT","away_team":"SEA","home_score":17,"away_score":31,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_02_LA_TEN","season":2025,"week":2,"game_type":"REG","home_team":"TEN","away_team":"LA","home_score":19,"away_score":33,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_02_CAR_ARI","season":2025,"week":2,"game_type":"REG","home_team":"ARI","away_team":"CAR","home_score":27,"away_score":22,"roof":"closed","stadium":"State Farm Stadium"}
+{"game_id":"2025_02_DEN_IND","season":2025,"week":2,"game_type":"REG","home_team":"IND","away_team":"DEN","home_score":29,"away_score":28,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_02_PHI_KC","season":2025,"week":2,"game_type":"REG","home_team":"KC","away_team":"PHI","home_score":17,"away_score":20,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_02_ATL_MIN","season":2025,"week":2,"game_type":"REG","home_team":"MIN","away_team":"ATL","home_score":6,"away_score":22,"roof":"dome","stadium":"U.S. Bank Stadium"}
+{"game_id":"2025_02_TB_HOU","season":2025,"week":2,"game_type":"REG","home_team":"HOU","away_team":"TB","home_score":19,"away_score":20,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_02_LAC_LV","season":2025,"week":2,"game_type":"REG","home_team":"LV","away_team":"LAC","home_score":9,"away_score":20,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_03_MIA_BUF","season":2025,"week":3,"game_type":"REG","home_team":"BUF","away_team":"MIA","home_score":31,"away_score":21,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_03_ATL_CAR","season":2025,"week":3,"game_type":"REG","home_team":"CAR","away_team":"ATL","home_score":30,"away_score":0,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_03_GB_CLE","season":2025,"week":3,"game_type":"REG","home_team":"CLE","away_team":"GB","home_score":13,"away_score":10,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_03_HOU_JAX","season":2025,"week":3,"game_type":"REG","home_team":"JAX","away_team":"HOU","home_score":17,"away_score":10,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_03_CIN_MIN","season":2025,"week":3,"game_type":"REG","home_team":"MIN","away_team":"CIN","home_score":48,"away_score":10,"roof":"dome","stadium":"U.S. Bank Stadium"}
+{"game_id":"2025_03_PIT_NE","season":2025,"week":3,"game_type":"REG","home_team":"NE","away_team":"PIT","home_score":14,"away_score":21,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_03_LA_PHI","season":2025,"week":3,"game_type":"REG","home_team":"PHI","away_team":"LA","home_score":33,"away_score":26,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_03_NYJ_TB","season":2025,"week":3,"game_type":"REG","home_team":"TB","away_team":"NYJ","home_score":29,"away_score":27,"roof":"outdoors","stadium":"Raymond James Stadium"}
+{"game_id":"2025_03_IND_TEN","season":2025,"week":3,"game_type":"REG","home_team":"TEN","away_team":"IND","home_score":20,"away_score":41,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_03_LV_WAS","season":2025,"week":3,"game_type":"REG","home_team":"WAS","away_team":"LV","home_score":41,"away_score":24,"roof":"outdoors","stadium":"FedExField"}
+{"game_id":"2025_03_DEN_LAC","season":2025,"week":3,"game_type":"REG","home_team":"LAC","away_team":"DEN","home_score":23,"away_score":20,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_03_NO_SEA","season":2025,"week":3,"game_type":"REG","home_team":"SEA","away_team":"NO","home_score":44,"away_score":13,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_03_DAL_CHI","season":2025,"week":3,"game_type":"REG","home_team":"CHI","away_team":"DAL","home_score":31,"away_score":14,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_03_ARI_SF","season":2025,"week":3,"game_type":"REG","home_team":"SF","away_team":"ARI","home_score":16,"away_score":15,"roof":"outdoors","stadium":"Levi's Stadium"}
+{"game_id":"2025_03_KC_NYG","season":2025,"week":3,"game_type":"REG","home_team":"NYG","away_team":"KC","home_score":9,"away_score":22,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_03_DET_BAL","season":2025,"week":3,"game_type":"REG","home_team":"BAL","away_team":"DET","home_score":30,"away_score":38,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_04_SEA_ARI","season":2025,"week":4,"game_type":"REG","home_team":"ARI","away_team":"SEA","home_score":20,"away_score":23,"roof":"closed","stadium":"State Farm Stadium"}
+{"game_id":"2025_04_MIN_PIT","season":2025,"week":4,"game_type":"REG","home_team":"PIT","away_team":"MIN","home_score":24,"away_score":21,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_04_WAS_ATL","season":2025,"week":4,"game_type":"REG","home_team":"ATL","away_team":"WAS","home_score":34,"away_score":27,"roof":"closed","stadium":"Mercedes-Benz Stadium"}
+{"game_id":"2025_04_NO_BUF","season":2025,"week":4,"game_type":"REG","home_team":"BUF","away_team":"NO","home_score":31,"away_score":19,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_04_CLE_DET","season":2025,"week":4,"game_type":"REG","home_team":"DET","away_team":"CLE","home_score":34,"away_score":10,"roof":"dome","stadium":"Ford Field"}
+{"game_id":"2025_04_TEN_HOU","season":2025,"week":4,"game_type":"REG","home_team":"HOU","away_team":"TEN","home_score":26,"away_score":0,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_04_CAR_NE","season":2025,"week":4,"game_type":"REG","home_team":"NE","away_team":"CAR","home_score":42,"away_score":13,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_04_LAC_NYG","season":2025,"week":4,"game_type":"REG","home_team":"NYG","away_team":"LAC","home_score":21,"away_score":18,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_04_PHI_TB","season":2025,"week":4,"game_type":"REG","home_team":"TB","away_team":"PHI","home_score":25,"away_score":31,"roof":"outdoors","stadium":"Raymond James Stadium"}
+{"game_id":"2025_04_IND_LA","season":2025,"week":4,"game_type":"REG","home_team":"LA","away_team":"IND","home_score":27,"away_score":20,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_04_JAX_SF","season":2025,"week":4,"game_type":"REG","home_team":"SF","away_team":"JAX","home_score":21,"away_score":26,"roof":"outdoors","stadium":"Levi's Stadium"}
+{"game_id":"2025_04_BAL_KC","season":2025,"week":4,"game_type":"REG","home_team":"KC","away_team":"BAL","home_score":37,"away_score":20,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_04_CHI_LV","season":2025,"week":4,"game_type":"REG","home_team":"LV","away_team":"CHI","home_score":24,"away_score":25,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_04_GB_DAL","season":2025,"week":4,"game_type":"REG","home_team":"DAL","away_team":"GB","home_score":40,"away_score":40,"roof":"closed","stadium":"AT&T Stadium"}
+{"game_id":"2025_04_NYJ_MIA","season":2025,"week":4,"game_type":"REG","home_team":"MIA","away_team":"NYJ","home_score":27,"away_score":21,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_04_CIN_DEN","season":2025,"week":4,"game_type":"REG","home_team":"DEN","away_team":"CIN","home_score":28,"away_score":3,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_05_SF_LA","season":2025,"week":5,"game_type":"REG","home_team":"LA","away_team":"SF","home_score":23,"away_score":26,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_05_MIN_CLE","season":2025,"week":5,"game_type":"REG","home_team":"CLE","away_team":"MIN","home_score":17,"away_score":21,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_05_HOU_BAL","season":2025,"week":5,"game_type":"REG","home_team":"BAL","away_team":"HOU","home_score":10,"away_score":44,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_05_MIA_CAR","season":2025,"week":5,"game_type":"REG","home_team":"CAR","away_team":"MIA","home_score":27,"away_score":24,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_05_LV_IND","season":2025,"week":5,"game_type":"REG","home_team":"IND","away_team":"LV","home_score":40,"away_score":6,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_05_NYG_NO","season":2025,"week":5,"game_type":"REG","home_team":"NO","away_team":"NYG","home_score":26,"away_score":14,"roof":"dome","stadium":"Mercedes-Benz Superdome"}
+{"game_id":"2025_05_DAL_NYJ","season":2025,"week":5,"game_type":"REG","home_team":"NYJ","away_team":"DAL","home_score":22,"away_score":37,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_05_DEN_PHI","season":2025,"week":5,"game_type":"REG","home_team":"PHI","away_team":"DEN","home_score":17,"away_score":21,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_05_TEN_ARI","season":2025,"week":5,"game_type":"REG","home_team":"ARI","away_team":"TEN","home_score":21,"away_score":22,"roof":"closed","stadium":"State Farm Stadium"}
+{"game_id":"2025_05_TB_SEA","season":2025,"week":5,"game_type":"REG","home_team":"SEA","away_team":"TB","home_score":35,"away_score":38,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_05_DET_CIN","season":2025,"week":5,"game_type":"REG","home_team":"CIN","away_team":"DET","home_score":24,"away_score":37,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_05_WAS_LAC","season":2025,"week":5,"game_type":"REG","home_team":"LAC","away_team":"WAS","home_score":10,"away_score":27,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_05_NE_BUF","season":2025,"week":5,"game_type":"REG","home_team":"BUF","away_team":"NE","home_score":20,"away_score":23,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_05_KC_JAX","season":2025,"week":5,"game_type":"REG","home_team":"JAX","away_team":"KC","home_score":31,"away_score":28,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_06_PHI_NYG","season":2025,"week":6,"game_type":"REG","home_team":"NYG","away_team":"PHI","home_score":34,"away_score":17,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_06_DEN_NYJ","season":2025,"week":6,"game_type":"REG","home_team":"NYJ","away_team":"DEN","home_score":11,"away_score":13,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_06_LA_BAL","season":2025,"week":6,"game_type":"REG","home_team":"BAL","away_team":"LA","home_score":3,"away_score":17,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_06_DAL_CAR","season":2025,"week":6,"game_type":"REG","home_team":"CAR","away_team":"DAL","home_score":30,"away_score":27,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_06_ARI_IND","season":2025,"week":6,"game_type":"REG","home_team":"IND","away_team":"ARI","home_score":31,"away_score":27,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_06_SEA_JAX","season":2025,"week":6,"game_type":"REG","home_team":"JAX","away_team":"SEA","home_score":12,"away_score":20,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_06_LAC_MIA","season":2025,"week":6,"game_type":"REG","home_team":"MIA","away_team":"LAC","home_score":27,"away_score":29,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_06_NE_NO","season":2025,"week":6,"game_type":"REG","home_team":"NO","away_team":"NE","home_score":19,"away_score":25,"roof":"dome","stadium":"Mercedes-Benz Superdome"}
+{"game_id":"2025_06_CLE_PIT","season":2025,"week":6,"game_type":"REG","home_team":"PIT","away_team":"CLE","home_score":23,"away_score":9,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_06_TEN_LV","season":2025,"week":6,"game_type":"REG","home_team":"LV","away_team":"TEN","home_score":20,"away_score":10,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_06_CIN_GB","season":2025,"week":6,"game_type":"REG","home_team":"GB","away_team":"CIN","home_score":27,"away_score":18,"roof":"outdoors","stadium":"Lambeau Field"}
+{"game_id":"2025_06_SF_TB","season":2025,"week":6,"game_type":"REG","home_team":"TB","away_team":"SF","home_score":30,"away_score":19,"roof":"outdoors","stadium":"Raymond James Stadium"}
+{"game_id":"2025_06_DET_KC","season":2025,"week":6,"game_type":"REG","home_team":"KC","away_team":"DET","home_score":30,"away_score":17,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_06_BUF_ATL","season":2025,"week":6,"game_type":"REG","home_team":"ATL","away_team":"BUF","home_score":24,"away_score":14,"roof":"closed","stadium":"Mercedes-Benz Stadium"}
+{"game_id":"2025_06_CHI_WAS","season":2025,"week":6,"game_type":"REG","home_team":"WAS","away_team":"CHI","home_score":24,"away_score":25,"roof":"outdoors","stadium":"FedExField"}
+{"game_id":"2025_07_PIT_CIN","season":2025,"week":7,"game_type":"REG","home_team":"CIN","away_team":"PIT","home_score":33,"away_score":31,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_07_LA_JAX","season":2025,"week":7,"game_type":"REG","home_team":"JAX","away_team":"LA","home_score":7,"away_score":35,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_07_NO_CHI","season":2025,"week":7,"game_type":"REG","home_team":"CHI","away_team":"NO","home_score":26,"away_score":14,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_07_MIA_CLE","season":2025,"week":7,"game_type":"REG","home_team":"CLE","away_team":"MIA","home_score":31,"away_score":6,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_07_LV_KC","season":2025,"week":7,"game_type":"REG","home_team":"KC","away_team":"LV","home_score":31,"away_score":0,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_07_PHI_MIN","season":2025,"week":7,"game_type":"REG","home_team":"MIN","away_team":"PHI","home_score":22,"away_score":28,"roof":"dome","stadium":"U.S. Bank Stadium"}
+{"game_id":"2025_07_CAR_NYJ","season":2025,"week":7,"game_type":"REG","home_team":"NYJ","away_team":"CAR","home_score":6,"away_score":13,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_07_NE_TEN","season":2025,"week":7,"game_type":"REG","home_team":"TEN","away_team":"NE","home_score":13,"away_score":31,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_07_NYG_DEN","season":2025,"week":7,"game_type":"REG","home_team":"DEN","away_team":"NYG","home_score":33,"away_score":32,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_07_IND_LAC","season":2025,"week":7,"game_type":"REG","home_team":"LAC","away_team":"IND","home_score":24,"away_score":38,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_07_GB_ARI","season":2025,"week":7,"game_type":"REG","home_team":"ARI","away_team":"GB","home_score":23,"away_score":27,"roof":"closed","stadium":"State Farm Stadium"}
+{"game_id":"2025_07_WAS_DAL","season":2025,"week":7,"game_type":"REG","home_team":"DAL","away_team":"WAS","home_score":44,"away_score":22,"roof":"closed","stadium":"AT&T Stadium"}
+{"game_id":"2025_07_ATL_SF","season":2025,"week":7,"game_type":"REG","home_team":"SF","away_team":"ATL","home_score":20,"away_score":10,"roof":"outdoors","stadium":"Levi's Stadium"}
+{"game_id":"2025_07_TB_DET","season":2025,"week":7,"game_type":"REG","home_team":"DET","away_team":"TB","home_score":24,"away_score":9,"roof":"dome","stadium":"Ford Field"}
+{"game_id":"2025_07_HOU_SEA","season":2025,"week":7,"game_type":"REG","home_team":"SEA","away_team":"HOU","home_score":27,"away_score":19,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_08_MIN_LAC","season":2025,"week":8,"game_type":"REG","home_team":"LAC","away_team":"MIN","home_score":37,"away_score":10,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_08_MIA_ATL","season":2025,"week":8,"game_type":"REG","home_team":"ATL","away_team":"MIA","home_score":10,"away_score":34,"roof":"closed","stadium":"Mercedes-Benz Stadium"}
+{"game_id":"2025_08_CHI_BAL","season":2025,"week":8,"game_type":"REG","home_team":"BAL","away_team":"CHI","home_score":30,"away_score":16,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_08_BUF_CAR","season":2025,"week":8,"game_type":"REG","home_team":"CAR","away_team":"BUF","home_score":9,"away_score":40,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_08_NYJ_CIN","season":2025,"week":8,"game_type":"REG","home_team":"CIN","away_team":"NYJ","home_score":38,"away_score":39,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_08_SF_HOU","season":2025,"week":8,"game_type":"REG","home_team":"HOU","away_team":"SF","home_score":26,"away_score":15,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_08_CLE_NE","season":2025,"week":8,"game_type":"REG","home_team":"NE","away_team":"CLE","home_score":32,"away_score":13,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_08_NYG_PHI","season":2025,"week":8,"game_type":"REG","home_team":"PHI","away_team":"NYG","home_score":38,"away_score":20,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_08_TB_NO","season":2025,"week":8,"game_type":"REG","home_team":"NO","away_team":"TB","home_score":3,"away_score":23,"roof":"dome","stadium":"Mercedes-Benz Superdome"}
+{"game_id":"2025_08_DAL_DEN","season":2025,"week":8,"game_type":"REG","home_team":"DEN","away_team":"DAL","home_score":44,"away_score":24,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_08_TEN_IND","season":2025,"week":8,"game_type":"REG","home_team":"IND","away_team":"TEN","home_score":38,"away_score":14,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_08_GB_PIT","season":2025,"week":8,"game_type":"REG","home_team":"PIT","away_team":"GB","home_score":25,"away_score":35,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_08_WAS_KC","season":2025,"week":8,"game_type":"REG","home_team":"KC","away_team":"WAS","home_score":28,"away_score":7,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_09_BAL_MIA","season":2025,"week":9,"game_type":"REG","home_team":"MIA","away_team":"BAL","home_score":6,"away_score":28,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_09_CHI_CIN","season":2025,"week":9,"game_type":"REG","home_team":"CIN","away_team":"CHI","home_score":42,"away_score":47,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_09_MIN_DET","season":2025,"week":9,"game_type":"REG","home_team":"DET","away_team":"MIN","home_score":24,"away_score":27,"roof":"dome","stadium":"Ford Field"}
+{"game_id":"2025_09_CAR_GB","season":2025,"week":9,"game_type":"REG","home_team":"GB","away_team":"CAR","home_score":13,"away_score":16,"roof":"outdoors","stadium":"Lambeau Field"}
+{"game_id":"2025_09_DEN_HOU","season":2025,"week":9,"game_type":"REG","home_team":"HOU","away_team":"DEN","home_score":15,"away_score":18,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_09_ATL_NE","season":2025,"week":9,"game_type":"REG","home_team":"NE","away_team":"ATL","home_score":24,"away_score":23,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_09_SF_NYG","season":2025,"week":9,"game_type":"REG","home_team":"NYG","away_team":"SF","home_score":24,"away_score":34,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_09_IND_PIT","season":2025,"week":9,"game_type":"REG","home_team":"PIT","away_team":"IND","home_score":27,"away_score":20,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_09_LAC_TEN","season":2025,"week":9,"game_type":"REG","home_team":"TEN","away_team":"LAC","home_score":20,"away_score":27,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_09_NO_LA","season":2025,"week":9,"game_type":"REG","home_team":"LA","away_team":"NO","home_score":34,"away_score":10,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_09_JAX_LV","season":2025,"week":9,"game_type":"REG","home_team":"LV","away_team":"JAX","home_score":29,"away_score":30,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_09_KC_BUF","season":2025,"week":9,"game_type":"REG","home_team":"BUF","away_team":"KC","home_score":28,"away_score":21,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_09_SEA_WAS","season":2025,"week":9,"game_type":"REG","home_team":"WAS","away_team":"SEA","home_score":14,"away_score":38,"roof":"outdoors","stadium":"FedExField"}
+{"game_id":"2025_09_ARI_DAL","season":2025,"week":9,"game_type":"REG","home_team":"DAL","away_team":"ARI","home_score":17,"away_score":27,"roof":"closed","stadium":"AT&T Stadium"}
+{"game_id":"2025_10_LV_DEN","season":2025,"week":10,"game_type":"REG","home_team":"DEN","away_team":"LV","home_score":10,"away_score":7,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_10_ATL_IND","season":2025,"week":10,"game_type":"REG","home_team":"IND","away_team":"ATL","home_score":31,"away_score":25,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_10_NO_CAR","season":2025,"week":10,"game_type":"REG","home_team":"CAR","away_team":"NO","home_score":7,"away_score":17,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_10_NYG_CHI","season":2025,"week":10,"game_type":"REG","home_team":"CHI","away_team":"NYG","home_score":24,"away_score":20,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_10_JAX_HOU","season":2025,"week":10,"game_type":"REG","home_team":"HOU","away_team":"JAX","home_score":36,"away_score":29,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_10_BUF_MIA","season":2025,"week":10,"game_type":"REG","home_team":"MIA","away_team":"BUF","home_score":30,"away_score":13,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_10_BAL_MIN","season":2025,"week":10,"game_type":"REG","home_team":"MIN","away_team":"BAL","home_score":19,"away_score":27,"roof":"dome","stadium":"U.S. Bank Stadium"}
+{"game_id":"2025_10_CLE_NYJ","season":2025,"week":10,"game_type":"REG","home_team":"NYJ","away_team":"CLE","home_score":27,"away_score":20,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_10_NE_TB","season":2025,"week":10,"game_type":"REG","home_team":"TB","away_team":"NE","home_score":23,"away_score":28,"roof":"outdoors","stadium":"Raymond James Stadium"}
+{"game_id":"2025_10_ARI_SEA","season":2025,"week":10,"game_type":"REG","home_team":"SEA","away_team":"ARI","home_score":44,"away_score":22,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_10_LA_SF","season":2025,"week":10,"game_type":"REG","home_team":"SF","away_team":"LA","home_score":26,"away_score":42,"roof":"outdoors","stadium":"Levi's Stadium"}
+{"game_id":"2025_10_DET_WAS","season":2025,"week":10,"game_type":"REG","home_team":"WAS","away_team":"DET","home_score":22,"away_score":44,"roof":"outdoors","stadium":"FedExField"}
+{"game_id":"2025_10_PIT_LAC","season":2025,"week":10,"game_type":"REG","home_team":"LAC","away_team":"PIT","home_score":25,"away_score":10,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_10_PHI_GB","season":2025,"week":10,"game_type":"REG","home_team":"GB","away_team":"PHI","home_score":7,"away_score":10,"roof":"outdoors","stadium":"Lambeau Field"}
+{"game_id":"2025_11_NYJ_NE","season":2025,"week":11,"game_type":"REG","home_team":"NE","away_team":"NYJ","home_score":27,"away_score":14,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_11_WAS_MIA","season":2025,"week":11,"game_type":"REG","home_team":"MIA","away_team":"WAS","home_score":16,"away_score":13,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_11_CAR_ATL","season":2025,"week":11,"game_type":"REG","home_team":"ATL","away_team":"CAR","home_score":27,"away_score":30,"roof":"closed","stadium":"Mercedes-Benz Stadium"}
+{"game_id":"2025_11_TB_BUF","season":2025,"week":11,"game_type":"REG","home_team":"BUF","away_team":"TB","home_score":44,"away_score":32,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_11_LAC_JAX","season":2025,"week":11,"game_type":"REG","home_team":"JAX","away_team":"LAC","home_score":35,"away_score":6,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_11_CHI_MIN","season":2025,"week":11,"game_type":"REG","home_team":"MIN","away_team":"CHI","home_score":17,"away_score":19,"roof":"dome","stadium":"U.S. Bank Stadium"}
+{"game_id":"2025_11_GB_NYG","season":2025,"week":11,"game_type":"REG","home_team":"NYG","away_team":"GB","home_score":20,"away_score":27,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_11_CIN_PIT","season":2025,"week":11,"game_type":"REG","home_team":"PIT","away_team":"CIN","home_score":34,"away_score":12,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_11_HOU_TEN","season":2025,"week":11,"game_type":"REG","home_team":"TEN","away_team":"HOU","home_score":13,"away_score":16,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_11_SF_ARI","season":2025,"week":11,"game_type":"REG","home_team":"ARI","away_team":"SF","home_score":22,"away_score":41,"roof":"closed","stadium":"State Farm Stadium"}
+{"game_id":"2025_11_SEA_LA","season":2025,"week":11,"game_type":"REG","home_team":"LA","away_team":"SEA","home_score":21,"away_score":19,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_11_BAL_CLE","season":2025,"week":11,"game_type":"REG","home_team":"CLE","away_team":"BAL","home_score":16,"away_score":23,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_11_KC_DEN","season":2025,"week":11,"game_type":"REG","home_team":"DEN","away_team":"KC","home_score":22,"away_score":19,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_11_DET_PHI","season":2025,"week":11,"game_type":"REG","home_team":"PHI","away_team":"DET","home_score":16,"away_score":9,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_11_DAL_LV","season":2025,"week":11,"game_type":"REG","home_team":"LV","away_team":"DAL","home_score":16,"away_score":33,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_12_BUF_HOU","season":2025,"week":12,"game_type":"REG","home_team":"HOU","away_team":"BUF","home_score":23,"away_score":19,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_12_NYJ_BAL","season":2025,"week":12,"game_type":"REG","home_team":"BAL","away_team":"NYJ","home_score":23,"away_score":10,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_12_PIT_CHI","season":2025,"week":12,"game_type":"REG","home_team":"CHI","away_team":"PIT","home_score":31,"away_score":28,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_12_NE_CIN","season":2025,"week":12,"game_type":"REG","home_team":"CIN","away_team":"NE","home_score":20,"away_score":26,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_12_NYG_DET","season":2025,"week":12,"game_type":"REG","home_team":"DET","away_team":"NYG","home_score":34,"away_score":27,"roof":"dome","stadium":"Ford Field"}
+{"game_id":"2025_12_MIN_GB","season":2025,"week":12,"game_type":"REG","home_team":"GB","away_team":"MIN","home_score":23,"away_score":6,"roof":"outdoors","stadium":"Lambeau Field"}
+{"game_id":"2025_12_IND_KC","season":2025,"week":12,"game_type":"REG","home_team":"KC","away_team":"IND","home_score":23,"away_score":20,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_12_SEA_TEN","season":2025,"week":12,"game_type":"REG","home_team":"TEN","away_team":"SEA","home_score":24,"away_score":30,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_12_JAX_ARI","season":2025,"week":12,"game_type":"REG","home_team":"ARI","away_team":"JAX","home_score":24,"away_score":27,"roof":"closed","stadium":"State Farm Stadium"}
+{"game_id":"2025_12_CLE_LV","season":2025,"week":12,"game_type":"REG","home_team":"LV","away_team":"CLE","home_score":10,"away_score":24,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_12_PHI_DAL","season":2025,"week":12,"game_type":"REG","home_team":"DAL","away_team":"PHI","home_score":24,"away_score":21,"roof":"closed","stadium":"AT&T Stadium"}
+{"game_id":"2025_12_ATL_NO","season":2025,"week":12,"game_type":"REG","home_team":"NO","away_team":"ATL","home_score":10,"away_score":24,"roof":"dome","stadium":"Mercedes-Benz Superdome"}
+{"game_id":"2025_12_TB_LA","season":2025,"week":12,"game_type":"REG","home_team":"LA","away_team":"TB","home_score":34,"away_score":7,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_12_CAR_SF","season":2025,"week":12,"game_type":"REG","home_team":"SF","away_team":"CAR","home_score":20,"away_score":9,"roof":"outdoors","stadium":"Levi's Stadium"}
+{"game_id":"2025_13_GB_DET","season":2025,"week":13,"game_type":"REG","home_team":"DET","away_team":"GB","home_score":24,"away_score":31,"roof":"dome","stadium":"Ford Field"}
+{"game_id":"2025_13_KC_DAL","season":2025,"week":13,"game_type":"REG","home_team":"DAL","away_team":"KC","home_score":31,"away_score":28,"roof":"closed","stadium":"AT&T Stadium"}
+{"game_id":"2025_13_CIN_BAL","season":2025,"week":13,"game_type":"REG","home_team":"BAL","away_team":"CIN","home_score":14,"away_score":32,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_13_CHI_PHI","season":2025,"week":13,"game_type":"REG","home_team":"PHI","away_team":"CHI","home_score":15,"away_score":24,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_13_LA_CAR","season":2025,"week":13,"game_type":"REG","home_team":"CAR","away_team":"LA","home_score":31,"away_score":28,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_13_SF_CLE","season":2025,"week":13,"game_type":"REG","home_team":"CLE","away_team":"SF","home_score":8,"away_score":26,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_13_HOU_IND","season":2025,"week":13,"game_type":"REG","home_team":"IND","away_team":"HOU","home_score":16,"away_score":20,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_13_NO_MIA","season":2025,"week":13,"game_type":"REG","home_team":"MIA","away_team":"NO","home_score":21,"away_score":17,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_13_ATL_NYJ","season":2025,"week":13,"game_type":"REG","home_team":"NYJ","away_team":"ATL","home_score":27,"away_score":24,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_13_ARI_TB","season":2025,"week":13,"game_type":"REG","home_team":"TB","away_team":"ARI","home_score":20,"away_score":17,"roof":"outdoors","stadium":"Raymond James Stadium"}
+{"game_id":"2025_13_JAX_TEN","season":2025,"week":13,"game_type":"REG","home_team":"TEN","away_team":"JAX","home_score":3,"away_score":25,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_13_MIN_SEA","season":2025,"week":13,"game_type":"REG","home_team":"SEA","away_team":"MIN","home_score":26,"away_score":0,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_13_LV_LAC","season":2025,"week":13,"game_type":"REG","home_team":"LAC","away_team":"LV","home_score":31,"away_score":14,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_13_BUF_PIT","season":2025,"week":13,"game_type":"REG","home_team":"PIT","away_team":"BUF","home_score":7,"away_score":26,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_13_DEN_WAS","season":2025,"week":13,"game_type":"REG","home_team":"WAS","away_team":"DEN","home_score":26,"away_score":27,"roof":"outdoors","stadium":"FedExField"}
+{"game_id":"2025_13_NYG_NE","season":2025,"week":13,"game_type":"REG","home_team":"NE","away_team":"NYG","home_score":33,"away_score":15,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_14_DAL_DET","season":2025,"week":14,"game_type":"REG","home_team":"DET","away_team":"DAL","home_score":44,"away_score":30,"roof":"dome","stadium":"Ford Field"}
+{"game_id":"2025_14_SEA_ATL","season":2025,"week":14,"game_type":"REG","home_team":"ATL","away_team":"SEA","home_score":9,"away_score":37,"roof":"closed","stadium":"Mercedes-Benz Stadium"}
+{"game_id":"2025_14_PIT_BAL","season":2025,"week":14,"game_type":"REG","home_team":"BAL","away_team":"PIT","home_score":22,"away_score":27,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_14_TEN_CLE","season":2025,"week":14,"game_type":"REG","home_team":"CLE","away_team":"TEN","home_score":29,"away_score":31,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_14_CHI_GB","season":2025,"week":14,"game_type":"REG","home_team":"GB","away_team":"CHI","home_score":28,"away_score":21,"roof":"outdoors","stadium":"Lambeau Field"}
+{"game_id":"2025_14_IND_JAX","season":2025,"week":14,"game_type":"REG","home_team":"JAX","away_team":"IND","home_score":36,"away_score":19,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_14_WAS_MIN","season":2025,"week":14,"game_type":"REG","home_team":"MIN","away_team":"WAS","home_score":31,"away_score":0,"roof":"dome","stadium":"U.S. Bank Stadium"}
+{"game_id":"2025_14_MIA_NYJ","season":2025,"week":14,"game_type":"REG","home_team":"NYJ","away_team":"MIA","home_score":10,"away_score":34,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_14_NO_TB","season":2025,"week":14,"game_type":"REG","home_team":"TB","away_team":"NO","home_score":20,"away_score":24,"roof":"outdoors","stadium":"Raymond James Stadium"}
+{"game_id":"2025_14_DEN_LV","season":2025,"week":14,"game_type":"REG","home_team":"LV","away_team":"DEN","home_score":17,"away_score":24,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_14_LA_ARI","season":2025,"week":14,"game_type":"REG","home_team":"ARI","away_team":"LA","home_score":17,"away_score":45,"roof":"closed","stadium":"State Farm Stadium"}
+{"game_id":"2025_14_CIN_BUF","season":2025,"week":14,"game_type":"REG","home_team":"BUF","away_team":"CIN","home_score":39,"away_score":34,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_14_HOU_KC","season":2025,"week":14,"game_type":"REG","home_team":"KC","away_team":"HOU","home_score":10,"away_score":20,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_14_PHI_LAC","season":2025,"week":14,"game_type":"REG","home_team":"LAC","away_team":"PHI","home_score":22,"away_score":19,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_15_ATL_TB","season":2025,"week":15,"game_type":"REG","home_team":"TB","away_team":"ATL","home_score":28,"away_score":29,"roof":"outdoors","stadium":"Raymond James Stadium"}
+{"game_id":"2025_15_CLE_CHI","season":2025,"week":15,"game_type":"REG","home_team":"CHI","away_team":"CLE","home_score":31,"away_score":3,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_15_BAL_CIN","season":2025,"week":15,"game_type":"REG","home_team":"CIN","away_team":"BAL","home_score":0,"away_score":24,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_15_ARI_HOU","season":2025,"week":15,"game_type":"REG","home_team":"HOU","away_team":"ARI","home_score":40,"away_score":20,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_15_NYJ_JAX","season":2025,"week":15,"game_type":"REG","home_team":"JAX","away_team":"NYJ","home_score":48,"away_score":20,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_15_LAC_KC","season":2025,"week":15,"game_type":"REG","home_team":"KC","away_team":"LAC","home_score":13,"away_score":16,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_15_BUF_NE","season":2025,"week":15,"game_type":"REG","home_team":"NE","away_team":"BUF","home_score":31,"away_score":35,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_15_WAS_NYG","season":2025,"week":15,"game_type":"REG","home_team":"NYG","away_team":"WAS","home_score":21,"away_score":29,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_15_LV_PHI","season":2025,"week":15,"game_type":"REG","home_team":"PHI","away_team":"LV","home_score":31,"away_score":0,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_15_GB_DEN","season":2025,"week":15,"game_type":"REG","home_team":"DEN","away_team":"GB","home_score":34,"away_score":26,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_15_DET_LA","season":2025,"week":15,"game_type":"REG","home_team":"LA","away_team":"DET","home_score":41,"away_score":34,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_15_CAR_NO","season":2025,"week":15,"game_type":"REG","home_team":"NO","away_team":"CAR","home_score":20,"away_score":17,"roof":"dome","stadium":"Mercedes-Benz Superdome"}
+{"game_id":"2025_15_IND_SEA","season":2025,"week":15,"game_type":"REG","home_team":"SEA","away_team":"IND","home_score":18,"away_score":16,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_15_TEN_SF","season":2025,"week":15,"game_type":"REG","home_team":"SF","away_team":"TEN","home_score":37,"away_score":24,"roof":"outdoors","stadium":"Levi's Stadium"}
+{"game_id":"2025_15_MIN_DAL","season":2025,"week":15,"game_type":"REG","home_team":"DAL","away_team":"MIN","home_score":26,"away_score":34,"roof":"closed","stadium":"AT&T Stadium"}
+{"game_id":"2025_15_MIA_PIT","season":2025,"week":15,"game_type":"REG","home_team":"PIT","away_team":"MIA","home_score":28,"away_score":15,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_16_LA_SEA","season":2025,"week":16,"game_type":"REG","home_team":"SEA","away_team":"LA","home_score":38,"away_score":37,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_16_GB_CHI","season":2025,"week":16,"game_type":"REG","home_team":"CHI","away_team":"GB","home_score":22,"away_score":16,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_16_PHI_WAS","season":2025,"week":16,"game_type":"REG","home_team":"WAS","away_team":"PHI","home_score":18,"away_score":29,"roof":"outdoors","stadium":"FedExField"}
+{"game_id":"2025_16_NE_BAL","season":2025,"week":16,"game_type":"REG","home_team":"BAL","away_team":"NE","home_score":24,"away_score":28,"roof":"outdoors","stadium":"M&T Bank Stadium"}
+{"game_id":"2025_16_TB_CAR","season":2025,"week":16,"game_type":"REG","home_team":"CAR","away_team":"TB","home_score":23,"away_score":20,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_16_BUF_CLE","season":2025,"week":16,"game_type":"REG","home_team":"CLE","away_team":"BUF","home_score":20,"away_score":23,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_16_LAC_DAL","season":2025,"week":16,"game_type":"REG","home_team":"DAL","away_team":"LAC","home_score":17,"away_score":34,"roof":"closed","stadium":"AT&T Stadium"}
+{"game_id":"2025_16_NYJ_NO","season":2025,"week":16,"game_type":"REG","home_team":"NO","away_team":"NYJ","home_score":29,"away_score":6,"roof":"dome","stadium":"Mercedes-Benz Superdome"}
+{"game_id":"2025_16_MIN_NYG","season":2025,"week":16,"game_type":"REG","home_team":"NYG","away_team":"MIN","home_score":13,"away_score":16,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_16_KC_TEN","season":2025,"week":16,"game_type":"REG","home_team":"TEN","away_team":"KC","home_score":26,"away_score":9,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_16_ATL_ARI","season":2025,"week":16,"game_type":"REG","home_team":"ARI","away_team":"ATL","home_score":19,"away_score":26,"roof":"closed","stadium":"State Farm Stadium"}
+{"game_id":"2025_16_JAX_DEN","season":2025,"week":16,"game_type":"REG","home_team":"DEN","away_team":"JAX","home_score":20,"away_score":34,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_16_PIT_DET","season":2025,"week":16,"game_type":"REG","home_team":"DET","away_team":"PIT","home_score":24,"away_score":29,"roof":"dome","stadium":"Ford Field"}
+{"game_id":"2025_16_LV_HOU","season":2025,"week":16,"game_type":"REG","home_team":"HOU","away_team":"LV","home_score":23,"away_score":21,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_16_CIN_MIA","season":2025,"week":16,"game_type":"REG","home_team":"MIA","away_team":"CIN","home_score":21,"away_score":45,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_16_SF_IND","season":2025,"week":16,"game_type":"REG","home_team":"IND","away_team":"SF","home_score":27,"away_score":48,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_17_DAL_WAS","season":2025,"week":17,"game_type":"REG","home_team":"WAS","away_team":"DAL","home_score":23,"away_score":30,"roof":"outdoors","stadium":"FedExField"}
+{"game_id":"2025_17_DET_MIN","season":2025,"week":17,"game_type":"REG","home_team":"MIN","away_team":"DET","home_score":23,"away_score":10,"roof":"dome","stadium":"U.S. Bank Stadium"}
+{"game_id":"2025_17_DEN_KC","season":2025,"week":17,"game_type":"REG","home_team":"KC","away_team":"DEN","home_score":13,"away_score":20,"roof":"outdoors","stadium":"GEHA Field at Arrowhead Stadium"}
+{"game_id":"2025_17_SEA_CAR","season":2025,"week":17,"game_type":"REG","home_team":"CAR","away_team":"SEA","home_score":10,"away_score":27,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_17_ARI_CIN","season":2025,"week":17,"game_type":"REG","home_team":"CIN","away_team":"ARI","home_score":37,"away_score":14,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_17_PIT_CLE","season":2025,"week":17,"game_type":"REG","home_team":"CLE","away_team":"PIT","home_score":13,"away_score":6,"roof":"outdoors","stadium":"FirstEnergy Stadium"}
+{"game_id":"2025_17_BAL_GB","season":2025,"week":17,"game_type":"REG","home_team":"GB","away_team":"BAL","home_score":24,"away_score":41,"roof":"outdoors","stadium":"Lambeau Field"}
+{"game_id":"2025_17_JAX_IND","season":2025,"week":17,"game_type":"REG","home_team":"IND","away_team":"JAX","home_score":17,"away_score":23,"roof":"closed","stadium":"Lucas Oil Stadium"}
+{"game_id":"2025_17_HOU_LAC","season":2025,"week":17,"game_type":"REG","home_team":"LAC","away_team":"HOU","home_score":16,"away_score":20,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_17_NYG_LV","season":2025,"week":17,"game_type":"REG","home_team":"LV","away_team":"NYG","home_score":10,"away_score":34,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_17_TB_MIA","season":2025,"week":17,"game_type":"REG","home_team":"MIA","away_team":"TB","home_score":20,"away_score":17,"roof":"outdoors","stadium":"Hard Rock Stadium"}
+{"game_id":"2025_17_NE_NYJ","season":2025,"week":17,"game_type":"REG","home_team":"NYJ","away_team":"NE","home_score":10,"away_score":42,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_17_NO_TEN","season":2025,"week":17,"game_type":"REG","home_team":"TEN","away_team":"NO","home_score":26,"away_score":34,"roof":"outdoors","stadium":"Nissan Stadium"}
+{"game_id":"2025_17_PHI_BUF","season":2025,"week":17,"game_type":"REG","home_team":"BUF","away_team":"PHI","home_score":12,"away_score":13,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_17_CHI_SF","season":2025,"week":17,"game_type":"REG","home_team":"SF","away_team":"CHI","home_score":42,"away_score":38,"roof":"outdoors","stadium":"Levi's Stadium"}
+{"game_id":"2025_17_LA_ATL","season":2025,"week":17,"game_type":"REG","home_team":"ATL","away_team":"LA","home_score":27,"away_score":24,"roof":"closed","stadium":"Mercedes-Benz Stadium"}
+{"game_id":"2025_18_NO_ATL","season":2025,"week":18,"game_type":"REG","home_team":"ATL","away_team":"NO","home_score":19,"away_score":17,"roof":"closed","stadium":"Mercedes-Benz Stadium"}
+{"game_id":"2025_18_NYJ_BUF","season":2025,"week":18,"game_type":"REG","home_team":"BUF","away_team":"NYJ","home_score":35,"away_score":8,"roof":"outdoors","stadium":"New Era Field"}
+{"game_id":"2025_18_DET_CHI","season":2025,"week":18,"game_type":"REG","home_team":"CHI","away_team":"DET","home_score":16,"away_score":19,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_18_CLE_CIN","season":2025,"week":18,"game_type":"REG","home_team":"CIN","away_team":"CLE","home_score":18,"away_score":20,"roof":"outdoors","stadium":"Paycor Stadium"}
+{"game_id":"2025_18_LAC_DEN","season":2025,"week":18,"game_type":"REG","home_team":"DEN","away_team":"LAC","home_score":19,"away_score":3,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_18_IND_HOU","season":2025,"week":18,"game_type":"REG","home_team":"HOU","away_team":"IND","home_score":38,"away_score":30,"roof":"closed","stadium":"NRG Stadium"}
+{"game_id":"2025_18_TEN_JAX","season":2025,"week":18,"game_type":"REG","home_team":"JAX","away_team":"TEN","home_score":41,"away_score":7,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_18_ARI_LA","season":2025,"week":18,"game_type":"REG","home_team":"LA","away_team":"ARI","home_score":37,"away_score":20,"roof":"dome","stadium":"SoFi Stadium"}
+{"game_id":"2025_18_KC_LV","season":2025,"week":18,"game_type":"REG","home_team":"LV","away_team":"KC","home_score":14,"away_score":12,"roof":"dome","stadium":"Allegiant Stadium"}
+{"game_id":"2025_18_GB_MIN","season":2025,"week":18,"game_type":"REG","home_team":"MIN","away_team":"GB","home_score":16,"away_score":3,"roof":"dome","stadium":"U.S. Bank Stadium"}
+{"game_id":"2025_18_MIA_NE","season":2025,"week":18,"game_type":"REG","home_team":"NE","away_team":"MIA","home_score":38,"away_score":10,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_18_DAL_NYG","season":2025,"week":18,"game_type":"REG","home_team":"NYG","away_team":"DAL","home_score":34,"away_score":17,"roof":"outdoors","stadium":"MetLife Stadium"}
+{"game_id":"2025_18_WAS_PHI","season":2025,"week":18,"game_type":"REG","home_team":"PHI","away_team":"WAS","home_score":17,"away_score":24,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_18_BAL_PIT","season":2025,"week":18,"game_type":"REG","home_team":"PIT","away_team":"BAL","home_score":26,"away_score":24,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_18_SEA_SF","season":2025,"week":18,"game_type":"REG","home_team":"SF","away_team":"SEA","home_score":3,"away_score":13,"roof":"outdoors","stadium":"Levi's Stadium"}
+{"game_id":"2025_18_CAR_TB","season":2025,"week":18,"game_type":"REG","home_team":"TB","away_team":"CAR","home_score":16,"away_score":14,"roof":"outdoors","stadium":"Raymond James Stadium"}
+{"game_id":"2025_19_GB_CHI","season":2025,"week":19,"game_type":"WC","home_team":"CHI","away_team":"GB","home_score":31,"away_score":27,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_19_BUF_JAX","season":2025,"week":19,"game_type":"WC","home_team":"JAX","away_team":"BUF","home_score":24,"away_score":27,"roof":"outdoors","stadium":"TIAA Bank Stadium"}
+{"game_id":"2025_19_SF_PHI","season":2025,"week":19,"game_type":"WC","home_team":"PHI","away_team":"SF","home_score":19,"away_score":23,"roof":"outdoors","stadium":"Lincoln Financial Field"}
+{"game_id":"2025_19_LAC_NE","season":2025,"week":19,"game_type":"WC","home_team":"NE","away_team":"LAC","home_score":16,"away_score":3,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_19_HOU_PIT","season":2025,"week":19,"game_type":"WC","home_team":"PIT","away_team":"HOU","home_score":6,"away_score":30,"roof":"outdoors","stadium":"Acrisure Stadium"}
+{"game_id":"2025_19_LA_CAR","season":2025,"week":19,"game_type":"WC","home_team":"CAR","away_team":"LA","home_score":31,"away_score":34,"roof":"outdoors","stadium":"Bank of America Stadium"}
+{"game_id":"2025_20_BUF_DEN","season":2025,"week":20,"game_type":"DIV","home_team":"DEN","away_team":"BUF","home_score":33,"away_score":30,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_20_SF_SEA","season":2025,"week":20,"game_type":"DIV","home_team":"SEA","away_team":"SF","home_score":41,"away_score":6,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_20_LA_CHI","season":2025,"week":20,"game_type":"DIV","home_team":"CHI","away_team":"LA","home_score":17,"away_score":20,"roof":"outdoors","stadium":"Soldier Field"}
+{"game_id":"2025_20_HOU_NE","season":2025,"week":20,"game_type":"DIV","home_team":"NE","away_team":"HOU","home_score":28,"away_score":16,"roof":"outdoors","stadium":"Gillette Stadium"}
+{"game_id":"2025_21_NE_DEN","season":2025,"week":21,"game_type":"CON","home_team":"DEN","away_team":"NE","home_score":7,"away_score":10,"roof":"outdoors","stadium":"Empower Field at Mile High"}
+{"game_id":"2025_21_LA_SEA","season":2025,"week":21,"game_type":"CON","home_team":"SEA","away_team":"LA","home_score":31,"away_score":27,"roof":"outdoors","stadium":"Lumen Field"}
+{"game_id":"2025_22_SEA_NE","season":2025,"week":22,"game_type":"SB","home_team":"NE","away_team":"SEA","home_score":13,"away_score":29,"roof":"outdoors","stadium":"Levi's Stadium"}

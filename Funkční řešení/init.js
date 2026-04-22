@@ -77,6 +77,10 @@ db.createCollection("games", {
                 roof: {
                     enum: Object.values(RoofTypeEnum),
                     description: "roof has to be one of the following: dome, outdoors, closed and is required"
+                },
+                stadium: {
+                    bsonType: ["string", "null"],
+                    description: "stadium has to be string if provided, otherwise is optional"
                 }
             }
         }
@@ -125,7 +129,7 @@ db.createCollection("rosters", {
             required: ["team", "position", "weight", "full_name", "entry_year", "rookie_year"],
             properties: {
                 gsis_id: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "gsis_id has to be string if provided, otherwise is optional"
                 },
                 team: {
@@ -146,12 +150,12 @@ db.createCollection("rosters", {
                     minimum: 0,
                 },
                 height: {
-                    bsonType: ["int", "double"],
+                    bsonType: ["int", "double", "null"],
                     description: "height has to be integer or double, minimum value is 0 and is optional",
                     minimum: 0
                 },
                 college: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "college has to be string if provided, otherwise is optional"
                 },
                 entry_year: {
@@ -177,19 +181,19 @@ db.createCollection("player_stats", {
             required: ["recent_team", "games", "passing_yards", "passing_tds", "rushing_yards", "receiving_yards", "fantasy_points", "sacks_suffered", "sack_fumbles", "sack_fumbles_lost", "passing_first_downs"],
             properties: {
                 player_id: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "player_id has to be string if provided, otherwise is optional"
                 },
                 player_display_name: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "player_display_name has to be string if provided, otherwise is optional"
                 },
                 position: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "position has to be string if provided, otherwise is optional"
                 },
                 position_group: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "position_group has to be string if provided, otherwise is optional"
                 },
                 recent_team: {
@@ -260,7 +264,7 @@ db.createCollection("plays", {
                     description: "game_id has to be string and is required"
                 },
                 play_id: {
-                    bsonType: "int",
+                    bsonType: ["int", "long"],
                     description: "play_id has to be integer, minimum value is 0 and is required",
                     minimum: 0
                 },
@@ -277,8 +281,8 @@ db.createCollection("plays", {
                     description: "defteam has to be string if provided, otherwise is optional"
                 },
                 down: {
-                    bsonType: "int",
-                    description: "down has to be integer, if provided, otherwise is optional",
+                    bsonType: ["int", "double", "null"],
+                    description: "down has to be int or double or null, values 1-4",
                     minimum: 1,
                     maximum: 4,
                 },
@@ -289,19 +293,19 @@ db.createCollection("plays", {
                     maximum: 100,
                 },
                 yards_gained: {
-                    bsonType: "int",
+                    bsonType: ["int", "double"],
                     description: "yards_gained has to be integer and is required",
                 },
                 passer_player_id: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "passer_player_id has to be string, if provided, otherwise is optional",
                 },
                 receiver_player_id: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "receiver_player_id has to be string, if provided, otherwise is optional",
                 },
                 rusher_player_id: {
-                    bsonType: "string",
+                    bsonType: ["string", "null"],
                     description: "rusher_player_id has to be string, if provided, otherwise is optional",
                 },
             }
