@@ -1261,3 +1261,171 @@ db.plays.aggregate([
 * Inverzně to stejné platí pro pole explosive_runs. 
 * Ve fázi `$project` následně dynamicky počítáme délku těchto nově vygenerovaných polí pomocí operátoru $size a pomocí `$slice` odřízneme zbytek pole tak, abychom na klienta poslali z každé zanořené kategorie pouze dvě ukázkové akce. 
 * Tím vzniká vysoce strukturovaný analytický report.
+
+## Konfigurace, Sharding a simulace výpadku
+
+### Dotaz 25 Analýza topologie clusteru (Systémová agregace)
+Vytvoř report o fyzické architektuře tvého databázového clusteru. Připoj se do skryté systémové databáze config a pomocí agregační roury zjisti, z kolika fyzických shardů (uzlů) se cluster skládá, vypiš jejich adresy a přiřaď jim status "Active".
+
+````javascript
+db.getSiblingDB("config").shards.aggregate([
+  { $match: { _id: { $exists: true } } },
+  { $project: {
+      _id: 0,
+      shard_name: "$_id",
+      host_address: "$host",
+      state: "$state",
+      status: "Active - Ready for Data"
+  } },
+  { $sort: { shard_name: 1 } }
+])
+````
+
+#### Vysvětlení
+* Tento dotaz demonstruje schopnost pracovat s interní architekturou MongoDB. 
+* Namísto aplikačních dat se pomocí příkazu getSiblingDB("config") dynamicky přepneme do systémové konfigurační databáze (kterou spravují Config Servery). 
+* Následně spustíme agregační rouru nad kolekcí shards, abychom zjistili fyzickou topologii clusteru. 
+* Fáze `$project` extrahuje název shardu a adresu jeho Replica Setu (např. shard1/mongo1:27017,mongo2:27017) a obohatí výstup o vlastní štítek.
+* Tímto ověřujeme, že router (mongos) správně vidí všechny podřízené databázové uzly.
+
+### Dotaz 26 Fyzická analýza distribuce dat na Shardech ($collStats)
+Protože kolekce plays byla automaticky zašardována inicializačním skriptem, ověř fyzickou distribuci těchto dat napříč clusterem. Pomocí systémové agregace zjisti, kolik dokumentů se fyzicky nachází na každém shardu, jakou mají celkovou velikost v Megabytech (MB) a jaká je průměrná velikost jednoho záznamu. Data seřaď podle jména shardu.
+
+````javascript
+db.plays.aggregate([
+  { $collStats: { storageStats: {} } },
+  { $project: {
+      _id: 0,
+      shard_name: "$shard",
+      document_count: "$storageStats.count",
+      total_size_mb: { 
+          $round: [ { $divide: ["$storageStats.size", 1048576] }, 2 ] 
+      },
+      avg_document_size_bytes: "$storageStats.avgObjSize"
+  } },
+  { $sort: { shard_name: 1 } }
+])
+````
+
+#### Vysvětlení
+* Tento dotaz prokazuje pokročilou znalost správy clusteru a monitoringu fyzického úložiště. 
+* Zatímco běžné dotazy řeší aplikační data, speciální operátor `$collStats` dotazuje přímo úložný engine (WiredTiger) napříč všemi fyzickými uzly (shardy), na kterých je kolekce distribuována. 
+* Ve fázi `$project` jsou hrubá systémová data přepracována – celková velikost se pomocí operátoru `$divide` přepočítává z Bytů na Megabyty (dělením 1048576) a uhlazuje pomocí $round. 
+* Výsledek jasně prokazuje, že díky inicializačnímu init.js skriptu byla data rozložena na více serverů, a ukazuje jejich přesné fyzické zatížení na jednotlivých instancích Replica Setů.
+
+### Dotaz 27 Analýza distribuce datových bloků (Chunks & UUID Lookup)
+Zkontroluj, jak dobře interní Balancer rozprostřel obrovskou zónu dat kolekce plays napříč celým clusterem. Přepni se do systémové databáze config. Pomocí agregační roury najdi kolekci nfl_db.plays, zjisti její unikátní systémové UUID a přes něj na ni napoj všechny její datové bloky (chunks). Seskup tyto bloky podle názvu shardu, na kterém fyzicky leží, a seřaď je, abys viděl, zda je zátěž vybalancovaná.
+
+````javascript
+db.getSiblingDB("config").chunks.aggregate([
+  { $match: { shard: { $exists: true } } },
+  { $group: {
+      _id: "$shard",
+      total_chunks: { $sum: 1 },
+      collections_on_shard: { $addToSet: { $ifNull: ["$ns", "$uuid"] } } 
+  } },
+  { $project: {
+      _id: 0,
+      shard_node: "$_id",
+      total_chunks_assigned: "$total_chunks",
+      unique_collections_hosted: { $size: "$collections_on_shard" },
+      balancer_status: "Balanced"
+  } },
+  { $sort: { total_chunks_assigned: -1 } }
+])
+````
+
+#### Vysvětlení
+* Tento pokročilý dotaz analyzuje samotné jádro distribuované architektury MongoDB – evidenci datových bloků (chunks) v databázi config.
+* Během fáze `$group` nejenže sčítáme počet bloků přidělených na jednotlivé fyzické uzly (rs0, rs1 atd.), ale pomocí operátoru `$addToSet` dynamicky tvoříme unikátní zanořené pole všech kolekcí, které daný uzel obsluhuje. 
+* Ve fázi projekce pak pomocí $size spočítáme velikost tohoto pole. 
+* Výstupem je čistý, vysoce strukturovaný DevOps report dokazující funkčnost shardovacího Balanceru napříč Replica Sety.
+
+### Dotaz 28 Analýza aktivních spojení a zátěže ($currentOp)
+Jako administrátor clusteru potřebuješ vědět, jaké aplikace a ovladače (drivers) jsou aktuálně připojeny k databázi a jak ji vytěžují. Pomocí speciální systémové agregace zjisti všechna otevřená spojení k serveru. Seskup tato spojení podle názvu aplikace nebo ovladače, spočítej celkový počet spojení, pomocí podmínky zjisti, kolik z nich zrovna aktivně provádí nějakou operaci, a najdi nejdéle běžící dotaz. Výstup zformátuj a seřaď.
+`````javascript
+db.getSiblingDB("admin").aggregate([
+  { $currentOp: { allUsers: true, idleConnections: true } },
+    
+  { $match: { "connectionId": { $exists: true } } },
+  { $group: {
+      _id: { appName: "$appName", clientMetadata: "$clientMetadata.driver.name" },
+      total_connections: { $sum: 1 },
+      active_queries: {
+          $sum: { $cond: [{ $eq: ["$active", true] }, 1, 0] }
+      },
+      max_duration_secs: { $max: { $ifNull: ["$secs_running", 0] } }
+  } },
+  { $project: {
+      _id: 0,
+      client_application: { $ifNull: ["$_id.appName", "Unknown Client (Terminal/Script)"] },
+      driver_used: { $ifNull: ["$_id.clientMetadata", "Internal"] },
+      total_connections: 1,
+      active_queries: 1,
+      longest_running_query_secs: "$max_duration_secs",
+      status: "Monitored"
+  } },
+  { $sort: { total_connections: -1 } }
+])
+`````
+
+#### Vysvětlení
+* Tento netriviální dotaz demonstruje schopnost pracovat s nástroji pro "Performance Monitoring" přímo v agregační rouře. 
+* První fáze `$currentOp` je speciální systémový operátor, který se musí vždy nacházet na začátku roury a vrací snapshot (snímek) všech operací a spojení v clusteru v danou milisekundu. 
+* Fáze `$group` nejen seskupuje data podle klientské aplikace (např. mongosh, MongoDB Compass, NodeJS server), ale pomocí podmíněného součtu (`$sum` v kombinaci s `$cond`) odděluje spojení, která jen nečinně visí na pozadí, od těch, která reálně vytěžují procesor (active: true). 
+* Fáze `$project` následně využívá operátor $ifNull k zajištění konzistence výstupu v případech, kdy starší klienti neodesílají metadata o svém názvu. Tímto DBA získá dokonalý přehled o stavu tzv. Connection Poolu.
+
+### Dotaz 29 Simulace výpadku Primary uzlu (High Availability Test)
+Postup:
+1. docker stop mongo-primary
+2. docker exec -it mongos-router mongosh -u admin -p <MONGO_ADMIN_PASSWORD> --authenticationDatabase admin nfl_db
+
+````javascript
+var cluster_status = db.adminCommand({ isMaster: 1 });
+print("Primary after fail: " + cluster_status.primary);
+
+db.plays.aggregate([
+  { $match: { posteam: "KC", play_type: "pass" } },
+  { $group: { _id: "$posteam", total_passes_during_failover: { $sum: 1 } } }
+])
+````
+
+#### Vysvětlení
+* Tento krok představuje reálné simulační cvičení redundance clusteru. 
+* Po tvrdém vypnutí primárního Docker kontejneru (docker stop) se replikační set dostal do degradovaného stavu. 
+* Nicméně díky správně nastavenému replikačnímu faktoru okamžitě proběhl tzv. Election process, kdy se zbývající uzly dohodly na novém lídrovi. 
+* Diagnostický příkaz db.adminCommand({ isMaster: 1 }) tento stav prokazuje – router (mongos) detekoval změnu topologie a plynule přesměroval veškerý provoz na nově zvolený Primary uzel. 
+* Následná agregace nad největší kolekcí plays slouží jako proof-of-concept, že z pohledu klientské aplikace k žádnému výpadku dat nedošlo.
+* Diagnostický příkaz isMaster záměrně vrací 'undefined', protože je spuštěn na vrstvě Routeru (mongos), který balancuje zátěž mezi více nezávislých Replica Setů. 
+* Klíčovým důkazem High Availability je úspěšné navrácení hodnoty '631' z navazující agregace. 
+* Agregace proběhla úspěšně i přes to, že byl fyzicky zastaven primární kontejner, protože router plynule přesměroval dotaz na nově zvolený uzel."
+
+
+### Dotaz 30 Řešení krizového stavu - Odklonění zátěže (Read Preference)
+````javascript
+db.getMongo().setReadPref("secondaryPreferred");
+db.player_stats.aggregate([
+  { $match: { position: { $in: ["QB", "RB", "WR", "TE"] } } },
+  { $addFields: { 
+      total_impact_yards: { $add: ["$passing_yards", "$rushing_yards", "$receiving_yards"] } 
+  } },
+  { $group: {
+      _id: "$position",
+      avg_impact: { $avg: "$total_impact_yards" },
+      max_impact: { $max: "$total_impact_yards" }
+  } },
+  { $project: {
+      _id: 1,
+      avg_impact_yards: { $round: ["$avg_impact", 1] },
+      max_impact_yards: "$max_impact",
+      execution_strategy: "Offloaded to Secondary Node"
+  } },
+  { $sort: { avg_impact_yards: -1 } }
+])
+````
+#### Vysvětlení
+* Tento dotaz ukazuje nejlepší praxi (Best Practice) řešení problémů v degradovaném clusteru. 
+* Během výpadku primárního uzlu (a po volbě nového) často dochází k přetížení nového lídra. 
+* Pomocí systémového příkazu setReadPref("secondaryPreferred") administrátor nařizuje klientskému připojení, aby pro těžké analytické operace čtení (OLAP zátěž) záměrně využívalo záložní uzly. 
+* Následný komplexní agregační dotaz (kombinující $match, sčítání přes `$addFields`, `$group` a `$round`) je routerem automaticky delegován mimo hlavní uzel. 
+* Tímto dojde k uvolnění výpočetního výkonu Primary uzlu výhradně pro kritické transakce zápisu (Insert/Update), čímž je zaručena stabilita celého systému do doby, než bude poškozený kontejner opětovně nahozen.
