@@ -176,55 +176,55 @@ services:
       MONGO_REPORTER_PASSWORD: ${MONGO_REPORTER_PASSWORD}
     entrypoint: >
       bash -c "
-        echo '1. Cekam na Config server...' &&
+        echo '1. Waiting for Config server...' &&
         until mongosh --quiet --host mongo-config --port 27019 --eval 'db.hello().isWritablePrimary' | grep -q 'true'; do
           sleep 2;
         done &&
       
-        echo '2. Cekam na rs0 (Primary)...' &&
+        echo '2. Waiting for rs0 (Primary)...' &&
         until mongosh --quiet --host mongo-primary --port 27018 --eval 'db.hello().isWritablePrimary' | grep -q 'true'; do
           sleep 2;
         done &&
       
-        echo '3. Cekam na rs1 (Shard 2)...' &&
+        echo '3. Waiting for (Shard 2)...' &&
         until mongosh --quiet --host mongo-shard2 --port 27018 --eval 'db.hello().isWritablePrimary' | grep -q 'true'; do
           sleep 2;
         done &&
       
-        echo '4. Cekam na rs2 (Shard 3)...' &&
+        echo '4. Waiting for (Shard 3)...' &&
         until mongosh --quiet --host mongo-shard3 --port 27018 --eval 'db.hello().isWritablePrimary' | grep -q 'true'; do
           sleep 2;
         done &&
       
-        echo '5. Cekam na mongos (Router)...' &&
+        echo '5. Waiting for mongos (Router)...' &&
         until mongosh --quiet --host mongos --port 27017 --eval 'db.adminCommand({ping:1}).ok' | grep -q '1'; do
           sleep 2;
         done &&
       
-        echo '6. Pridavam Shardy do clusteru...' &&
+        echo '6. Adding shards to cluster...' &&
         mongosh --quiet --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin --eval '
           sh.addShard(\"rs0/mongo-primary:27018,mongo-secondary:27018,mongo-tertiary:27018\");
           sh.addShard(\"rs1/mongo-shard2:27018\");
           sh.addShard(\"rs2/mongo-shard3:27018\");
         ' &&
       
-        echo '7. Spoustim init.js (Validace a Sharding)...' &&
+        echo '7. Running init.js (Validation and Sharding)...' &&
         mongosh --quiet --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin /setup_data/init.js &&
       
-        echo '8. Importuji JSON data (Mongoimport z oddelene slozky)...' &&
+        echo '8. Import JSON data (Mongoimport)...' &&
         mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c games --file /json_data/games.json --type json &&
         mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c teams --file /json_data/teams.json --type json &&
         mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c rosters --file /json_data/rosters.json --type json &&
         mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c player_stats --file /json_data/player_stats.json --type json &&
         mongoimport --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin -d nfl_db -c plays --file /json_data/plays.json --type json &&
       
-        echo '9. Vytvarim aplikacni uzivatele...' &&
+        echo '9. Creating app users...' &&
         mongosh --quiet --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin --eval '
-          use appdb;
-          db.createUser({ user: \"appuser\", pwd: \"'\"'\"'$MONGO_APP_PASSWORD'\"'\"'\", roles: [{ role: \"readWrite\", db: \"appdb\" }] });
-          db.createUser({ user: \"reporter\", pwd: \"'\"'\"'$MONGO_REPORTER_PASSWORD'\"'\"'\", roles: [{ role: \"read\", db: \"appdb\" }] });
+          use nfl_db;
+          db.createUser({ user: \"appuser\", pwd: \"'\"'\"'$MONGO_APP_PASSWORD'\"'\"'\", roles: [{ role: \"readWrite\", db: \"nfl_db\" }] });
+          db.createUser({ user: \"reporter\", pwd: \"'\"'\"'$MONGO_REPORTER_PASSWORD'\"'\"'\", roles: [{ role: \"read\", db: \"nfl_db\" }] });
         ' &&
-        echo '===== HOTOVO! CLUSTER JE PRIPRAVEN A NAPLNEN DATY ====='
+        echo '===== DONE! CLUSTER IS READY ====='
       "
 
 networks:

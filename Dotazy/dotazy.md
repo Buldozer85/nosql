@@ -6,8 +6,8 @@ docker exec -it mongos-router mongosh -u admin -p <MONGO_ADMIN_PASSWORD> --authe
 ````
 ## Analytické a agregační dotazy
 
-### Dotaz 1 - Nejúspěšnější týmy ve hře vzduchem
-Zadání v přirozeném jazyce: Zjisti 5 týmů, které získaly celkově nejvíce yardů pouze pomocí přihrávek (pass), a pomocí spojení s kolekcí týmů zobraz jejich oficiální plné názvy místo zkratek.
+### Dotaz 1 Nejúspěšnější týmy ve hře vzduchem
+Zjisti 5 týmů, které získaly celkově nejvíce yardů pouze pomocí přihrávek (pass), a pomocí spojení s kolekcí týmů zobraz jejich oficiální plné názvy místo zkratek.
 
 ````javascript
 db.plays.aggregate([
@@ -73,8 +73,8 @@ db.plays.aggregate([
 ]
 ````
 
-### Dotaz 2 Detailní profil top 5 Quaterbacků soutěže
-Najdi 3 hráče s největším počtem naházených touchdownů a připoj k nim celý název jejich týmu a konferenci z kolekce teams.
+### Dotaz 2  Detailní profil top 5 Quaterbacků soutěže
+Najdi 5 hráčů s největším počtem naházených touchdownů a připoj k nim celý název jejich týmu a konferenci z kolekce teams.
 ````javascript
 db.player_stats.aggregate([
   { $sort: { passing_tds: -1 } },
@@ -248,7 +248,7 @@ db.rosters.aggregate([
 ]
 ````
 
-### Dotaz 4 - Zápasy v dómech s velkým počtem bodů
+### Dotaz 4 Zápasy v dómech s velkým počtem bodů
 Najdi 5 zápasů hraných v uzavřených halách (dome), ve kterých padlo dohromady (domácí + hosté) nejvíce bodů. Místo zkratek týmů zobraz celá jména a stadion, na kterém se zápas odehrál
 ````javascript
 db.games.aggregate([
@@ -481,6 +481,17 @@ db.rosters.updateMany(
 * Nejdříve v prvním bloku `$set` využijeme matematický operátor `$subtract`, kterým dynamicky vypočítáme a uložíme novou vlastnost years_of_experience jako rozdíl aktuálního roku (2025) a roku vstupu hráče do ligy (entry_year). 
 * Ihned v navazujícím bloku `$set` spouštíme logický operátor `$switch`, který na základě čerstvě vypočítaných zkušeností vyhodnotí do jaké kategorie hráč spadá (Rookie, Pro, Veteran) a výsledek uloží do pole career_stage.
 
+#### Výsledek
+````json lines
+{                                                                                                                                                                                                                                                                                                                      
+  acknowledged: true,                                                                                                                                                                                                                                                                                                  
+  insertedId: null,
+  matchedCount: 3137,
+  modifiedCount: 3137,
+  upsertedCount: 0
+}
+````
+
 ### Dotaz 8 Přepočet metriky a výkonnostní štítkování (Multi-stage Update)
 U všech Quarterbacků (QB) v kolekci player_stats, kteří odehráli alespoň 5 zápasů, vypočítej průměrný počet naházených yardů na zápas. Následně (ve stejném dotazu) využij tuto novou hodnotu k vytvoření výkonnostní třídy (performance_grade): hráči nad 250 yardů dostanou štítek "Elite", nad 200 "Starter", zbytek "Backup".
 ````javascript
@@ -505,11 +516,22 @@ db.player_stats.updateMany(
 )
 ````
 
-### Vysvětlení
+#### Vysvětlení
 * Tento dotaz je ukázkou komplexní aktualizace dat pomocí zřetězené agregační roury (Pipeline Update). 
 * V prvním bloku `$set` databáze matematicky vypočítá (`$divide`, `$round`) průměrný zisk yardů na zápas. 
 * Okamžitě v navazujícím druhém bloku `$set` databáze využije tuto čerstvě vytvořenou hodnotu (passing_yards_per_game) uvnitř operátoru `$switch`, aby hráče roztřídila do výkonnostních kategorií (Elite, Starter, Backup). 
 * Tímto zřetězením jsme provedli dva logické kroky během jediného průchodu databází.
+
+#### Výsledek
+````json lines
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 50,
+  modifiedCount: 50,
+  upsertedCount: 0
+}
+`````
 
 ### Dotaz 9 Vytvoření All-Pro týmu
 Pomocí složité agregace najdi absolutně nejlepšího hráče pro klíčové ofenzivní pozice (QB, WR, RB) na základě celkového součtu získaných yardů (během i vzduchem). Tuto vyfiltrovanou "elitu" pak hromadně vlož (insertMany) do nově vytvořené kolekce all_pro_roster.
@@ -545,6 +567,18 @@ db.all_pro_roster.insertMany(top_players);
 * Krok `$group` a `$first`: "$$ROOT" zajistí, že si z každé herní pozice ponecháme pouze toho absolutně nejlepšího hráče (celý jeho dokument). 
 * Pomocí `$replaceRoot` a `$project` dokumenty restrukturalizujeme, obohatíme o nový štítek "All-Pro 2025" a výsledek ve formě pole rovnou vložíme do nové kolekce.
 
+#### Výsledek
+````javascript
+[{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69ff55f0354fc70a77591667'),
+    '1': ObjectId('69ff55f0354fc70a77591668'),
+    '2': ObjectId('69ff55f0354fc70a77591669')
+  }
+}]
+````
+
 ### Dotaz 10 Vyřazení neaktivních hráčů
 Najdi na soupiskách (rosters) všechny starší hráče (draftované před rokem 2024), kteří v sezóně 2025 nenastoupili do jediného zápasu (nemají záznam v player_stats). Získej jejich unikátní ID a následně je hromadně z kolekce soupisek vymaž (deleteMany).
 ````javascript
@@ -567,6 +601,11 @@ db.rosters.deleteMany({ _id: { $in: cut_list } });
 * **Tento dotaz ji řeší ve dvou krocích:** 
 * * První část využívá agregační rouru s operátory `$lookup` a `$match`, kde přes podmínku `$size: 0` vyfiltrujeme hráče z rosters, ke kterým neexistuje žádný záznam v player_stats. 
 * * Pomocí JavaScriptové funkce `.map()` extrahujeme pouze jejich unikátní identifikátory. Tyto vytažené identifikátory pak předáme do podmínky `$in` uvnitř příkazu deleteMany, čímž dynamicky vyčistíme databázi od neaktivních hráčů.
+
+#### Výsledek
+````javascript
+[{ acknowledged: true, deletedCount: 519 }]
+````
 
 ### Dotaz 11 Generování "Výroční zprávy"
 Vytvoř komplexní „Výroční zprávu“ o celé sezóně. Využij pokročilý agregační operátor `$facet` k tomu, abys v jednom jediném dotazu paralelně zpracoval 3 různé statistiky: Top 3 Quarterbacky (podle yardů), Top 3 Running backy (podle yardů) a celkový počet všech naházených touchdownů v lize. Výsledný masivní dokument obohať o časové razítko a vlož ho do nové kolekce season_reports
@@ -604,6 +643,16 @@ db.season_reports.insertOne(masivni_report[0]);
 * Protože výsledkem je komplexní NoSQL dokument plný zanořených polí a objektů, uložíme ho jako celek do auditní kolekce pomocí příkazu insertOne. 
 * Tím je demonstrován pokročilý analytický vklad dat (Insert) bez nutnosti aplikační logiky na straně serveru.
 
+#### Výsledek
+````javascript
+[
+    {
+  acknowledged: true,
+  insertedId: ObjectId('69ff5657354fc70a7759166a')
+}
+]
+````
+
 ### Dotaz 12 Souhrn sezóny týmů
 
 Vytvoř komplexní agregovanou zprávu (Materialized View), která shrne ofenzivní sílu jednotlivých týmů. U každého týmu spočítej celkový počet ofenzivních akcí (běhů a přihrávek), celkový počet získaných yardů a průměrný zisk yardů na jednu akci. Nahraď zkratky týmů jejich plnými názvy, výsledky seřaď od nejlepších ofenziv a tento report trvale ulož do nové kolekce team_season_summary.
@@ -640,7 +689,9 @@ db.plays.aggregate([
       whenMatched: "replace", 
       whenNotMatched: "insert" 
   } }
-])
+]);
+
+db.team_season_summary.find().sort({ total_offensive_yards: -1 });
 ````
 
 #### Vysvětlení
@@ -651,6 +702,172 @@ Tento vysoce pokročilý dotaz (skládající se z 8 zřetězených fází) demo
 * Po formátování přes `$project` a seřazení (`$sort`) přichází finální a klíčová fáze `$merge`. 
 * Ta výsledek agregace nevypíše pouze dočasně na obrazovku, ale trvale ho uloží do nové kolekce team_season_summary (případně ho aktualizuje, pokud už existuje). 
 * Tento přístup představuje masivní úsporu výpočetního výkonu databáze, protože klientské aplikace mohou číst už předpočítaná data z této nové kolekce, místo aby spouštěly složitou agregaci pořád dokola.
+
+#### Výsledek
+````javascript
+[                                                                                                                                                                                                                                                                                                                      
+  {                                                                                                                                                                                                                                                                                                                    
+    _id: ObjectId('69ff567f21b164b6b273fa05'),                                                                                                                                                                                                                                                                         
+    total_offensive_yards: 8256,
+    total_plays: 897,
+    yards_per_play: 9.2,
+    team_abbr: 'LA',
+    team_name: 'Los Angeles Rams'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa25'),
+    total_offensive_yards: 8256,
+    total_plays: 897,
+    yards_per_play: 9.2,
+    team_abbr: 'LA',
+    team_name: 'Los Angeles Rams'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa06'),
+    total_offensive_yards: 8137,
+    total_plays: 884,
+    yards_per_play: 9.2,
+    team_abbr: 'NE',
+    team_name: 'New England Patriots'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa26'),
+    total_offensive_yards: 8137,
+    total_plays: 884,
+    yards_per_play: 9.2,
+    team_abbr: 'NE',
+    team_name: 'New England Patriots'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa27'),
+    total_offensive_yards: 7631,
+    total_plays: 889,
+    yards_per_play: 8.6,
+    team_abbr: 'BUF',
+    team_name: 'Buffalo Bills'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa07'),
+    total_offensive_yards: 7631,
+    total_plays: 889,
+    yards_per_play: 8.6,
+    team_abbr: 'BUF',
+    team_name: 'Buffalo Bills'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa28'),
+    total_offensive_yards: 7479,
+    total_plays: 847,
+    yards_per_play: 8.8,
+    team_abbr: 'CHI',
+    team_name: 'Chicago Bears'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa08'),
+    total_offensive_yards: 7479,
+    total_plays: 847,
+    yards_per_play: 8.8,
+    team_abbr: 'CHI',
+    team_name: 'Chicago Bears'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa09'),
+    total_offensive_yards: 7420,
+    total_plays: 830,
+    yards_per_play: 8.9,
+    team_abbr: 'SEA',
+    team_name: 'Seattle Seahawks'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa29'),
+    total_offensive_yards: 7420,
+    total_plays: 830,
+    yards_per_play: 8.9,
+    team_abbr: 'SEA',
+    team_name: 'Seattle Seahawks'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa0a'),
+    total_offensive_yards: 6966,
+    total_plays: 792,
+    yards_per_play: 8.8,
+    team_abbr: 'DAL',
+    team_name: 'Dallas Cowboys'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa2a'),
+    total_offensive_yards: 6966,
+    total_plays: 792,
+    yards_per_play: 8.8,
+    team_abbr: 'DAL',
+    team_name: 'Dallas Cowboys'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa2b'),
+    total_offensive_yards: 6908,
+    total_plays: 850,
+    yards_per_play: 8.1,
+    team_abbr: 'SF',
+    team_name: 'San Francisco 49ers'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa0b'),
+    total_offensive_yards: 6908,
+    total_plays: 850,
+    yards_per_play: 8.1,
+    team_abbr: 'SF',
+    team_name: 'San Francisco 49ers'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa2c'),
+    total_offensive_yards: 6761,
+    total_plays: 731,
+    yards_per_play: 9.2,
+    team_abbr: 'DET',
+    team_name: 'Detroit Lions'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa0c'),
+    total_offensive_yards: 6761,
+    total_plays: 731,
+    yards_per_play: 9.2,
+    team_abbr: 'DET',
+    team_name: 'Detroit Lions'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa2d'),
+    total_offensive_yards: 6667,
+    total_plays: 813,
+    yards_per_play: 8.2,
+    team_abbr: 'DEN',
+    team_name: 'Denver Broncos'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa0d'),
+    total_offensive_yards: 6667,
+    total_plays: 813,
+    yards_per_play: 8.2,
+    team_abbr: 'DEN',
+    team_name: 'Denver Broncos'
+  },
+  {
+    _id: ObjectId('69ff56cc21b164b6b273fa2e'),
+    total_offensive_yards: 6627,
+    total_plays: 802,
+    yards_per_play: 8.3,
+    team_abbr: 'HOU',
+    team_name: 'Houston Texans'
+  },
+  {
+    _id: ObjectId('69ff567f21b164b6b273fa0e'),
+    total_offensive_yards: 6627,
+    total_plays: 802,
+    yards_per_play: 8.3,
+    team_abbr: 'HOU',
+    team_name: 'Houston Texans'
+  }
+]
+````
 
 ## Indexy a optimalizace
 
@@ -669,6 +886,11 @@ db.plays.createIndex(
 * Tento konkrétní index je navržen přesně pro potřeby naší aplikace, která často vyhledává akce určitého týmu při konkrétním downu a rovnou je potřebuje řadit od nejdelšího zisku. 
 * Návratovou hodnotou je JSON potvrzující úspěšné vytvoření struktury na pozadí databáze.
 
+#### Výsledek
+````javascript
+idx_team_down_yards
+````
+
 ### Dotaz 14 Netriviální důkaz optimalizace (Explain Plan s vnořeným filtrem)
 Vyhledej všechny akce týmu "KC" při 3. downu, kde získali více než 15 yardů. Místo samotných dat ale vypiš kompletní exekuční plán databáze (executionStats), abys dokázal, že databáze skutečně použila index z Dotazu 13 a neprohledávala zbytečně statisíce záznamů.
 ````javascript
@@ -682,6 +904,435 @@ db.plays.find(
 * Ve výstupu hledáme především parametr "stage": "IXSCAN" (Index Scan), který dokazuje, že byl k vyhledání použit nově vytvořený idx_team_down_yards. 
 * Kdyby tam bylo COLLSCAN (Collection Scan), znamenalo by to fatální selhání optimalizace. 
 * Vrácená metadata jasně ukazují, kolik milisekund operace trvala a kolik dokumentů bylo reálně prozkoumáno.
+
+#### Výsledek
+````javascript
+[
+    {
+  queryPlanner: {
+    winningPlan: {
+      stage: 'SHARD_MERGE',
+      shards: [
+        {
+          explainVersion: '1',
+          shardName: 'rs0',
+          connectionString: 'rs0/mongo-primary:27018,mongo-secondary:27018,mongo-tertiary:27018',
+          serverInfo: {
+            host: '4dd5fe9c7ab1',
+            port: 27018,
+            version: '8.2.5',
+            gitVersion: 'a471a13094434666c48a1f75451f2efa49f8f5df'
+          },
+          namespace: 'nfl_db.plays',
+          parsedQuery: {
+            '$and': [
+              { down: { '$eq': 3 } },
+              { posteam: { '$eq': 'KC' } },
+              { yards_gained: { '$gt': 15 } }
+            ]
+          },
+          indexFilterSet: false,
+          queryHash: 'B053E2C7',
+          planCacheShapeHash: 'B053E2C7',
+          planCacheKey: 'B7CE3F4B',
+          optimizationTimeMillis: 0,
+          maxIndexedOrSolutionsReached: false,
+          maxIndexedAndSolutionsReached: false,
+          maxScansToExplodeReached: false,
+          prunedSimilarIndexes: false,
+          winningPlan: {
+            isCached: false,
+            stage: 'SHARDING_FILTER',
+            inputStage: {
+              stage: 'FETCH',
+              inputStage: {
+                stage: 'IXSCAN',
+                keyPattern: { posteam: 1, down: 1, yards_gained: -1 },
+                indexName: 'idx_team_down_yards',
+                isMultiKey: false,
+                multiKeyPaths: { posteam: [], down: [], yards_gained: [] },
+                isUnique: false,
+                isSparse: false,
+                isPartial: false,
+                indexVersion: 2,
+                direction: 'forward',
+                indexBounds: {
+                  posteam: [ '["KC", "KC"]' ],
+                  down: [ '[3, 3]' ],
+                  yards_gained: [ '[inf, 15)' ]
+                }
+              }
+            }
+          },
+          rejectedPlans: []
+        },
+        {
+          explainVersion: '1',
+          shardName: 'rs1',
+          connectionString: 'rs1/mongo-shard2:27018',
+          serverInfo: {
+            host: '5f2a85a303ce',
+            port: 27018,
+            version: '8.2.5',
+            gitVersion: 'a471a13094434666c48a1f75451f2efa49f8f5df'
+          },
+          namespace: 'nfl_db.plays',
+          parsedQuery: {
+            '$and': [
+              { down: { '$eq': 3 } },
+              { posteam: { '$eq': 'KC' } },
+              { yards_gained: { '$gt': 15 } }
+            ]
+          },
+          indexFilterSet: false,
+          queryHash: 'B053E2C7',
+          planCacheShapeHash: 'B053E2C7',
+          planCacheKey: 'B7CE3F4B',
+          optimizationTimeMillis: 0,
+          maxIndexedOrSolutionsReached: false,
+          maxIndexedAndSolutionsReached: false,
+          maxScansToExplodeReached: false,
+          prunedSimilarIndexes: false,
+          winningPlan: {
+            isCached: false,
+            stage: 'SHARDING_FILTER',
+            inputStage: {
+              stage: 'FETCH',
+              inputStage: {
+                stage: 'IXSCAN',
+                keyPattern: { posteam: 1, down: 1, yards_gained: -1 },
+                indexName: 'idx_team_down_yards',
+                isMultiKey: false,
+                multiKeyPaths: { posteam: [], down: [], yards_gained: [] },
+                isUnique: false,
+                isSparse: false,
+                isPartial: false,
+                indexVersion: 2,
+                direction: 'forward',
+                indexBounds: {
+                  posteam: [ '["KC", "KC"]' ],
+                  down: [ '[3, 3]' ],
+                  yards_gained: [ '[inf, 15)' ]
+                }
+              }
+            }
+          },
+          rejectedPlans: []
+        },
+        {
+          explainVersion: '1',
+          shardName: 'rs2',
+          connectionString: 'rs2/mongo-shard3:27018',
+          serverInfo: {
+            host: '36bbb52bdef8',
+            port: 27018,
+            version: '8.2.5',
+            gitVersion: 'a471a13094434666c48a1f75451f2efa49f8f5df'
+          },
+          namespace: 'nfl_db.plays',
+          parsedQuery: {
+            '$and': [
+              { down: { '$eq': 3 } },
+              { posteam: { '$eq': 'KC' } },
+              { yards_gained: { '$gt': 15 } }
+            ]
+          },
+          indexFilterSet: false,
+          queryHash: 'B053E2C7',
+          planCacheShapeHash: 'B053E2C7',
+          planCacheKey: 'B7CE3F4B',
+          optimizationTimeMillis: 0,
+          maxIndexedOrSolutionsReached: false,
+          maxIndexedAndSolutionsReached: false,
+          maxScansToExplodeReached: false,
+          prunedSimilarIndexes: false,
+          winningPlan: {
+            isCached: false,
+            stage: 'SHARDING_FILTER',
+            inputStage: {
+              stage: 'FETCH',
+              inputStage: {
+                stage: 'IXSCAN',
+                keyPattern: { posteam: 1, down: 1, yards_gained: -1 },
+                indexName: 'idx_team_down_yards',
+                isMultiKey: false,
+                multiKeyPaths: { posteam: [], down: [], yards_gained: [] },
+                isUnique: false,
+                isSparse: false,
+                isPartial: false,
+                indexVersion: 2,
+                direction: 'forward',
+                indexBounds: {
+                  posteam: [ '["KC", "KC"]' ],
+                  down: [ '[3, 3]' ],
+                  yards_gained: [ '[inf, 15)' ]
+                }
+              }
+            }
+          },
+          rejectedPlans: []
+        }
+      ]
+    }
+  },
+  executionStats: {
+    nReturned: 18,
+    executionTimeMillis: 6,
+    totalKeysExamined: 18,
+    totalDocsExamined: 18,
+    executionStages: {
+      stage: 'SHARD_MERGE',
+      nReturned: 18,
+      executionTimeMillis: 6,
+      totalKeysExamined: 18,
+      totalDocsExamined: 18,
+      totalChildMillis: Long('3'),
+      shards: [
+        {
+          shardName: 'rs0',
+          executionSuccess: true,
+          nReturned: 6,
+          executionTimeMillis: 1,
+          totalKeysExamined: 6,
+          totalDocsExamined: 6,
+          executionStages: {
+            isCached: false,
+            stage: 'SHARDING_FILTER',
+            nReturned: 6,
+            executionTimeMillisEstimate: 0,
+            works: 7,
+            advanced: 6,
+            needTime: 0,
+            needYield: 0,
+            saveState: 0,
+            restoreState: 0,
+            isEOF: 1,
+            chunkSkips: 0,
+            inputStage: {
+              stage: 'FETCH',
+              nReturned: 6,
+              executionTimeMillisEstimate: 0,
+              works: 7,
+              advanced: 6,
+              needTime: 0,
+              needYield: 0,
+              saveState: 0,
+              restoreState: 0,
+              isEOF: 1,
+              docsExamined: 6,
+              alreadyHasObj: 0,
+              inputStage: {
+                stage: 'IXSCAN',
+                nReturned: 6,
+                executionTimeMillisEstimate: 0,
+                works: 7,
+                advanced: 6,
+                needTime: 0,
+                needYield: 0,
+                saveState: 0,
+                restoreState: 0,
+                isEOF: 1,
+                keyPattern: { posteam: 1, down: 1, yards_gained: -1 },
+                indexName: 'idx_team_down_yards',
+                isMultiKey: false,
+                multiKeyPaths: { posteam: [], down: [], yards_gained: [] },
+                isUnique: false,
+                isSparse: false,
+                isPartial: false,
+                indexVersion: 2,
+                direction: 'forward',
+                indexBounds: {
+                  posteam: [ '["KC", "KC"]' ],
+                  down: [ '[3, 3]' ],
+                  yards_gained: [ '[inf, 15)' ]
+                },
+                keysExamined: 6,
+                seeks: 1,
+                dupsTested: 0,
+                dupsDropped: 0
+              }
+            }
+          }
+        },
+        {
+          shardName: 'rs1',
+          executionSuccess: true,
+          nReturned: 4,
+          executionTimeMillis: 1,
+          totalKeysExamined: 4,
+          totalDocsExamined: 4,
+          executionStages: {
+            isCached: false,
+            stage: 'SHARDING_FILTER',
+            nReturned: 4,
+            executionTimeMillisEstimate: 0,
+            works: 5,
+            advanced: 4,
+            needTime: 0,
+            needYield: 0,
+            saveState: 0,
+            restoreState: 0,
+            isEOF: 1,
+            chunkSkips: 0,
+            inputStage: {
+              stage: 'FETCH',
+              nReturned: 4,
+              executionTimeMillisEstimate: 0,
+              works: 5,
+              advanced: 4,
+              needTime: 0,
+              needYield: 0,
+              saveState: 0,
+              restoreState: 0,
+              isEOF: 1,
+              docsExamined: 4,
+              alreadyHasObj: 0,
+              inputStage: {
+                stage: 'IXSCAN',
+                nReturned: 4,
+                executionTimeMillisEstimate: 0,
+                works: 5,
+                advanced: 4,
+                needTime: 0,
+                needYield: 0,
+                saveState: 0,
+                restoreState: 0,
+                isEOF: 1,
+                keyPattern: { posteam: 1, down: 1, yards_gained: -1 },
+                indexName: 'idx_team_down_yards',
+                isMultiKey: false,
+                multiKeyPaths: { posteam: [], down: [], yards_gained: [] },
+                isUnique: false,
+                isSparse: false,
+                isPartial: false,
+                indexVersion: 2,
+                direction: 'forward',
+                indexBounds: {
+                  posteam: [ '["KC", "KC"]' ],
+                  down: [ '[3, 3]' ],
+                  yards_gained: [ '[inf, 15)' ]
+                },
+                keysExamined: 4,
+                seeks: 1,
+                dupsTested: 0,
+                dupsDropped: 0
+              }
+            }
+          }
+        },
+        {
+          shardName: 'rs2',
+          executionSuccess: true,
+          nReturned: 8,
+          executionTimeMillis: 1,
+          totalKeysExamined: 8,
+          totalDocsExamined: 8,
+          executionStages: {
+            isCached: false,
+            stage: 'SHARDING_FILTER',
+            nReturned: 8,
+            executionTimeMillisEstimate: 0,
+            works: 9,
+            advanced: 8,
+            needTime: 0,
+            needYield: 0,
+            saveState: 0,
+            restoreState: 0,
+            isEOF: 1,
+            chunkSkips: 0,
+            inputStage: {
+              stage: 'FETCH',
+              nReturned: 8,
+              executionTimeMillisEstimate: 0,
+              works: 9,
+              advanced: 8,
+              needTime: 0,
+              needYield: 0,
+              saveState: 0,
+              restoreState: 0,
+              isEOF: 1,
+              docsExamined: 8,
+              alreadyHasObj: 0,
+              inputStage: {
+                stage: 'IXSCAN',
+                nReturned: 8,
+                executionTimeMillisEstimate: 0,
+                works: 9,
+                advanced: 8,
+                needTime: 0,
+                needYield: 0,
+                saveState: 0,
+                restoreState: 0,
+                isEOF: 1,
+                keyPattern: { posteam: 1, down: 1, yards_gained: -1 },
+                indexName: 'idx_team_down_yards',
+                isMultiKey: false,
+                multiKeyPaths: { posteam: [], down: [], yards_gained: [] },
+                isUnique: false,
+                isSparse: false,
+                isPartial: false,
+                indexVersion: 2,
+                direction: 'forward',
+                indexBounds: {
+                  posteam: [ '["KC", "KC"]' ],
+                  down: [ '[3, 3]' ],
+                  yards_gained: [ '[inf, 15)' ]
+                },
+                keysExamined: 8,
+                seeks: 1,
+                dupsTested: 0,
+                dupsDropped: 0
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  queryShapeHash: 'B9354EF396CF0AF0F0C8A79666987C239AA36BA654429E3A50ABFE9B3C78A797',
+  serverInfo: {
+    host: 'a0095ff415b4',
+    port: 27017,
+    version: '8.2.5',
+    gitVersion: 'a471a13094434666c48a1f75451f2efa49f8f5df'
+  },
+  serverParameters: {
+    internalQueryFacetBufferSizeBytes: 104857600,
+    internalQueryFacetMaxOutputDocSizeBytes: 104857600,
+    internalLookupStageIntermediateDocumentMaxSizeBytes: 104857600,
+    internalDocumentSourceGroupMaxMemoryBytes: 104857600,
+    internalQueryMaxBlockingSortMemoryUsageBytes: 104857600,
+    internalQueryProhibitBlockingMergeOnMongoS: 0,
+    internalQueryMaxAddToSetBytes: 104857600,
+    internalDocumentSourceSetWindowFieldsMaxMemoryBytes: 104857600,
+    internalQueryFrameworkControl: 'trySbeRestricted',
+    internalQueryPlannerIgnoreIndexWithCollationForRegex: 1
+  },
+  command: {
+    find: 'plays',
+    filter: { posteam: 'KC', down: 3, yards_gained: { '$gt': 15 } },
+    lsid: { id: UUID('d6b85965-164c-46ce-bac1-43ad9d3d4f01') },
+    '$clusterTime': {
+      clusterTime: Timestamp({ t: 1778341664, i: 8 }),
+      signature: {
+        hash: Binary.createFromBase64('7fbpfAjnd+CIpk5/LvxvSYJ6+HA=', 0),
+        keyId: Long('7637914391731503130')
+      }
+    },
+    '$db': 'nfl_db'
+  },
+  ok: 1,
+  '$clusterTime': {
+    clusterTime: Timestamp({ t: 1778342219, i: 1 }),
+    signature: {
+      hash: Binary.createFromBase64('ujrKO1w5w9mYnUUDyxgco6jBJ1E=', 0),
+      keyId: Long('7637914391731503130')
+    }
+  },
+  operationTime: Timestamp({ t: 1778342216, i: 1 })
+}
+]
+````
 
 ### Dotaz 15 Vytvoření váženého Full-textového indexu (Text Index)
 Vytvoř nad kolekcí soupisek (rosters) textový index na sloupce celého jména a názvu univerzity. Nastav "váhu" (weight) tak, aby shoda ve jméně byla 5x důležitější než shoda v názvu univerzity.
@@ -701,6 +1352,11 @@ db.rosters.createIndex(
 * Zde nasazujeme specifický textový index, který provádí tokenizaci (rozsekání na slova) a ignoruje tzv. stop-words v angličtině. 
 * Jedná se o netriviální konfiguraci, protože index kombinuje více textových polí a pomocí parametru weights explicitně definuje matematickou relevanci (shoda ve jméně má pětinásobnou hodnotu oproti shodě v univerzitě).
 
+#### Výsledek
+````javascript
+idx_roster_fulltext
+````
+
 ### Dotaz 16 Agregace spojená s Full-textovým hledáním a rankingem
 Pomocí agregační roury vyhledej hráče, kteří mají něco společného se slovem "Williams", ale zároveň pomocí logického operátoru vyluč (mínus) ty z univerzity "Texas". Výsledky seřaď podle algoritmicky vypočítaného skóre relevance a omez na Top 3.
 ````javascript
@@ -719,6 +1375,19 @@ db.rosters.aggregate([
 * Databáze při vyhledávání v textovém indexu interně počítá relevanci výsledků. 
 * Abychom s tímto skóre mohli pracovat, musíme ho pomocí speciálního příkazu { `$meta`: "textScore" } vytáhnout na světlo v bloku `$addFields`. 
 * Následně podle něj data seřadíme a v $project skóre zaokrouhlíme. Dotaz tedy nevrací jen náhodné shody, ale seřazený ranking.
+
+#### Výsledek
+```javascript
+[
+  {
+    full_name: 'Isaiah Williams',
+    college: 'Illinois',
+    relevance_score: 3.75
+  },
+  { full_name: 'Josh Williams', college: 'LSU', relevance_score: 3.75 },
+  { full_name: 'Mario Williams', college: null, relevance_score: 3.75 }
+]
+```
 
 ### Dotaz 17 Ušetření paměti RAM pomocí Částečného indexu (Partial Index)
 Vytvoř index nad hráčskými statistikami pro rychlé hledání podle pozice a počtu touchdownů. Z důvodu úspory drahé operační paměti (RAM) do tohoto indexu ale zahrň pouze nadprůměrné hráče, kteří nahráli alespoň 15 touchdownů (passing nebo rushing).
@@ -740,6 +1409,11 @@ db.player_stats.createIndex(
 * Pomocí partialFilterExpression a logického operátoru `$or` dáváme databázi pokyn, aby do indexového B-Tree stromu fyzicky uložila odkazy pouze na ty dokumenty, které reprezentují elitní hráče. 
 * Index je díky tomu extrémně malý, bleskově rychlý a nezahltí systémové prostředky.
 
+#### Výsledek
+```javascript
+idx_elite_scorers_partial
+```
+
 ### Dotaz 18 Analýza využití indexů agregací ($indexStats)
 Zadání v přirozeném jazyce: Spusť systémovou agregační rouru na kolekci rosters, abys získal telemetrická data o tom, jak často jsou jednotlivé indexy v této kolekci reálně využívány (kolikrát na ně databáze "sáhla" od posledního restartu). Zobraz jen názvy indexů a počet jejich použití.
 ````javascript
@@ -760,6 +1434,57 @@ db.rosters.aggregate([
 * Operátor `$indexStats` je speciální agregační fáze (musí být vždy jako první v rouře), která vrací metadata o využití paměťových struktur. 
 * Následně pomocí $project tyto nepřehledné systémové logy přemapujeme do čistých a srozumitelných polí (název indexu, počet použití) a seřadíme. 
 * Jde o typický dotaz databázového administrátora (DBA) při auditu výkonu clusteru.
+
+#### Výsledek
+```javascript
+[
+  {
+    index_name: 'idx_roster_fulltext',
+    usage_count: Long('1'),
+    tracking_since: ISODate('2026-05-09T15:57:57.361Z')
+  },
+  {
+    index_name: 'idx_roster_fulltext',
+    usage_count: Long('1'),
+    tracking_since: ISODate('2026-05-09T15:57:57.360Z')
+  },
+  {
+    index_name: 'idx_roster_fulltext',
+    usage_count: Long('1'),
+    tracking_since: ISODate('2026-05-09T15:57:57.358Z')
+  },
+  {
+    index_name: '_id_',
+    usage_count: Long('1'),
+    tracking_since: ISODate('2026-05-09T15:29:00.134Z')
+  },
+  {
+    index_name: '_id_',
+    usage_count: Long('1'),
+    tracking_since: ISODate('2026-05-09T15:29:00.135Z')
+  },
+  {
+    index_name: '_id_',
+    usage_count: Long('1'),
+    tracking_since: ISODate('2026-05-09T15:28:59.958Z')
+  },
+  {
+    index_name: 'gsis_id_hashed',
+    usage_count: Long('0'),
+    tracking_since: ISODate('2026-05-09T15:29:00.136Z')
+  },
+  {
+    index_name: 'gsis_id_hashed',
+    usage_count: Long('0'),
+    tracking_since: ISODate('2026-05-09T15:29:00.137Z')
+  },
+  {
+    index_name: 'gsis_id_hashed',
+    usage_count: Long('0'),
+    tracking_since: ISODate('2026-05-09T15:29:00.122Z')
+  }
+]
+```
 
 ## Nested (Embedded) Dokumenty a Strukturální změny
 
@@ -1288,6 +2013,30 @@ db.getSiblingDB("config").shards.aggregate([
 * Fáze `$project` extrahuje název shardu a adresu jeho Replica Setu (např. shard1/mongo1:27017,mongo2:27017) a obohatí výstup o vlastní štítek.
 * Tímto ověřujeme, že router (mongos) správně vidí všechny podřízené databázové uzly.
 
+#### Výsledek
+````javascript
+[
+  {
+    shard_name: 'rs0',
+    host_address: 'rs0/mongo-primary:27018,mongo-secondary:27018,mongo-tertiary:27018',
+    state: 1,
+    status: 'Active - Ready for Data'
+  },
+  {
+    shard_name: 'rs1',
+    host_address: 'rs1/mongo-shard2:27018',
+    state: 1,
+    status: 'Active - Ready for Data'
+  },
+  {
+    shard_name: 'rs2',
+    host_address: 'rs2/mongo-shard3:27018',
+    state: 1,
+    status: 'Active - Ready for Data'
+  }
+]
+````
+
 ### Dotaz 26 Fyzická analýza distribuce dat na Shardech ($collStats)
 Protože kolekce plays byla automaticky zašardována inicializačním skriptem, ověř fyzickou distribuci těchto dat napříč clusterem. Pomocí systémové agregace zjisti, kolik dokumentů se fyzicky nachází na každém shardu, jakou mají celkovou velikost v Megabytech (MB) a jaká je průměrná velikost jednoho záznamu. Data seřaď podle jména shardu.
 
@@ -1313,6 +2062,29 @@ db.plays.aggregate([
 * Ve fázi `$project` jsou hrubá systémová data přepracována – celková velikost se pomocí operátoru `$divide` přepočítává z Bytů na Megabyty (dělením 1048576) a uhlazuje pomocí $round. 
 * Výsledek jasně prokazuje, že díky inicializačnímu init.js skriptu byla data rozložena na více serverů, a ukazuje jejich přesné fyzické zatížení na jednotlivých instancích Replica Setů.
 
+#### Výsledek
+```javascript
+[
+  {
+    shard_name: 'rs0',
+    document_count: 14218,
+    total_size_mb: 3.26,
+    avg_document_size_bytes: 240
+  },
+  {
+    shard_name: 'rs1',
+    document_count: 14229,
+    total_size_mb: 3.25,
+    avg_document_size_bytes: 239
+  },
+  {
+    shard_name: 'rs2',
+    document_count: 14137,
+    total_size_mb: 3.24,
+    avg_document_size_bytes: 240
+  }
+]
+```
 ### Dotaz 27 Analýza distribuce datových bloků (Chunks & UUID Lookup)
 Zkontroluj, jak dobře interní Balancer rozprostřel obrovskou zónu dat kolekce plays napříč celým clusterem. Přepni se do systémové databáze config. Pomocí agregační roury najdi kolekci nfl_db.plays, zjisti její unikátní systémové UUID a přes něj na ni napoj všechny její datové bloky (chunks). Seskup tyto bloky podle názvu shardu, na kterém fyzicky leží, a seřaď je, abys viděl, zda je zátěž vybalancovaná.
 
@@ -1340,6 +2112,30 @@ db.getSiblingDB("config").chunks.aggregate([
 * Během fáze `$group` nejenže sčítáme počet bloků přidělených na jednotlivé fyzické uzly (rs0, rs1 atd.), ale pomocí operátoru `$addToSet` dynamicky tvoříme unikátní zanořené pole všech kolekcí, které daný uzel obsluhuje. 
 * Ve fázi projekce pak pomocí $size spočítáme velikost tohoto pole. 
 * Výstupem je čistý, vysoce strukturovaný DevOps report dokazující funkčnost shardovacího Balanceru napříč Replica Sety.
+
+#### Výsledek
+````javascript
+[
+  {
+    shard_node: 'rs0',
+    total_chunks_assigned: 6,
+    unique_collections_hosted: 6,
+    balancer_status: 'Balanced'
+  },
+  {
+    shard_node: 'rs1',
+    total_chunks_assigned: 5,
+    unique_collections_hosted: 5,
+    balancer_status: 'Balanced'
+  },
+  {
+    shard_node: 'rs2',
+    total_chunks_assigned: 5,
+    unique_collections_hosted: 5,
+    balancer_status: 'Balanced'
+  }
+]
+````
 
 ### Dotaz 28 Analýza aktivních spojení a zátěže ($currentOp)
 Jako administrátor clusteru potřebuješ vědět, jaké aplikace a ovladače (drivers) jsou aktuálně připojeny k databázi a jak ji vytěžují. Pomocí speciální systémové agregace zjisti všechna otevřená spojení k serveru. Seskup tato spojení podle názvu aplikace nebo ovladače, spočítej celkový počet spojení, pomocí podmínky zjisti, kolik z nich zrovna aktivně provádí nějakou operaci, a najdi nejdéle běžící dotaz. Výstup zformátuj a seřaď.
@@ -1375,29 +2171,96 @@ db.getSiblingDB("admin").aggregate([
 * Fáze `$group` nejen seskupuje data podle klientské aplikace (např. mongosh, MongoDB Compass, NodeJS server), ale pomocí podmíněného součtu (`$sum` v kombinaci s `$cond`) odděluje spojení, která jen nečinně visí na pozadí, od těch, která reálně vytěžují procesor (active: true). 
 * Fáze `$project` následně využívá operátor $ifNull k zajištění konzistence výstupu v případech, kdy starší klienti neodesílají metadata o svém názvu. Tímto DBA získá dokonalý přehled o stavu tzv. Connection Poolu.
 
+#### Výsledek
+````javascript
+[
+  {
+    total_connections: 43,
+    active_queries: 22,
+    client_application: 'Unknown Client (Terminal/Script)',
+    driver_used: 'NetworkInterfaceTL-ReplicaSetMonitor-TaskExecutor',
+    longest_running_query_secs: Long('5'),
+    status: 'Monitored'
+  },
+  {
+    total_connections: 7,
+    active_queries: 0,
+    client_application: 'Unknown Client (Terminal/Script)',
+    driver_used: 'NetworkInterfaceTL-ReplNetwork',
+    longest_running_query_secs: 0,
+    status: 'Monitored'
+  },
+  {
+    total_connections: 6,
+    active_queries: 0,
+    client_application: 'Unknown Client (Terminal/Script)',
+    driver_used: 'NetworkInterfaceTL-TaskExecutorPool-0',
+    longest_running_query_secs: 0,
+    status: 'Monitored'
+  },
+  {
+    total_connections: 5,
+    active_queries: 0,
+    client_application: 'Unknown Client (Terminal/Script)',
+    driver_used: 'NetworkInterfaceTL-Sharding-Fixed',
+    longest_running_query_secs: 0,
+    status: 'Monitored'
+  },
+  {
+    total_connections: 4,
+    active_queries: 0,
+    client_application: 'Unknown Client (Terminal/Script)',
+    driver_used: 'NetworkInterfaceTL-ReplCoordExternNetwork',
+    longest_running_query_secs: 0,
+    status: 'Monitored'
+  },
+  {
+    total_connections: 3,
+    active_queries: 3,
+    client_application: 'mongosh 2.7.0',
+    driver_used: 'nodejs|mongosh',
+    longest_running_query_secs: Long('0'),
+    status: 'Monitored'
+  },
+  {
+    total_connections: 2,
+    active_queries: 2,
+    client_application: 'OplogFetcher',
+    driver_used: 'MongoDB Internal Client',
+    longest_running_query_secs: Long('4'),
+    status: 'Monitored'
+  }
+]
+````
+
 ### Dotaz 29 Simulace výpadku Primary uzlu (High Availability Test)
 Postup:
 1. docker stop mongo-primary
 2. docker exec -it mongos-router mongosh -u admin -p <MONGO_ADMIN_PASSWORD> --authenticationDatabase admin nfl_db
 
 ````javascript
-var cluster_status = db.adminCommand({ isMaster: 1 });
-print("Primary after fail: " + cluster_status.primary);
-
 db.plays.aggregate([
   { $match: { posteam: "KC", play_type: "pass" } },
   { $group: { _id: "$posteam", total_passes_during_failover: { $sum: 1 } } }
 ])
 ````
 
+3. docker exec -it mongo-secondary mongosh --port 27018
+````javascript
+rs.hello().primary
+````
+
+#### Výsledek
+````javascript
+mongo-tertiary:27018
+````
+
 #### Vysvětlení
 * Tento krok představuje reálné simulační cvičení redundance clusteru. 
 * Po tvrdém vypnutí primárního Docker kontejneru (docker stop) se replikační set dostal do degradovaného stavu. 
-* Nicméně díky správně nastavenému replikačnímu faktoru okamžitě proběhl tzv. Election process, kdy se zbývající uzly dohodly na novém lídrovi. 
-* Diagnostický příkaz db.adminCommand({ isMaster: 1 }) tento stav prokazuje – router (mongos) detekoval změnu topologie a plynule přesměroval veškerý provoz na nově zvolený Primary uzel. 
+* Nicméně díky správně nastavenému replikačnímu faktoru okamžitě proběhl tzv. Election process, kdy se zbývající uzly dohodly na novém lídrovi. . 
 * Následná agregace nad největší kolekcí plays slouží jako proof-of-concept, že z pohledu klientské aplikace k žádnému výpadku dat nedošlo.
-* Diagnostický příkaz isMaster záměrně vrací 'undefined', protože je spuštěn na vrstvě Routeru (mongos), který balancuje zátěž mezi více nezávislých Replica Setů. 
-* Klíčovým důkazem High Availability je úspěšné navrácení hodnoty '631' z navazující agregace. 
+* Klíčovým důkazem High Availability je úspěšné navrácení hodnoty '631' z agregace. 
 * Agregace proběhla úspěšně i přes to, že byl fyzicky zastaven primární kontejner, protože router plynule přesměroval dotaz na nově zvolený uzel."
 
 
