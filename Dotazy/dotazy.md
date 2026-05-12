@@ -7,7 +7,7 @@ docker exec -it mongos-router mongosh -u admin -p <MONGO_ADMIN_PASSWORD> --authe
 ## Analytické a agregační dotazy
 
 ### Dotaz 1 Nejúspěšnější týmy ve hře vzduchem
-Zjisti 5 týmů, které získaly celkově nejvíce yardů pouze pomocí přihrávek (pass), a pomocí spojení s kolekcí týmů zobraz jejich oficiální plné názvy místo zkratek.
+Zjistěte 5 týmů, které získaly celkově nejvíce yardů pouze pomocí přihrávek (pass), a pomocí spojení s kolekcí týmů zobrazte jejich oficiální plné názvy místo zkratek.
 
 ````javascript
 db.plays.aggregate([
@@ -38,9 +38,9 @@ db.plays.aggregate([
 #### Vysvětlení
 * Dotaz nejprve vyfiltruje úspěšné přihrávky (`$match`) a seskupí je podle útočícího týmu (`$group`). 
 * Sečte získané yardy a počet akcí. 
-* `$lookup`, zafunguje jako klasický SQL JOIN a propojí identifikátor týmu s kolekcí teams. 
-*  `$unwind` rozbalí výsledné pole do objektu a `$project` zajistí, že ve finálním výstupu uvidíme uživatelsky přívětivý plný název týmu místo jeho interního kódu. 
-* Nakonec se data seřadí sestupně a omezí na Top 5.
+* `$lookup`, zafunguje jako SQL JOIN a propojí identifikátor týmu s kolekcí teams. 
+*  `$unwind` rozbalí výsledné pole do objektu a `$project` zajistí, že ve finálním výstupu je uživatelsky přívětivý plný název týmu místo jeho interního kódu. 
+* Nakonec data seřadí sestupně a omezí na Top 5.
 
 #### Výsledek
 ````javascript
@@ -74,7 +74,7 @@ db.plays.aggregate([
 ````
 
 ### Dotaz 2  Detailní profil top 5 Quaterbacků soutěže
-Najdi 5 hráčů s největším počtem naházených touchdownů a připoj k nim celý název jejich týmu a konferenci z kolekce teams.
+Najděte 5 hráčů s největším počtem naházených touchdownů a připojte k nim celý název jejich týmu a konferenci z kolekce teams.
 ````javascript
 db.player_stats.aggregate([
   { $sort: { passing_tds: -1 } },
@@ -98,9 +98,9 @@ db.player_stats.aggregate([
 ````
 
 #### Vysvětlení
-* Tento netriviální dotaz demonstruje logiku relačního spojení v NoSQL. 
-* Seřadí hráče podle touchdownů, vybere první 3, a pomocí `$lookup` si "sáhne" do kolekce teams, kde spáruje zkratku týmu. 
-* Příkaz `$unwind` rozbalí výsledné pole do objektu a $project nakonec vizuálně "učese" výstup, aby obsahoval jen požadované sloupce a skryl zbytečnosti.
+* Tento dotaz demonstruje logiku relačního spojení v NoSQL. 
+* Seřadí hráče podle touchdownů, vybere první 3, a pomocí `$lookup` přistoupí do kolekce teams, kde spáruje zkratku týmu. 
+* Příkaz `$unwind` rozbalí výsledné pole do objektu a $project nakonec vizuálně upraví výstup, aby obsahoval jen požadované sloupce a skryl zbytečnosti.
 
 #### Výsledek
 ````javascript
@@ -144,7 +144,7 @@ db.player_stats.aggregate([
 ````
 
 ### Dotaz 3 Fyzické parametry moderních hráčů podle pozic
-Zjisti průměrnou váhu a výšku hráčů pro jednotlivé herní pozice u moderních hráčů (draftovaných od roku 2020). Výsledky převeď z imperiálních jednotek (libry a palce) do metrické soustavy (kilogramy a centimetry) a zaokrouhli na jedno desetinné místo. Zobraz jen pozice s více než 10 hráči.
+Zjistěte průměrnou váhu a výšku hráčů pro jednotlivé herní pozice u moderních hráčů (draftovaných od roku 2020). Výsledky převeďte z imperiálních jednotek (libry a palce) do metrické soustavy (kilogramy a centimetry) a zaokrouhlete na jedno desetinné místo. Zobrazte jen pozice s více než 10 hráči.
 ````javascript
 db.rosters.aggregate([
   { $match: { entry_year: { $gte: 2020 } } },
@@ -170,11 +170,10 @@ db.rosters.aggregate([
 
 #### Vysvětlení
 * Tento dotaz demonstruje schopnost MongoDB provádět komplexní matematické transformace dat. 
-* Nejdříve pomocí filtru `$match` omezíme data na hráče draftované po roce 2019. 
-* Ve fázi `$group` vypočítáme průměrnou váhu a výšku pro každou herní pozici (což jsou data původně v librách a palcích). 
-* V kroku `$project` tyto mezivýsledky za pomoci matematického operátoru `$multiply` znásobíme převodními koeficienty (0,453592 pro kg a 2,54 pro cm). 
-* Nakonec pomocí `$round` výsledky vizuálně uhladíme na jedno desetinné místo a seřadíme sestupně podle váhy. 
-* Tímto přístupem se vyhneme nutnosti přepočítávat data na straně aplikačního serveru.
+* Nejdříve pomocí filtru `$match` omezí data na hráče draftované po roce 2019. 
+* Ve fázi `$group` vypočítá průměrnou váhu a výšku pro každou herní pozici (data v librách a palcích). 
+* V kroku `$project` tyto mezivýsledky za pomoci matematického operátoru `$multiply` znásobí převodními koeficienty (0,453592 pro kg a 2,54 pro cm). 
+* Nakonec pomocí `$round` výsledky vizuálně upraví na jedno desetinné místo a seřadí sestupně podle váhy.
 
 #### Výsledek
 ````javascript
@@ -287,11 +286,11 @@ db.games.aggregate([
 
 #### Vysvětlení
 * Tento pokročilý analytický dotaz kombinuje matematické operace s vícenásobným relačním spojováním (obdoba JOIN) v NoSQL prostředí. 
-* Nejdříve pomocí filtru `$match` omezíme výběr pouze na zápasy konané v uzavřených halách (dome). 
-* Následně pomocí `$addFields` a matematického operátoru `$add` vytvoříme za běhu nový virtuální sloupec s celkovým součtem bodů obou týmů. 
+* Nejdříve pomocí filtru `$match` omezí výběr pouze na zápasy konané v uzavřených halách (dome). 
+* Následně pomocí `$addFields` a matematického operátoru `$add` vytvoří za běhu nový virtuální sloupec s celkovým součtem bodů obou týmů. 
 * Nahrazení zkratek týmu jejich názvy, provedou dva samostatné kroky `$lookup` (jeden pro domácí a druhý pro hostující stranu), které spárují zkratky s kolekcí teams. 
-* Po rozbalení obou výsledků pomocí operátoru `$unwind` data seřadíme sestupně podle celkového skóre (`$sort`) a omezíme na Top 5 největších "přestřelek" (`$limit`).
-* V závěrečné fázi `$project` dotaz vizuálně "učesáme" tak, aby vracel pouze vybraná data.
+* Po rozbalení obou výsledků pomocí operátoru `$unwind` data seřadí sestupně podle celkového skóre (`$sort`) a omezí na Top 5 největších "přestřelek" (`$limit`).
+* V závěrečné fázi `$project` dotaz vizuálně upraví tak, aby vracel pouze vybraná data.
 
 #### Výsledek
 ````javascript
@@ -345,7 +344,7 @@ db.games.aggregate([
 ````
 
 ### Dotaz 5 Porovnání úspěšnost pass vs run play u 3. downů
-Porovnej efektivitu mezi přihrávkou (pass) a během (run) při 3. downu. Zjisti nejen průměrný zisk yardů, ale především vypočítej procentuální úspěšnost konverze (zda akce získala dostatek yardů pro nový 1. down).
+Porovnejte efektivitu mezi přihrávkou (pass) a během (run) při 3. downu. Zjistěte nejen průměrný zisk yardů, ale především vypočítejte procentuální úspěšnost konverze (zda akce získala dostatek yardů pro nový 1. down).
 ````javascript
 db.plays.aggregate([
   { $match: { down: 3, play_type: { $in: ["run", "pass"] } } },
@@ -379,10 +378,10 @@ db.plays.aggregate([
 
 #### Vysvětlení
 * Tento analytický dotaz modeluje reálnou sportovní analýzu úspěšnosti (tzv. Conversion Rate). 
-* Po vyfiltrování krizových situací (3. down) využijeme ve fázi `$addFields` podmíněný operátor `$cond`. 
+* Po vyfiltrování krizových situací (3. down) využije ve fázi `$addFields` podmíněný operátor `$cond`. 
 * Ten funguje jako if-else a vyhodnotí, zda získané yardy (yards_gained) byly větší nebo rovny yardům potřebným k zisku prvního downu (ydstogo). 
 * Pokud ano, označí akci hodnotou 1. 
-* Ve fázi `$group` tyto úspěšné konverze sečteme a v následném bloku `$project` provedeme komplexní matematický výpočet: podíl úspěšných akcí vůči všem akcím vynásobíme stem a zaokrouhlíme na jedno desetinné místo, čímž získáme přehlednou procentuální úspěšnost pro běhové i přihrávkové varianty.
+* Ve fázi `$group` tyto úspěšné konverze sečte a v následném bloku `$project` provede komplexní matematický výpočet: podíl úspěšných akcí vůči všem akcím vynásobí stem a zaokrouhlí na jedno desetinné místo, což získá přehlednou procentuální úspěšnost pro běhové i přihrávkové varianty.
 
 #### Výsledek
 ````javascript
@@ -405,7 +404,7 @@ db.plays.aggregate([
 ````
 
 ### Dotaz 6 Přínos "těžkotonážních" hráčů
-Najdi hráče, kteří váží více než 250 liber, připoj k nim jejich statistiky a sečti, kolik "fantasy bodů" dohromady vyprodukovali hráči na daných pozicích.
+Najděte hráče, kteří váží více než 250 liber, připojte k nim jejich statistiky a sečtěte, kolik "fantasy bodů" dohromady vyprodukovali hráči na daných pozicích.
 
 ````javascript
 db.rosters.aggregate([
@@ -427,10 +426,10 @@ db.rosters.aggregate([
 ````
 
 #### Vysvětlení
-* Nejdříve hledáme těžké hráče v jedné kolekci. 
-* Jelikož ale jejich výkonnost leží ve druhé kolekci, provedeme `$lookup`. 
-* Pomocí `$unwind` z pole statistik vytvoříme klasické dokumenty. 
-* Poté pomocí ($stats.fantasy_points) přistoupíme k napojeným datům, sečteme je dohromady a ukážeme, jaká pozice z těch těžkých hráčů je pro fantasy ligu nejcennější.
+* Nejdříve hledá těžké hráče v jedné kolekci. 
+* Jelikož ale jejich výkonnost leží ve druhé kolekci, provede `$lookup`. 
+* Pomocí `$unwind` z pole statistik vytvoří klasické dokumenty. 
+* Poté pomocí ($stats.fantasy_points) přistoupí k napojeným datům, sečte je dohromady a ukáže, jaká pozice z těch těžkých hráčů je pro fantasy ligu nejcennější.
 
 #### Výsledek
 ````javascript
@@ -447,7 +446,7 @@ db.rosters.aggregate([
 ## Dotazy pro práci s daty
 
 ### Dotaz 7 Vytvoření sloupce a rozřazení hráčů podle years of experience
-Aktualizuj soupisky všech hráčů (rosters). Za pomoci agregační roury jim dynamicky vypočítej a ulož nový sloupec years_of_experience (na základě aktuální sezóny 2025) a zároveň jim podle těchto let přiřaď textový štítek career_stage ("Rookie", "Pro" nebo "Veteran").
+Aktualizujte soupisky všech hráčů (rosters). Za pomoci agregační roury jim dynamicky vypočítejte a uložte nový sloupec years_of_experience (na základě aktuální sezóny 2025) a zároveň jim podle těchto let přiřaďte textový štítek career_stage ("Rookie", "Pro" nebo "Veteran").
 
 ````javascript
 db.rosters.updateMany(
@@ -478,8 +477,8 @@ db.rosters.updateMany(
 
 #### Vysvětlení
 * Tento dotaz překračuje běžné CRUD operace a demonstruje pokročilou funkci Pipeline Updates v MongoDB (použití agregační roury přímo v příkazu updateMany). 
-* Nejdříve v prvním bloku `$set` využijeme matematický operátor `$subtract`, kterým dynamicky vypočítáme a uložíme novou vlastnost years_of_experience jako rozdíl aktuálního roku (2025) a roku vstupu hráče do ligy (entry_year). 
-* Ihned v navazujícím bloku `$set` spouštíme logický operátor `$switch`, který na základě čerstvě vypočítaných zkušeností vyhodnotí do jaké kategorie hráč spadá (Rookie, Pro, Veteran) a výsledek uloží do pole career_stage.
+* Nejdříve v prvním bloku `$set` využije matematický operátor `$subtract`, kterým dynamicky vypočítá a uloží novou vlastnost years_of_experience jako rozdíl aktuálního roku (2025) a roku vstupu hráče do ligy (entry_year). 
+* Ihned v navazujícím bloku `$set` spouští logický operátor `$switch`, který na základě čerstvě vypočítaných zkušeností vyhodnotí do jaké kategorie hráč spadá (Rookie, Pro, Veteran) a výsledek uloží do pole career_stage.
 
 #### Výsledek
 ````json lines
@@ -493,7 +492,7 @@ db.rosters.updateMany(
 ````
 
 ### Dotaz 8 Přepočet metriky a výkonnostní štítkování (Multi-stage Update)
-U všech Quarterbacků (QB) v kolekci player_stats, kteří odehráli alespoň 5 zápasů, vypočítej průměrný počet naházených yardů na zápas. Následně (ve stejném dotazu) využij tuto novou hodnotu k vytvoření výkonnostní třídy (performance_grade): hráči nad 250 yardů dostanou štítek "Elite", nad 200 "Starter", zbytek "Backup".
+U všech Quarterbacků (QB) v kolekci player_stats, kteří odehráli alespoň 5 zápasů, vypočítejte průměrný počet naházených yardů na zápas. Následně (ve stejném dotazu) využijte tuto novou hodnotu k vytvoření výkonnostní třídy (performance_grade): hráči nad 250 yardů dostanou štítek "Elite", nad 200 "Starter", zbytek "Backup".
 ````javascript
 db.player_stats.updateMany(
   { position: "QB", games: { $gte: 5 } },
@@ -520,7 +519,7 @@ db.player_stats.updateMany(
 * Tento dotaz je ukázkou komplexní aktualizace dat pomocí zřetězené agregační roury (Pipeline Update). 
 * V prvním bloku `$set` databáze matematicky vypočítá (`$divide`, `$round`) průměrný zisk yardů na zápas. 
 * Okamžitě v navazujícím druhém bloku `$set` databáze využije tuto čerstvě vytvořenou hodnotu (passing_yards_per_game) uvnitř operátoru `$switch`, aby hráče roztřídila do výkonnostních kategorií (Elite, Starter, Backup). 
-* Tímto zřetězením jsme provedli dva logické kroky během jediného průchodu databází.
+* Tímto zřetězením se provedli dva logické kroky během jediného průchodu databází.
 
 #### Výsledek
 ````json lines
@@ -534,7 +533,7 @@ db.player_stats.updateMany(
 `````
 
 ### Dotaz 9 Vytvoření All-Pro týmu
-Pomocí složité agregace najdi absolutně nejlepšího hráče pro klíčové ofenzivní pozice (QB, WR, RB) na základě celkového součtu získaných yardů (během i vzduchem). Tuto vyfiltrovanou "elitu" pak hromadně vlož (insertMany) do nově vytvořené kolekce all_pro_roster.
+Pomocí složité agregace najděte absolutně nejlepšího hráče pro klíčové ofenzivní pozice (QB, WR, RB) na základě celkového součtu získaných yardů (během i vzduchem). Tuto vyfiltrovanou "elitu" pak hromadně vložte (insertMany) do nově vytvořené kolekce all_pro_roster.
 
 ````javascript
 const top_players = db.player_stats.aggregate([
@@ -564,8 +563,8 @@ db.all_pro_roster.insertMany(top_players);
 #### Vysvětlení
 * K vytvoření záznamů pro operaci insertMany databáze nejprve provede velmi složitou agregační rouru. 
 * Pomocí `$addFields` sečte různé typy získaných yardů do jedné univerzální metriky, podle které data seřadí (`$sort`). 
-* Krok `$group` a `$first`: "$$ROOT" zajistí, že si z každé herní pozice ponecháme pouze toho absolutně nejlepšího hráče (celý jeho dokument). 
-* Pomocí `$replaceRoot` a `$project` dokumenty restrukturalizujeme, obohatíme o nový štítek "All-Pro 2025" a výsledek ve formě pole rovnou vložíme do nové kolekce.
+* Krok `$group` a `$first`: "$$ROOT" zajistí, že si z každé herní pozice ponechá pouze toho absolutně nejlepšího hráče (celý jeho dokument). 
+* Pomocí `$replaceRoot` a `$project` dokumenty znovu vytvoří, obohatí o nový štítek "All-Pro 2025" a výsledek ve formě pole rovnou vloží do nové kolekce.
 
 #### Výsledek
 ````javascript
@@ -580,7 +579,7 @@ db.all_pro_roster.insertMany(top_players);
 ````
 
 ### Dotaz 10 Vyřazení neaktivních hráčů
-Najdi na soupiskách (rosters) všechny starší hráče (draftované před rokem 2024), kteří v sezóně 2025 nenastoupili do jediného zápasu (nemají záznam v player_stats). Získej jejich unikátní ID a následně je hromadně z kolekce soupisek vymaž (deleteMany).
+Najděte na soupiskách (rosters) všechny starší hráče (draftované před rokem 2024), kteří v sezóně 2025 nenastoupili do jediného zápasu (nemají záznam v player_stats). Získejte jejich unikátní ID a následně je hromadně z kolekce soupisek vymažte (deleteMany).
 ````javascript
 const cut_list = db.rosters.aggregate([
   { $lookup: { 
@@ -599,8 +598,8 @@ db.rosters.deleteMany({ _id: { $in: cut_list } });
 #### Vysvětlení
 * Protože samotná operace deleteMany nepodporuje v MongoDB připojování cizích kolekcí (JOIN), je odstranění záznamů na základě chybějících dat v jiné kolekci velmi komplexní úlohou. 
 * **Tento dotaz ji řeší ve dvou krocích:** 
-* * První část využívá agregační rouru s operátory `$lookup` a `$match`, kde přes podmínku `$size: 0` vyfiltrujeme hráče z rosters, ke kterým neexistuje žádný záznam v player_stats. 
-* * Pomocí JavaScriptové funkce `.map()` extrahujeme pouze jejich unikátní identifikátory. Tyto vytažené identifikátory pak předáme do podmínky `$in` uvnitř příkazu deleteMany, čímž dynamicky vyčistíme databázi od neaktivních hráčů.
+* * První část využívá agregační rouru s operátory `$lookup` a `$match`, kde přes podmínku `$size: 0` vyfiltruje hráče z rosters, ke kterým neexistuje žádný záznam v player_stats. 
+* * Pomocí JavaScriptové funkce `.map()` extrahuje pouze jejich unikátní identifikátory. Tyto vytažené identifikátory pak předá do podmínky `$in` uvnitř příkazu deleteMany, čímž dynamicky vyčistí databázi od neaktivních hráčů.
 
 #### Výsledek
 ````javascript
@@ -608,7 +607,7 @@ db.rosters.deleteMany({ _id: { $in: cut_list } });
 ````
 
 ### Dotaz 11 Generování "Výroční zprávy"
-Vytvoř komplexní „Výroční zprávu“ o celé sezóně. Využij pokročilý agregační operátor `$facet` k tomu, abys v jednom jediném dotazu paralelně zpracoval 3 různé statistiky: Top 3 Quarterbacky (podle yardů), Top 3 Running backy (podle yardů) a celkový počet všech naházených touchdownů v lize. Výsledný masivní dokument obohať o časové razítko a vlož ho do nové kolekce season_reports
+Vytvořte komplexní „Výroční zprávu“ o celé sezóně. Využijte pokročilý agregační operátor `$facet` k tomu, abyste v jednom jediném dotazu paralelně zpracovali 3 různé statistiky: Top 3 Quarterbacky (podle yardů), Top 3 Running backy (podle yardů) a celkový počet všech naházených touchdownů v lize. Výsledný dokument obohaťte o časové razítko a vložte ho do nové kolekce season_reports
 
 ````javascript
 const masivni_report = db.player_stats.aggregate([
@@ -640,7 +639,7 @@ db.season_reports.insertOne(masivni_report[0]);
 * Tento dotaz ukazuje, jak lze nahradit sérii samostatných databázových dotazů jedním vysoce optimalizovaným průchodem za pomoci operátoru `$facet`. 
 * Databáze v rámci jednoho aggregate příkazu vytvoří tři paralelní, na sobě nezávislé roury (jedna filtruje Quarterbacky, druhá Running backy a třetí sčítá globální metriku přes `$group`). 
 * Výsledkem fází uvnitř `$facet` jsou zanořená pole. Tento výstup následně pomocí `$addFields` obohatíme o systémové datum generování a ročník. 
-* Protože výsledkem je komplexní NoSQL dokument plný zanořených polí a objektů, uložíme ho jako celek do auditní kolekce pomocí příkazu insertOne. 
+* Protože výsledkem je komplexní NoSQL dokument plný zanořených polí a objektů, uloží se jako celek do auditní kolekce pomocí příkazu insertOne. 
 * Tím je demonstrován pokročilý analytický vklad dat (Insert) bez nutnosti aplikační logiky na straně serveru.
 
 #### Výsledek
@@ -655,7 +654,7 @@ db.season_reports.insertOne(masivni_report[0]);
 
 ### Dotaz 12 Souhrn sezóny týmů
 
-Vytvoř komplexní agregovanou zprávu (Materialized View), která shrne ofenzivní sílu jednotlivých týmů. U každého týmu spočítej celkový počet ofenzivních akcí (běhů a přihrávek), celkový počet získaných yardů a průměrný zisk yardů na jednu akci. Nahraď zkratky týmů jejich plnými názvy, výsledky seřaď od nejlepších ofenziv a tento report trvale ulož do nové kolekce team_season_summary.
+Vytvořte komplexní agregovanou zprávu (Materialized View), která shrne ofenzivní sílu jednotlivých týmů. U každého týmu spočítejte celkový počet ofenzivních akcí (běhů a přihrávek), celkový počet získaných yardů a průměrný zisk yardů na jednu akci. Nahraďte zkratky týmů jejich plnými názvy, výsledky seřaďte od nejlepších ofenziv a tento report trvale uložte do nové kolekce team_season_summary.
 
 ````javascript
 db.plays.aggregate([
@@ -695,13 +694,12 @@ db.team_season_summary.find().sort({ total_offensive_yards: -1 });
 ````
 
 #### Vysvětlení
-Tento vysoce pokročilý dotaz (skládající se z 8 zřetězených fází) demonstruje tvorbu tzv. materializovaného pohledu (Materialized View). 
-* V první části agregační roury data vyfiltrujeme (`$match`) a seskupíme podle týmů (`$group`), čímž získáme základní součty. 
-* Následně pomocí `$addFields` a matematické operace `$divide` dynamicky dopočítáme novou metriku – průměr yardů na jednu akci. 
+Tento dotaz (skládající se z 8 zřetězených fází) demonstruje tvorbu tzv. materializovaného pohledu (Materialized View). 
+* V první části agregační roury data vyfiltruje (`$match`) a seskupí podle týmů (`$group`), čímž získá základní součty. 
+* Následně pomocí `$addFields` a matematické operace `$divide` dynamicky dopočítá novou metriku – průměr yardů na jednu akci. 
 * Fáze `$lookup` a `$unwind` nahrazují operaci JOIN z relačních databází a slouží k napojení plných názvů týmů. 
 * Po formátování přes `$project` a seřazení (`$sort`) přichází finální a klíčová fáze `$merge`. 
-* Ta výsledek agregace nevypíše pouze dočasně na obrazovku, ale trvale ho uloží do nové kolekce team_season_summary (případně ho aktualizuje, pokud už existuje). 
-* Tento přístup představuje masivní úsporu výpočetního výkonu databáze, protože klientské aplikace mohou číst už předpočítaná data z této nové kolekce, místo aby spouštěly složitou agregaci pořád dokola.
+* Ta výsledek agregace nevypíše pouze dočasně na obrazovku, ale trvale ho uloží do nové kolekce team_season_summary (případně ho aktualizuje, pokud už existuje).
 
 #### Výsledek
 ````javascript
@@ -883,7 +881,7 @@ db.plays.createIndex(
 #### Vysvětlení
 * Vytvoření složeného (Compound) B-Tree indexu.
 * Nejde o obyčejný index na jeden sloupec, ale o datovou strukturu kombinující tři různé klíče s různými směry řazení (1 pro vzestupné, -1 pro sestupné).
-* Tento konkrétní index je navržen přesně pro potřeby naší aplikace, která často vyhledává akce určitého týmu při konkrétním downu a rovnou je potřebuje řadit od nejdelšího zisku. 
+* Tento konkrétní index je navržen přesně pro potřeby této aplikace, která často vyhledává akce určitého týmu při konkrétním downu a rovnou je potřebuje řadit od nejdelšího zisku. 
 * Návratovou hodnotou je JSON potvrzující úspěšné vytvoření struktury na pozadí databáze.
 
 #### Výsledek
@@ -892,7 +890,7 @@ idx_team_down_yards
 ````
 
 ### Dotaz 14 Netriviální důkaz optimalizace (Explain Plan s vnořeným filtrem)
-Vyhledej všechny akce týmu "KC" při 3. downu, kde získali více než 15 yardů. Místo samotných dat ale vypiš kompletní exekuční plán databáze (executionStats), abys dokázal, že databáze skutečně použila index z Dotazu 13 a neprohledávala zbytečně statisíce záznamů.
+Vyhledejte všechny akce týmu "KC" při 3. downu, kde získali více než 15 yardů. Místo samotných dat ale vypište kompletní exekuční plán databáze (executionStats), abyste dokázal, že databáze skutečně použila index z Dotazu 13 a neprohledávala zbytečně statisíce záznamů.
 ````javascript
 db.plays.find(
   { posteam: "KC", down: 3, yards_gained: { $gt: 15 } }
@@ -901,7 +899,7 @@ db.plays.find(
 
 #### Vysvětlení
 * Tento dotaz využívá metodu .explain("executionStats"), což je klíčový nástroj pro ladění výkonu. Namísto herních dat vrací komplexní JSON dokument s metadaty o tom, jak databázový engine (WiredTiger) dotaz zpracoval. 
-* Ve výstupu hledáme především parametr "stage": "IXSCAN" (Index Scan), který dokazuje, že byl k vyhledání použit nově vytvořený idx_team_down_yards. 
+* Ve výstupu hledá především parametr "stage": "IXSCAN" (Index Scan), který dokazuje, že byl k vyhledání použit nově vytvořený idx_team_down_yards. 
 * Kdyby tam bylo COLLSCAN (Collection Scan), znamenalo by to fatální selhání optimalizace. 
 * Vrácená metadata jasně ukazují, kolik milisekund operace trvala a kolik dokumentů bylo reálně prozkoumáno.
 
@@ -1335,7 +1333,7 @@ db.plays.find(
 ````
 
 ### Dotaz 15 Vytvoření váženého Full-textového indexu (Text Index)
-Vytvoř nad kolekcí soupisek (rosters) textový index na sloupce celého jména a názvu univerzity. Nastav "váhu" (weight) tak, aby shoda ve jméně byla 5x důležitější než shoda v názvu univerzity.
+Vytvořte nad kolekcí soupisek (rosters) textový index na sloupce celého jména a názvu univerzity. Nastavte "váhu" (weight) tak, aby shoda ve jméně byla 5x důležitější než shoda v názvu univerzity.
 ````javascript
 db.rosters.createIndex(
   { full_name: "text", college: "text" },
@@ -1349,7 +1347,7 @@ db.rosters.createIndex(
 
 #### Vysvětlení
 * Běžné indexy neumožňují hledat jednotlivá slova uvnitř dlouhých řetězců. 
-* Zde nasazujeme specifický textový index, který provádí tokenizaci (rozsekání na slova) a ignoruje tzv. stop-words v angličtině. 
+* Zde se vytváří specifický textový index, který provádí tokenizaci (rozsekání na slova) a ignoruje tzv. stop-words v angličtině. 
 * Jedná se o netriviální konfiguraci, protože index kombinuje více textových polí a pomocí parametru weights explicitně definuje matematickou relevanci (shoda ve jméně má pětinásobnou hodnotu oproti shodě v univerzitě).
 
 #### Výsledek
@@ -1358,7 +1356,7 @@ idx_roster_fulltext
 ````
 
 ### Dotaz 16 Agregace spojená s Full-textovým hledáním a rankingem
-Pomocí agregační roury vyhledej hráče, kteří mají něco společného se slovem "Williams", ale zároveň pomocí logického operátoru vyluč (mínus) ty z univerzity "Texas". Výsledky seřaď podle algoritmicky vypočítaného skóre relevance a omez na Top 3.
+Pomocí agregační roury vyhledejte hráče, kteří mají něco společného se slovem "Williams", ale zároveň pomocí logického operátoru vylučte (mínus) ty z univerzity "Texas". Výsledky seřaďte podle algoritmicky vypočítaného skóre relevance a omez na Top 3.
 ````javascript
 db.rosters.aggregate([
   { $match: { $text: { $search: "Williams -Texas" } } },
@@ -1371,10 +1369,10 @@ db.rosters.aggregate([
 
 #### Vysvětlení
 * Příklad integrace fulltextového indexu přímo do agregační roury. 
-* V bloku `$match` spouštíme textové hledání s využitím boolovské logiky (znak - slouží jako negace). 
+* V bloku `$match` se spouští textové hledání s využitím boolovské logiky (znak - slouží jako negace). 
 * Databáze při vyhledávání v textovém indexu interně počítá relevanci výsledků. 
-* Abychom s tímto skóre mohli pracovat, musíme ho pomocí speciálního příkazu { `$meta`: "textScore" } vytáhnout na světlo v bloku `$addFields`. 
-* Následně podle něj data seřadíme a v $project skóre zaokrouhlíme. Dotaz tedy nevrací jen náhodné shody, ale seřazený ranking.
+* Pro další práci se musí přes `$meta` { `$meta`: "textScore" } vytáhnout na světlo v bloku `$addFields`. 
+* Následně podle něj data seřadí a v $project skóre zaokrouhlí. Dotaz tedy nevrací jen náhodné shody, ale seřazený ranking.
 
 #### Výsledek
 ```javascript
@@ -1390,7 +1388,7 @@ db.rosters.aggregate([
 ```
 
 ### Dotaz 17 Ušetření paměti RAM pomocí Částečného indexu (Partial Index)
-Vytvoř index nad hráčskými statistikami pro rychlé hledání podle pozice a počtu touchdownů. Z důvodu úspory drahé operační paměti (RAM) do tohoto indexu ale zahrň pouze nadprůměrné hráče, kteří nahráli alespoň 15 touchdownů (passing nebo rushing).
+Vytvořte index nad hráčskými statistikami pro rychlé hledání podle pozice a počtu touchdownů. Z důvodu úspory drahé operační paměti (RAM) do tohoto indexu ale zahrňte pouze nadprůměrné hráče, kteří nahráli alespoň 15 touchdownů (passing nebo rushing).
 ````javascript
 db.player_stats.createIndex(
   { position: 1, passing_tds: -1 },
@@ -1406,7 +1404,7 @@ db.player_stats.createIndex(
 #### Vysvětlení
 * Standardní indexy mapují každý jednotlivý dokument v kolekci, což při milionech záznamů enormně zatěžuje paměť serveru. 
 * Tento dotaz ukazuje pokročilou databázovou architekturu – vytvoření tzv. Partial (částečného) indexu. 
-* Pomocí partialFilterExpression a logického operátoru `$or` dáváme databázi pokyn, aby do indexového B-Tree stromu fyzicky uložila odkazy pouze na ty dokumenty, které reprezentují elitní hráče. 
+* Pomocí partialFilterExpression a logického operátoru `$or` se dává databázi pokyn, aby do indexového B-Tree stromu fyzicky uložila odkazy pouze na ty dokumenty, které reprezentují elitní hráče. 
 * Index je díky tomu extrémně malý, bleskově rychlý a nezahltí systémové prostředky.
 
 #### Výsledek
@@ -1415,7 +1413,7 @@ idx_elite_scorers_partial
 ```
 
 ### Dotaz 18 Analýza využití indexů agregací ($indexStats)
-Zadání v přirozeném jazyce: Spusť systémovou agregační rouru na kolekci rosters, abys získal telemetrická data o tom, jak často jsou jednotlivé indexy v této kolekci reálně využívány (kolikrát na ně databáze "sáhla" od posledního restartu). Zobraz jen názvy indexů a počet jejich použití.
+Zadání v přirozeném jazyce: Spusťte systémovou agregační rouru na kolekci rosters, abyste získal telemetrická data o tom, jak často jsou jednotlivé indexy v této kolekci reálně využívány (kolikrát na ně databáze "sáhla" od posledního restartu). Zobrazte jen názvy indexů a počet jejich použití.
 ````javascript
 db.rosters.aggregate([
   { $indexStats: {} },
@@ -1432,7 +1430,7 @@ db.rosters.aggregate([
 #### Vysvětlení 
 * Tento netriviální dotaz demonstruje schopnost pracovat v MongoDB nejen se samotnými uživatelskými daty, ale i s interní systémovou telemetrií. 
 * Operátor `$indexStats` je speciální agregační fáze (musí být vždy jako první v rouře), která vrací metadata o využití paměťových struktur. 
-* Následně pomocí $project tyto nepřehledné systémové logy přemapujeme do čistých a srozumitelných polí (název indexu, počet použití) a seřadíme. 
+* Následně pomocí $project tyto nepřehledné systémové logy přemapuje do čistých a srozumitelných polí (název indexu, počet použití) a seřadí. 
 * Jde o typický dotaz databázového administrátora (DBA) při auditu výkonu clusteru.
 
 #### Výsledek
@@ -1489,7 +1487,7 @@ db.rosters.aggregate([
 ## Nested (Embedded) Dokumenty a Strukturální změny
 
 ### Dotaz 19 Vytvoření zanořeného pole hráčů v profilu týmu (Strukturální transformace)
-Vezmi všechny hráče ze soupisek, spoj je s informacemi o jejich týmech a vyfiltruj pouze hráče hrající v konferenci AFC. Následně změň plochou strukturu dat – vytvoř pro každý AFC tým jeden hlavní dokument, který bude uvnitř sebe obsahovat zanořené pole (roster_players) se seznamem jeho hráčů a jejich fyzickými parametry. Výsledek seřaď abecedně.
+Vezměte všechny hráče ze soupisek, spojte je s informacemi o jejich týmech a vyfiltrujte pouze hráče hrající v konferenci AFC. Následně změňte plochou strukturu dat – vytvořte pro každý AFC tým jeden hlavní dokument, který bude uvnitř sebe obsahovat zanořené pole (roster_players) se seznamem jeho hráčů a jejich fyzickými parametry. Výsledek seřaďte abecedně.
 
 ````javascript
 db.rosters.aggregate([
@@ -1603,11 +1601,11 @@ db.rosters.aggregate([
 * Dotaz využívá komplexní agregační rouru. 
 * Nejdříve pomocí fází `$lookup` a `$unwind` propojí hráče s jejich týmy. 
 * Zásadní je, že následný `$match` nefiltruje podle původní kolekce, ale až podle nově připojených dat (konference AFC). 
-* Nejdůležitějším krokem je `$group`, kde pomocí operátoru $push nesčítáme jen čísla, ale za běhu vytváříme masivní zanořené pole objektů roster_players, do kterého vkládáme vybrané atributy hráčů. 
+* Nejdůležitějším krokem je `$group`, kde se pomocí operátoru $push nesčítají jen čísla, ale za běhu se vytváří masivní zanořené pole objektů roster_players, do kterého vkládáme vybrané atributy hráčů. 
 * Závěrečný `$sort` data seřadí.
 
 ### Dotaz 20 Filtrace uvnitř zanořeného pole (Bez Unwindu)
-Najdi všechny Quarterbacky (QB) na soupiskách a připoj k nim pole se všemi jejich herními statistikami ze sezóny. Z tohoto zanořeného pole však dynamicky vymaž všechny slabé zápasy a ponech uvnitř pouze ty, kde hráč nahrál více než 300 yardů. Výsledný seznam omez pouze na hráče, kterým po této filtraci zbyl alespoň jeden takový "elitní" zápas, a seřaď je abecedně.
+Najděte všechny Quarterbacky (QB) na soupiskách a připojte k nim pole se všemi jejich herními statistikami ze sezóny. Z tohoto zanořeného pole však dynamicky vymažte všechny slabé zápasy a ponechte uvnitř pouze ty, kde hráč nahrál více než 300 yardů. Výsledný seznam omezte pouze na hráče, kterým po této filtraci zbyl alespoň jeden takový "elitní" zápas, a seřaďte je abecedně.
 ````javascript
 db.rosters.aggregate([
   { $match: { position: "QB" } },
@@ -1753,15 +1751,15 @@ db.plays.aggregate([
 
 #### Vysvětlení
 * Tento dotaz je ukázkou komplexní manipulace se zanořenými objekty a poli. 
-* Ve fázi '$group' vytváříme nejen zanořené pole plays_array (pomocí operátoru $push), ale definujeme také tzv. složený klíč _id, což je vlastně vnořený (nested) JSON objekt obsahující číslo downu a ID hráče. 
+* Ve fázi '$group' se vytváří nejen zanořené pole plays_array (pomocí operátoru $push), ale definuje se také tzv. složený klíč _id, což je vlastně vnořený (nested) JSON objekt obsahující číslo downu a ID hráče. 
 * Zásadním krokem je navazující '$match', který prohledává data přímo uvnitř tohoto složeného objektu za pomoci speciální tečkové notace (_id.receiver). 
-* Ve fázi projekce pak demonstrujeme použití operátoru `$slice`. 
+* Ve fázi projekce se pak demonstruje použití operátoru `$slice`. 
 * Ten zamezí tomu, aby databáze zbytečně posílala na klienta pole s tisíci záznamy, a "odřízne" z něj pouze první dva objekty jako reprezentativní vzorek. 
-* Tímto dotazem dosahujeme maximální přesnosti a efektivity při přenosu dat.
+* Tímto dotazem se dosahuje maximální přesnosti a efektivity při přenosu dat.
 
 
 ### Dotaz 22 Povýšení zanořeného objektu do hlavního kořene ($replaceRoot)
-Najdi všechny zápasy, které se hrály venku na otevřených stadionech (outdoors). K těmto zápasům připoj detailní profil hostujícího týmu z kolekce teams. Následně vezmi tento zanořený profil hostujícího týmu, připoj k němu počet bodů, které v tomto zápase získal, a povyš tento nově vytvořený objekt tak, aby zcela nahradil původní strukturu dokumentu o zápase. Zobraz Top 5 týmů, které venku skórovaly nejvíce bodů.
+Najděte všechny zápasy, které se hrály venku na otevřených stadionech (outdoors). K těmto zápasům připojte detailní profil hostujícího týmu z kolekce teams. Následně vezměte tento zanořený profil hostujícího týmu, připojte k němu počet bodů, které v tomto zápase získal, a povyšte tento nově vytvořený objekt tak, aby zcela nahradil původní strukturu dokumentu o zápase. Zobrazte Top 5 týmů, které venku skórovaly nejvíce bodů.
 ````javascript
 db.games.aggregate([
   { $match: { roof: "outdoors" } },
@@ -1845,13 +1843,13 @@ db.games.aggregate([
 #### Vysvětlení
 * Tento netriviální dotaz demonstruje schopnost dynamicky měnit architekturu databáze "za letu". 
 * Jádrem tohoto dotazu je systémová fáze `$replaceRoot`. 
-* Po odfiltrování venkovních zápasů a napojení týmových profilů (`$lookup`) nejprve vytvoříme dočasný dokument, který obsahuje zanořený profil hostujícího týmu (away_team_nested). 
-* Ve fázi `$replaceRoot` využijeme operátor `$mergeObjects`, kterým spojíme tento profil s konkrétními daty ze zápasu (body, týden), a tento sloučený objekt povýšíme na úroveň "Root" (hlavní uzel dokumentu). 
-* Všechny původní informace o zápase jsou zahozeny. Na výstupu tedy nedostáváme "zápasy se zanořeným týmem", ale "profily týmů obohacené o zápasové statistiky"
+* Po odfiltrování venkovních zápasů a napojení týmových profilů (`$lookup`) nejprve vytvoří dočasný dokument, který obsahuje zanořený profil hostujícího týmu (away_team_nested). 
+* Ve fázi `$replaceRoot` využije operátor `$mergeObjects`, kterým spojí tento profil s konkrétními daty ze zápasu (body, týden), a tento sloučený objekt povýší na úroveň "Root" (hlavní uzel dokumentu). 
+* Všechny původní informace o zápase jsou zahozeny. Na výstupu tedy nedává "zápasy se zanořeným týmem", ale "profily týmů obohacené o zápasové statistiky"
 
 
 ### Dotaz 23 Konstrukce strukturovaného profilu (Nested Objects ze sloupců)
-Vezmi plochá data z kolekce soupisek (rosters) a restrukturalizuj je tak, aby fyzické atributy (váha, výška) tvořily jeden vnořený objekt a kariérní data (rok draftu, status, univerzita) tvořily druhý vnořený objekt. Zobraz hráče z univerzity "Ohio State", a následně vyhledej uvnitř nově vytvořeného zanořeného objektu pouze ty, kteří váží více než 220 liber.
+Vezměte plochá data z kolekce soupisek (rosters) a restrukturalizujte je tak, aby fyzické atributy (váha, výška) tvořily jeden vnořený objekt a kariérní data (rok draftu, status, univerzita) tvořily druhý vnořený objekt. Zobrazte hráče z univerzity "Ohio State", a následně vyhledej uvnitř nově vytvořeného zanořeného objektu pouze ty, kteří váží více než 220 liber.
 ````javascript
 db.rosters.aggregate([
   { $match: { college: "Ohio State" } },
@@ -1912,7 +1910,7 @@ db.rosters.aggregate([
 * Z výstupu je patrná čistá, objektově orientovaná struktura dokumentu.
 
 ### Dotaz 24 Skupinová agregace se zanořováním do více polí (Kategorizace)
-Analyzuj ofenzivní sílu týmů. Projdi všechny ofenzivní akce z kolekce plays, které skončily ziskem více než 15 yardů ("explosive plays"). Tyto akce seskup podle útočícího týmu a vytvoř pro každý tým dokument se dvěma oddělenými zanořenými (nested) poli – jedním výhradně pro dlouhé přihrávky (pass) a druhým výhradně pro dlouhé běhy (run). Na výstupu zobraz počty těchto akcí a jako ukázku vypiš vždy maximálně dvě akce z každé kategorie. Omez na Top 3 týmy s nejvíce dlouhými přihrávkami.
+Analyzujte ofenzivní sílu týmů. Projděte všechny ofenzivní akce z kolekce plays, které skončily ziskem více než 15 yardů ("explosive plays"). Tyto akce seskupte podle útočícího týmu a vytvořte pro každý tým dokument se dvěma oddělenými zanořenými (nested) poli – jedním výhradně pro dlouhé přihrávky (pass) a druhým výhradně pro dlouhé běhy (run). Na výstupu zobrazte počty těchto akcí a jako ukázku vypiš vždy maximálně dvě akce z každé kategorie. Omez na Top 3 týmy s nejvíce dlouhými přihrávkami.
 
 `````javascript
 db.plays.aggregate([
@@ -1981,16 +1979,16 @@ db.plays.aggregate([
 
 #### Vysvětlení
 * Tento dotaz představuje extrémně komplexní podmíněnou manipulaci s poli (Conditional Array Push). 
-* Po odfiltrování dlouhých akcí (nad 15 yardů) a jejich seřazení seskupujeme data podle útočícího týmu. 
-* Uvnitř operátorů `$push` (které vytváří zanořená pole) využíváme logický operátor `$cond`. Tím říkáme databázi: Pokud je typ akce "pass", vlož objekt s yardy do pole explosive_passes. Pokud ne, použij systémovou proměnnou $$REMOVE, která prvek ignoruje a do pole nic nevloží. 
+* Po odfiltrování dlouhých akcí (nad 15 yardů) a jejich seřazení seskupuje data podle útočícího týmu. 
+* Uvnitř operátorů `$push` (které vytváří zanořená pole) využíváme logický operátor `$cond`. Tím dává poky databázi: Pokud je typ akce "pass", vlož objekt s yardy do pole explosive_passes. Pokud ne, použij systémovou proměnnou $$REMOVE, která prvek ignoruje a do pole nic nevloží. 
 * Inverzně to stejné platí pro pole explosive_runs. 
-* Ve fázi `$project` následně dynamicky počítáme délku těchto nově vygenerovaných polí pomocí operátoru $size a pomocí `$slice` odřízneme zbytek pole tak, abychom na klienta poslali z každé zanořené kategorie pouze dvě ukázkové akce. 
+* Ve fázi `$project` následně dynamicky počítá délku těchto nově vygenerovaných polí pomocí operátoru $size a pomocí `$slice` odřízne zbytek pole tak, aby na klienta poslal z každé zanořené kategorie pouze dvě ukázkové akce. 
 * Tím vzniká vysoce strukturovaný analytický report.
 
 ## Konfigurace, Sharding a simulace výpadku
 
 ### Dotaz 25 Analýza topologie clusteru (Systémová agregace)
-Vytvoř report o fyzické architektuře tvého databázového clusteru. Připoj se do skryté systémové databáze config a pomocí agregační roury zjisti, z kolika fyzických shardů (uzlů) se cluster skládá, vypiš jejich adresy a přiřaď jim status "Active".
+Vytvořte report o fyzické architektuře tvého databázového clusteru. Připojte se do skryté systémové databáze config a pomocí agregační roury zjistěte, z kolika fyzických shardů (uzlů) se cluster skládá, vypište jejich adresy a přiřaď jim status "Active".
 
 ````javascript
 db.getSiblingDB("config").shards.aggregate([
@@ -2008,10 +2006,10 @@ db.getSiblingDB("config").shards.aggregate([
 
 #### Vysvětlení
 * Tento dotaz demonstruje schopnost pracovat s interní architekturou MongoDB. 
-* Namísto aplikačních dat se pomocí příkazu getSiblingDB("config") dynamicky přepneme do systémové konfigurační databáze (kterou spravují Config Servery). 
-* Následně spustíme agregační rouru nad kolekcí shards, abychom zjistili fyzickou topologii clusteru. 
+* Namísto aplikačních dat se pomocí příkazu getSiblingDB("config") dynamicky přepne do systémové konfigurační databáze (kterou spravují Config Servery). 
+* Následně spustí agregační rouru nad kolekcí shards, abych zjistil fyzickou topologii clusteru. 
 * Fáze `$project` extrahuje název shardu a adresu jeho Replica Setu (např. shard1/mongo1:27017,mongo2:27017) a obohatí výstup o vlastní štítek.
-* Tímto ověřujeme, že router (mongos) správně vidí všechny podřízené databázové uzly.
+* Tímto se ověřuje, že router (mongos) správně vidí všechny podřízené databázové uzly.
 
 #### Výsledek
 ````javascript
@@ -2038,7 +2036,7 @@ db.getSiblingDB("config").shards.aggregate([
 ````
 
 ### Dotaz 26 Fyzická analýza distribuce dat na Shardech ($collStats)
-Protože kolekce plays byla automaticky zašardována inicializačním skriptem, ověř fyzickou distribuci těchto dat napříč clusterem. Pomocí systémové agregace zjisti, kolik dokumentů se fyzicky nachází na každém shardu, jakou mají celkovou velikost v Megabytech (MB) a jaká je průměrná velikost jednoho záznamu. Data seřaď podle jména shardu.
+Protože kolekce plays byla automaticky zašardována inicializačním skriptem, ověřte fyzickou distribuci těchto dat napříč clusterem. Pomocí systémové agregace zjistěte, kolik dokumentů se fyzicky nachází na každém shardu, jakou mají celkovou velikost v Megabytech (MB) a jaká je průměrná velikost jednoho záznamu. Data seřaď tepodle jména shardu.
 
 ````javascript
 db.plays.aggregate([
@@ -2059,7 +2057,7 @@ db.plays.aggregate([
 #### Vysvětlení
 * Tento dotaz prokazuje pokročilou znalost správy clusteru a monitoringu fyzického úložiště. 
 * Zatímco běžné dotazy řeší aplikační data, speciální operátor `$collStats` dotazuje přímo úložný engine (WiredTiger) napříč všemi fyzickými uzly (shardy), na kterých je kolekce distribuována. 
-* Ve fázi `$project` jsou hrubá systémová data přepracována – celková velikost se pomocí operátoru `$divide` přepočítává z Bytů na Megabyty (dělením 1048576) a uhlazuje pomocí $round. 
+* Ve fázi `$project` jsou hrubá systémová data přepracována – celková velikost se pomocí operátoru `$divide` přepočítává z Bytů na Megabyty (dělením 1048576) a upravuje pomocí $round. 
 * Výsledek jasně prokazuje, že díky inicializačnímu init.js skriptu byla data rozložena na více serverů, a ukazuje jejich přesné fyzické zatížení na jednotlivých instancích Replica Setů.
 
 #### Výsledek
@@ -2086,7 +2084,7 @@ db.plays.aggregate([
 ]
 ```
 ### Dotaz 27 Analýza distribuce datových bloků (Chunks & UUID Lookup)
-Zkontroluj, jak dobře interní Balancer rozprostřel obrovskou zónu dat kolekce plays napříč celým clusterem. Přepni se do systémové databáze config. Pomocí agregační roury najdi kolekci nfl_db.plays, zjisti její unikátní systémové UUID a přes něj na ni napoj všechny její datové bloky (chunks). Seskup tyto bloky podle názvu shardu, na kterém fyzicky leží, a seřaď je, abys viděl, zda je zátěž vybalancovaná.
+Zkontrolujte, jak dobře interní Balancer rozprostřel obrovskou zónu dat kolekce plays napříč celým clusterem. Přepněte se do systémové databáze config. Pomocí agregační roury najděte kolekci nfl_db.plays, zjistěte její unikátní systémové UUID a přes něj na ni napojte všechny její datové bloky (chunks). Seskupte tyto bloky podle názvu shardu, na kterém fyzicky leží, a seřaďte je, abys viděl, zda je zátěž vybalancovaná.
 
 ````javascript
 db.getSiblingDB("config").chunks.aggregate([
@@ -2109,8 +2107,8 @@ db.getSiblingDB("config").chunks.aggregate([
 
 #### Vysvětlení
 * Tento pokročilý dotaz analyzuje samotné jádro distribuované architektury MongoDB – evidenci datových bloků (chunks) v databázi config.
-* Během fáze `$group` nejenže sčítáme počet bloků přidělených na jednotlivé fyzické uzly (rs0, rs1 atd.), ale pomocí operátoru `$addToSet` dynamicky tvoříme unikátní zanořené pole všech kolekcí, které daný uzel obsluhuje. 
-* Ve fázi projekce pak pomocí $size spočítáme velikost tohoto pole. 
+* Během fáze `$group` sčítá počet bloků přidělených na jednotlivé fyzické uzly (rs0, rs1 atd.), ale i zároveň pomocí operátoru `$addToSet` dynamicky tvoří unikátní zanořené pole všech kolekcí, které daný uzel obsluhuje. 
+* Ve fázi projekce pak pomocí $size spočítá velikost tohoto pole. 
 * Výstupem je čistý, vysoce strukturovaný DevOps report dokazující funkčnost shardovacího Balanceru napříč Replica Sety.
 
 #### Výsledek
@@ -2138,7 +2136,7 @@ db.getSiblingDB("config").chunks.aggregate([
 ````
 
 ### Dotaz 28 Analýza aktivních spojení a zátěže ($currentOp)
-Jako administrátor clusteru potřebuješ vědět, jaké aplikace a ovladače (drivers) jsou aktuálně připojeny k databázi a jak ji vytěžují. Pomocí speciální systémové agregace zjisti všechna otevřená spojení k serveru. Seskup tato spojení podle názvu aplikace nebo ovladače, spočítej celkový počet spojení, pomocí podmínky zjisti, kolik z nich zrovna aktivně provádí nějakou operaci, a najdi nejdéle běžící dotaz. Výstup zformátuj a seřaď.
+Jako administrátor clusteru potřebujete vědět, jaké aplikace a ovladače (drivers) jsou aktuálně připojeny k databázi a jak ji vytěžují. Pomocí speciální systémové agregace zjistěte všechna otevřená spojení k serveru. Seskupte tato spojení podle názvu aplikace nebo ovladače, spočítejte celkový počet spojení, pomocí podmínky zjistěte, kolik z nich zrovna aktivně provádí nějakou operaci, a najděte nejdéle běžící dotaz. Výstup zformátujte a seřaďte.
 `````javascript
 db.getSiblingDB("admin").aggregate([
   { $currentOp: { allUsers: true, idleConnections: true } },
