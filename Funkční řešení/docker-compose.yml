@@ -22,8 +22,8 @@ services:
   mongo-config:
     image: mongo:8.2
     container_name: mongo-config
-    entrypoint: ["/scripts/mongo-init.sh"]
-    command: ["mongod", "--configsvr", "--replSet", "cfg", "--bind_ip_all", "--port", "27019"]
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--configsvr", "--replSet", "cfg", "--bind_ip_all", "--port", "27019" ]
     environment:
       MONGO_ADMIN_PASSWORD: ${MONGO_ADMIN_PASSWORD}
       RS_INITIATE: '{"_id":"cfg","configsvr":true,"members":[{"_id":0,"host":"mongo-config:27019"}, {"_id":1,"host":"mongo-config-2:27019"}, {"_id":2,"host":"mongo-config-3:27019"}]}'
@@ -76,8 +76,8 @@ services:
   mongo-primary:
     image: mongo:8.2
     container_name: mongo-primary
-    entrypoint: ["/scripts/mongo-init.sh"]
-    command: ["mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all"]
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all" ]
     environment:
       RS_INITIATE: '{"_id":"rs0","members":[{"_id":0,"host":"mongo-primary:27018"},{"_id":1,"host":"mongo-secondary:27018"},{"_id":2,"host":"mongo-tertiary:27018"}]}'
     depends_on:
@@ -94,8 +94,8 @@ services:
   mongo-secondary:
     image: mongo:8.2
     container_name: mongo-secondary
-    entrypoint: ["/scripts/mongo-init.sh"]
-    command: ["mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all"]
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all" ]
     depends_on:
       keyfile-init:
         condition: service_completed_successfully
@@ -110,8 +110,8 @@ services:
   mongo-tertiary:
     image: mongo:8.2
     container_name: mongo-tertiary
-    entrypoint: ["/scripts/mongo-init.sh"]
-    command: ["mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all"]
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs0", "--bind_ip_all" ]
     depends_on:
       keyfile-init:
         condition: service_completed_successfully
@@ -126,8 +126,8 @@ services:
   mongo-shard2:
     image: mongo:8.2
     container_name: mongo-shard2
-    entrypoint: ["/scripts/mongo-init.sh"]
-    command: ["mongod", "--shardsvr", "--replSet", "rs1", "--bind_ip_all"]
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs1", "--bind_ip_all" ]
     environment:
       RS_INITIATE: '{"_id":"rs1","members":[{"_id":0,"host":"mongo-shard2:27018"}, {"_id":1,"host":"mongo-shard2b:27018"}, {"_id":2,"host":"mongo-shard2c:27018"}]}'
     depends_on:
@@ -174,8 +174,8 @@ services:
   mongo-shard3:
     image: mongo:8.2
     container_name: mongo-shard3
-    entrypoint: ["/scripts/mongo-init.sh"]
-    command: ["mongod", "--shardsvr", "--replSet", "rs2", "--bind_ip_all"]
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs2", "--bind_ip_all" ]
     environment:
       RS_INITIATE: '{"_id":"rs2","members":[{"_id":0,"host":"mongo-shard3:27018"}, {"_id":1,"host":"mongo-shard3b:27018"}, {"_id":2,"host":"mongo-shard3c:27018"}]}'
     depends_on:
@@ -222,10 +222,45 @@ services:
   mongos:
     image: mongo:8.2
     container_name: mongos-router
-    command: ["mongos", "--configdb", "cfg/mongo-config:27019,mongo-config-2:27019,mongo-config-3:27019", "--bind_ip_all",
-              "--keyFile", "/etc/mongo/mongo.key"]
+    command: [ "mongos", "--configdb", "cfg/mongo-config:27019,mongo-config-2:27019,mongo-config-3:27019", "--bind_ip_all",
+               "--keyFile", "/etc/mongo/mongo.key" ]
     ports:
       - "27017:27017"
+    depends_on:
+      keyfile-init:
+        condition: service_completed_successfully
+      mongo-config:
+        condition: service_started
+    volumes:
+      - mongo-keyfile:/etc/mongo:ro
+    networks:
+      - database-network
+    restart: always
+
+  mongos2:
+    image: mongo:8.2
+    container_name: mongos-router-2
+    command: [ "mongos", "--configdb", "cfg/mongo-config:27019,mongo-config-2:27019,mongo-config-3:27019", "--bind_ip_all",
+               "--keyFile", "/etc/mongo/mongo.key" ]
+    ports:
+      - "27020:27017"
+    depends_on:
+      keyfile-init:
+        condition: service_completed_successfully
+      mongo-config:
+        condition: service_started
+    volumes:
+      - mongo-keyfile:/etc/mongo:ro
+    networks:
+      - database-network
+    restart: always
+  mongos3:
+    image: mongo:8.2
+    container_name: mongos-router-3
+    command: [ "mongos", "--configdb", "cfg/mongo-config:27019,mongo-config-2:27019,mongo-config-3:27019", "--bind_ip_all",
+               "--keyFile", "/etc/mongo/mongo.key" ]
+    ports:
+      - "27021:27017"
     depends_on:
       keyfile-init:
         condition: service_completed_successfully
@@ -242,8 +277,8 @@ services:
     container_name: compass-web
     ports:
       - "8081:8080"
-    command: ["compass-web", "--host", "0.0.0.0", "--mongo-uri",
-              "mongodb://admin:${MONGO_ADMIN_PASSWORD}@mongos:27017/?authSource=admin"]
+    command: [ "compass-web", "--host", "0.0.0.0", "--mongo-uri",
+               "mongodb://admin:${MONGO_ADMIN_PASSWORD}@mongos:27017,mongos2:27017,mongos3:27017/?authSource=admin" ]
     depends_on:
       - mongos
     networks:

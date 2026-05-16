@@ -3,6 +3,12 @@
 ## Připojení přes terminál pro provádění dotazů
 ````bash
 docker exec -it mongos-router mongosh -u admin -p <MONGO_ADMIN_PASSWORD> --authenticationDatabase admin nfl_db
+
+nebo přes mongos v terminálu:
+
+mongosh "mongodb://admin:<MONGO_ADMIN_PASSWORD>@localhost:27017,localhost:27020,localhost:27021/?authSource=admin"
+
+use nfl_db;
 ````
 ## Analytické a agregační dotazy
 
