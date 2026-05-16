@@ -222,7 +222,7 @@ services:
   mongos:
     image: mongo:8.2
     container_name: mongos-router
-    command: ["mongos", "--configdb", "cfg/mongo-config:27019", "--bind_ip_all",
+    command: ["mongos", "--configdb", "cfg/mongo-config:27019,mongo-config-2:27019,mongo-config-3:27019", "--bind_ip_all",
               "--keyFile", "/etc/mongo/mongo.key"]
     ports:
       - "27017:27017"
