@@ -26,12 +26,47 @@ services:
     command: ["mongod", "--configsvr", "--replSet", "cfg", "--bind_ip_all", "--port", "27019"]
     environment:
       MONGO_ADMIN_PASSWORD: ${MONGO_ADMIN_PASSWORD}
-      RS_INITIATE: '{"_id":"cfg","configsvr":true,"members":[{"_id":0,"host":"mongo-config:27019"}]}'
+      RS_INITIATE: '{"_id":"cfg","configsvr":true,"members":[{"_id":0,"host":"mongo-config:27019"}, {"_id":1,"host":"mongo-config-2:27019"}, {"_id":2,"host":"mongo-config-3:27019"}]}'
     depends_on:
       keyfile-init:
         condition: service_completed_successfully
     volumes:
       - mongo-config_data:/data/db
+      - mongo-keyfile:/etc/mongo:ro
+      - ./mongo-init.sh:/scripts/mongo-init.sh:ro
+    networks:
+      - database-network
+    restart: always
+
+  mongo-config-2:
+    image: mongo:8.2
+    container_name: mongo-config-2
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--configsvr", "--replSet", "cfg", "--bind_ip_all", "--port", "27019" ]
+    environment:
+      MONGO_ADMIN_PASSWORD: ${MONGO_ADMIN_PASSWORD}
+    depends_on:
+      keyfile-init:
+        condition: service_completed_successfully
+    volumes:
+      - mongo-config_data_2:/data/db
+      - mongo-keyfile:/etc/mongo:ro
+      - ./mongo-init.sh:/scripts/mongo-init.sh:ro
+    networks:
+      - database-network
+    restart: always
+  mongo-config-3:
+    image: mongo:8.2
+    container_name: mongo-config-3
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--configsvr", "--replSet", "cfg", "--bind_ip_all", "--port", "27019" ]
+    environment:
+      MONGO_ADMIN_PASSWORD: ${MONGO_ADMIN_PASSWORD}
+    depends_on:
+      keyfile-init:
+        condition: service_completed_successfully
+    volumes:
+      - mongo-config_data_3:/data/db
       - mongo-keyfile:/etc/mongo:ro
       - ./mongo-init.sh:/scripts/mongo-init.sh:ro
     networks:
@@ -94,12 +129,42 @@ services:
     entrypoint: ["/scripts/mongo-init.sh"]
     command: ["mongod", "--shardsvr", "--replSet", "rs1", "--bind_ip_all"]
     environment:
-      RS_INITIATE: '{"_id":"rs1","members":[{"_id":0,"host":"mongo-shard2:27018"}]}'
+      RS_INITIATE: '{"_id":"rs1","members":[{"_id":0,"host":"mongo-shard2:27018"}, {"_id":1,"host":"mongo-shard2b:27018"}, {"_id":2,"host":"mongo-shard2c:27018"}]}'
     depends_on:
       keyfile-init:
         condition: service_completed_successfully
     volumes:
       - mongo-shard2_data:/data/db
+      - mongo-keyfile:/etc/mongo:ro
+      - ./mongo-init.sh:/scripts/mongo-init.sh:ro
+    networks:
+      - database-network
+    restart: always
+  mongo-shard2b:
+    image: mongo:8.2
+    container_name: mongo-shard2b
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs1", "--bind_ip_all" ]
+    depends_on:
+      keyfile-init:
+        condition: service_completed_successfully
+    volumes:
+      - mongo-shard2b_data:/data/db
+      - mongo-keyfile:/etc/mongo:ro
+      - ./mongo-init.sh:/scripts/mongo-init.sh:ro
+    networks:
+      - database-network
+    restart: always
+  mongo-shard2c:
+    image: mongo:8.2
+    container_name: mongo-shard2c
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs1", "--bind_ip_all" ]
+    depends_on:
+      keyfile-init:
+        condition: service_completed_successfully
+    volumes:
+      - mongo-shard2c_data:/data/db
       - mongo-keyfile:/etc/mongo:ro
       - ./mongo-init.sh:/scripts/mongo-init.sh:ro
     networks:
@@ -112,12 +177,42 @@ services:
     entrypoint: ["/scripts/mongo-init.sh"]
     command: ["mongod", "--shardsvr", "--replSet", "rs2", "--bind_ip_all"]
     environment:
-      RS_INITIATE: '{"_id":"rs2","members":[{"_id":0,"host":"mongo-shard3:27018"}]}'
+      RS_INITIATE: '{"_id":"rs2","members":[{"_id":0,"host":"mongo-shard3:27018"}, {"_id":1,"host":"mongo-shard3b:27018"}, {"_id":2,"host":"mongo-shard3c:27018"}]}'
     depends_on:
       keyfile-init:
         condition: service_completed_successfully
     volumes:
       - mongo-shard3_data:/data/db
+      - mongo-keyfile:/etc/mongo:ro
+      - ./mongo-init.sh:/scripts/mongo-init.sh:ro
+    networks:
+      - database-network
+    restart: always
+  mongo-shard3b:
+    image: mongo:8.2
+    container_name: mongo-shard3b
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs2", "--bind_ip_all" ]
+    depends_on:
+      keyfile-init:
+        condition: service_completed_successfully
+    volumes:
+      - mongo-shard3b_data:/data/db
+      - mongo-keyfile:/etc/mongo:ro
+      - ./mongo-init.sh:/scripts/mongo-init.sh:ro
+    networks:
+      - database-network
+    restart: always
+  mongo-shard3c:
+    image: mongo:8.2
+    container_name: mongo-shard3c
+    entrypoint: [ "/scripts/mongo-init.sh" ]
+    command: [ "mongod", "--shardsvr", "--replSet", "rs2", "--bind_ip_all" ]
+    depends_on:
+      keyfile-init:
+        condition: service_completed_successfully
+    volumes:
+      - mongo-shard3c_data:/data/db
       - mongo-keyfile:/etc/mongo:ro
       - ./mongo-init.sh:/scripts/mongo-init.sh:ro
     networks:
@@ -204,8 +299,8 @@ services:
         echo '6. Adding shards to cluster...' &&
         mongosh --quiet --host mongos --port 27017 -u admin -p $MONGO_ADMIN_PASSWORD --authenticationDatabase admin --eval '
           sh.addShard(\"rs0/mongo-primary:27018,mongo-secondary:27018,mongo-tertiary:27018\");
-          sh.addShard(\"rs1/mongo-shard2:27018\");
-          sh.addShard(\"rs2/mongo-shard3:27018\");
+          sh.addShard(\"rs1/mongo-shard2:27018,mongo-shard2b:27018,mongo-shard2c:27018\");
+          sh.addShard(\"rs2/mongo-shard3:27018,mongo-shard3b:27018,mongo-shard3c:27018\");
         ' &&
       
         echo '7. Running init.js (Validation and Sharding)...' &&
@@ -233,8 +328,14 @@ networks:
 volumes:
   mongo-keyfile:
   mongo-config_data:
+  mongo-config_data_2:
+  mongo-config_data_3:
   mongo-primary_data:
   mongo-secondary_data:
   mongo-tertiary_data:
   mongo-shard2_data:
+  mongo-shard2b_data:
+  mongo-shard2c_data:
   mongo-shard3_data:
+  mongo-shard3b_data:
+  mongo-shard3c_data:

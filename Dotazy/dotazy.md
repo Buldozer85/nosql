@@ -1751,7 +1751,7 @@ db.plays.aggregate([
 
 #### Vysvětlení
 * Tento dotaz je ukázkou komplexní manipulace se zanořenými objekty a poli. 
-* Ve fázi '$group' se vytváří nejen zanořené pole plays_array (pomocí operátoru $push), ale definuje se také tzv. složený klíč _id, což je vlastně vnořený (nested) JSON objekt obsahující číslo downu a ID hráče. 
+* Ve fázi `$group` se vytváří nejen zanořené pole plays_array (pomocí operátoru $push), ale definuje se také tzv. složený klíč _id, což je vlastně vnořený (nested) JSON objekt obsahující číslo downu a ID hráče. 
 * Zásadním krokem je navazující '$match', který prohledává data přímo uvnitř tohoto složeného objektu za pomoci speciální tečkové notace (_id.receiver). 
 * Ve fázi projekce se pak demonstruje použití operátoru `$slice`. 
 * Ten zamezí tomu, aby databáze zbytečně posílala na klienta pole s tisíci záznamy, a "odřízne" z něj pouze první dva objekty jako reprezentativní vzorek. 
